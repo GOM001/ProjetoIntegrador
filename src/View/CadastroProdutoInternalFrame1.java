@@ -9,6 +9,9 @@ package View;
  *
  * @author pedrogomes
  */
+
+import Controller.ControllerCadastroProduto;
+        
 public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
 
     /**
@@ -25,34 +28,35 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         LabelMovimentacoes = new javax.swing.JLabel();
         PanelAjudaPesquisa = new javax.swing.JPanel();
-        MenuAjuda = new javax.swing.JButton();
-        TxtFildePesquisar = new javax.swing.JTextField();
-        MenuPesquisar = new javax.swing.JButton();
+        btnAjuda = new javax.swing.JButton();
+        txtPesquisaPlanta = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
         LabelAdicionarExcluir = new javax.swing.JPanel();
-        MenuAdicionar = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNomePlanta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        txtCodProduto = new javax.swing.JTextField();
+        txtFornecedor = new javax.swing.JTextField();
+        txtTipoPlanta = new javax.swing.JComboBox<String>();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtQuantidadePlanta = new javax.swing.JTextField();
+        txtPrecoCompra = new javax.swing.JTextField();
+        txtPrecoVenda = new javax.swing.JTextField();
 
         setClosable(true);
         setResizable(true);
@@ -68,27 +72,31 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         PanelAjudaPesquisa.setBackground(new java.awt.Color(228, 228, 228));
         PanelAjudaPesquisa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        MenuAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        MenuAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
-        MenuAjuda.setText("Ajuda");
+        btnAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
+        btnAjuda.setText("Ajuda");
 
-        TxtFildePesquisar.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
-        TxtFildePesquisar.setText("Ex. Bromélia");
-        TxtFildePesquisar.setMinimumSize(new java.awt.Dimension(23, 24));
-        TxtFildePesquisar.setOpaque(false);
-        TxtFildePesquisar.setPreferredSize(new java.awt.Dimension(100, 24));
-        TxtFildePesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtFildePesquisarActionPerformed(evt);
+        txtPesquisaPlanta.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        txtPesquisaPlanta.setText("Ex. Bromélia");
+        txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
+        txtPesquisaPlanta.setOpaque(false);
+        txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
+        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtPesquisaPlantaActionPerformed(evt);
             }
         });
 
-        MenuPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        MenuPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/pesquisa.png"))); // NOI18N
-        MenuPesquisar.setText("Pesquisar");
-        MenuPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuPesquisarActionPerformed(evt);
+        btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/pesquisa.png"))); // NOI18N
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnPesquisarActionPerformed(evt);
             }
         });
 
@@ -98,11 +106,11 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
             PanelAjudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAjudaPesquisaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(MenuAjuda)
+                .addComponent(btnAjuda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
-                .addComponent(TxtFildePesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(MenuPesquisar)
+                .addComponent(btnPesquisar)
                 .addContainerGap())
         );
         PanelAjudaPesquisaLayout.setVerticalGroup(
@@ -110,31 +118,35 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAjudaPesquisaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelAjudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MenuAjuda)
-                    .addComponent(TxtFildePesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MenuPesquisar))
+                    .addComponent(btnAjuda)
+                    .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
                 .addContainerGap())
         );
 
         LabelAdicionarExcluir.setBackground(new java.awt.Color(228, 228, 228));
         LabelAdicionarExcluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        MenuAdicionar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        MenuAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/petals.png"))); // NOI18N
-        MenuAdicionar.setText("Cadastrar");
-        MenuAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuAdicionarActionPerformed(evt);
+        btnCadastrar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/petals.png"))); // NOI18N
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCadastrarActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Nome:");
 
-        jTextField1.setText("Margarida");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        txtNomePlanta.setText("Margarida");
+        txtNomePlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtNomePlantaActionPerformed(evt);
             }
         });
 
@@ -153,26 +165,23 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Preço/Venda:");
 
-        jTextField4.setText("4975684258");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+        txtCodProduto.setText("4975684258");
+        txtCodProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtCodProdutoActionPerformed(evt);
             }
         });
 
-        jTextField5.setText("Kazuo Flores");
+        txtFornecedor.setText("Kazuo Flores");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        jFormattedTextField1.setText("R$ ");
-        jFormattedTextField1.setToolTipText("");
-
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        jFormattedTextField2.setText("R$ ");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Flor", "Cacto", "Suculenta" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        txtTipoPlanta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Flor", "Cacto", "Suculenta" }));
+        txtTipoPlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtTipoPlantaActionPerformed(evt);
             }
         });
 
@@ -186,7 +195,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Quantidade:");
 
-        jTextField2.setText("10");
+        txtQuantidadePlanta.setText("10");
 
         javax.swing.GroupLayout LabelAdicionarExcluirLayout = new javax.swing.GroupLayout(LabelAdicionarExcluir);
         LabelAdicionarExcluir.setLayout(LabelAdicionarExcluirLayout);
@@ -198,39 +207,39 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTipoPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LabelAdicionarExcluirLayout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField2))
+                            .addComponent(txtQuantidadePlanta))
                         .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNomePlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtPrecoVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addComponent(txtPrecoCompra))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LabelAdicionarExcluirLayout.createSequentialGroup()
-                        .addComponent(MenuAdicionar)
+                        .addComponent(btnCadastrar)
                         .addGap(67, 67, 67))))
         );
         LabelAdicionarExcluirLayout.setVerticalGroup(
@@ -240,35 +249,35 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
                 .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomePlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(22, 22, 22)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTipoPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(16, 16, 16)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtQuantidadePlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
+                            .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
+                            .addComponent(txtPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MenuAdicionar)))
+                            .addComponent(btnCadastrar)
+                            .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -347,45 +356,59 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         setBounds(0, 0, 776, 487);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MenuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAdicionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuAdicionarActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+         ControllerCadastroProduto controleProduto = new ControllerCadastroProduto();
+        
+          String nomeProduto = txtNomePlanta.getText();
+          String tipo = txtTipoPlanta.getSelectedItem().toString();
+          String quantidade = txtQuantidadePlanta.getText();
+          String fornecedor = txtFornecedor.getText();
+          String codProduto = txtCodProduto.getText();
+          String precoCompra = txtPrecoCompra.getText();
+          String precoVenda = txtPrecoVenda.getText();
+          
+          
+          controleProduto.verificacao(nomeProduto,tipo,quantidade,fornecedor,codProduto,precoCompra,precoVenda);
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void MenuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPesquisarActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MenuPesquisarActionPerformed
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void TxtFildePesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFildePesquisarActionPerformed
+    private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
         // TODO add your handling code here:
 
         String a = evt.toString();
         System.out.println(a);
-    }//GEN-LAST:event_TxtFildePesquisarActionPerformed
+    }//GEN-LAST:event_txtPesquisaPlantaActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNomePlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomePlantaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNomePlantaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtCodProdutoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void txtTipoPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoPlantaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_txtTipoPlantaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LabelAdicionarExcluir;
     private javax.swing.JLabel LabelMovimentacoes;
-    private javax.swing.JButton MenuAdicionar;
-    private javax.swing.JButton MenuAjuda;
-    private javax.swing.JButton MenuPesquisar;
     private javax.swing.JPanel PanelAjudaPesquisa;
-    private javax.swing.JTextField TxtFildePesquisar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JButton btnAjuda;
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -398,9 +421,13 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtCodProduto;
+    private javax.swing.JTextField txtFornecedor;
+    private javax.swing.JTextField txtNomePlanta;
+    private javax.swing.JTextField txtPesquisaPlanta;
+    private javax.swing.JTextField txtPrecoCompra;
+    private javax.swing.JTextField txtPrecoVenda;
+    private javax.swing.JTextField txtQuantidadePlanta;
+    private javax.swing.JComboBox<String> txtTipoPlanta;
     // End of variables declaration//GEN-END:variables
 }
