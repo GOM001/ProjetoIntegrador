@@ -167,7 +167,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SubMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenuCadastroProdutoActionPerformed
-
+    CadastroProdutoInternalFrame1 TelaCadastroProduto = new CadastroProdutoInternalFrame1();
+    PainelPrincipal.add(TelaCadastroProduto);
+    TelaCadastroProduto.setVisible(true);
     }//GEN-LAST:event_SubMenuCadastroProdutoActionPerformed
 
     private void MenuMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovimentacoesActionPerformed
