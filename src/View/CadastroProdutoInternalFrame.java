@@ -12,12 +12,12 @@ package View;
 
 import Controller.ControllerCadastroProduto;
         
-public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
+public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form MovimentacoesInternalFrame
      */
-    public CadastroProdutoInternalFrame1() {
+    public CadastroProdutoInternalFrame() {
         initComponents();
     }
 

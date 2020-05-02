@@ -168,7 +168,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void SubMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenuCadastroProdutoActionPerformed
         deletarTela();
-        CadastroProdutoInternalFrame1 TelaCadastroProduto = new CadastroProdutoInternalFrame1();
+        CadastroProdutoInternalFrame TelaCadastroProduto = new CadastroProdutoInternalFrame();
         PainelPrincipal.add(TelaCadastroProduto);
         TelaCadastroProduto.setVisible(true);
     }//GEN-LAST:event_SubMenuCadastroProdutoActionPerformed
