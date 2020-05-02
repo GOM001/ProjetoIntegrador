@@ -5,6 +5,13 @@
  */
 package View;
 
+import Buscacep.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 
 
 
@@ -14,10 +21,53 @@ package View;
  * @author pedrogomes
  */
 public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
-
+String logradouro;      
+String bairro;
+String cidade;
+String uf;
     /**
      * Creates new form MovimentacoesInternalFrame
+     * @param cep
      */
+       public void buscarCep(String cep) 
+    {
+        String json;        
+
+        try {
+            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
+            URLConnection urlConnection = url.openConnection();
+            InputStream is = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            StringBuilder jsonSb = new StringBuilder();
+
+            br.lines().forEach(l -> jsonSb.append(l.trim()));
+            json = jsonSb.toString();
+            
+            // JOptionPane.showMessageDialog(null, json);
+            
+            json = json.replaceAll("[{},:]", "");
+            json = json.replaceAll("\"", "\n");                       
+            String array[] = new String[30];
+            array = json.split("\n");
+            
+            // JOptionPane.showMessageDialog(null, array);
+                             
+            logradouro = array[7];            
+            bairro = array[15];
+            cidade = array[19]; 
+            uf = array[23];
+            
+            jTxtLogradouro.setText(logradouro);
+            jTxtBairro.setText(bairro);
+            jTxtCidade.setText(cidade);
+            jTxtEstado.setText(uf);
+            //JOptionPane.showMessageDialog(null, logradouro + " " + bairro + " " + cidade + " " + uf);
+            
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public CadastroClienteInternalFrame() {
         initComponents();
     }
@@ -130,7 +180,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel11.setText("N°:");
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Verificar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -294,7 +344,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
- 
+      buscarCep(jTxtCep.getText());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
