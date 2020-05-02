@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetointegrador;
+package View;
 
 /**
  *
@@ -61,7 +61,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         BarraMenus.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        BarraMenus.setForeground(java.awt.Color.black);
         BarraMenus.setToolTipText("");
         BarraMenus.setDoubleBuffered(true);
         BarraMenus.setFocusable(false);
@@ -70,8 +69,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BarraMenus.setVerifyInputWhenFocusTarget(false);
 
         MenuMovimentacoes.setBackground(java.awt.Color.black);
-        MenuMovimentacoes.setForeground(java.awt.Color.black);
-        MenuMovimentacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/cesta-de-compras-24.png"))); // NOI18N
+        MenuMovimentacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/cesta-de-compras-24.png"))); // NOI18N
         MenuMovimentacoes.setText("Movimentações");
         MenuMovimentacoes.setFont(MenuMovimentacoes.getFont().deriveFont(MenuMovimentacoes.getFont().getStyle() | java.awt.Font.BOLD));
         MenuMovimentacoes.addMenuListener(new javax.swing.event.MenuListener() {
@@ -90,8 +88,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         BarraMenus.add(MenuMovimentacoes);
 
-        MenuProduto.setForeground(java.awt.Color.black);
-        MenuProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/procurar-estoque-24.png"))); // NOI18N
+        MenuProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/procurar-estoque-24.png"))); // NOI18N
         MenuProduto.setText("Produto");
         MenuProduto.setFont(MenuProduto.getFont().deriveFont(MenuProduto.getFont().getStyle() | java.awt.Font.BOLD));
         MenuProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +97,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        SubMenuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/adicionar24.png"))); // NOI18N
+        SubMenuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/adicionar24.png"))); // NOI18N
         SubMenuCadastroProduto.setText("Cadastro");
         SubMenuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,18 +106,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         MenuProduto.add(SubMenuCadastroProduto);
 
-        SubMenuConsutaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/pesquisa.png"))); // NOI18N
+        SubMenuConsutaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/pesquisa.png"))); // NOI18N
         SubMenuConsutaCliente.setText("Consulta");
         MenuProduto.add(SubMenuConsutaCliente);
 
         BarraMenus.add(MenuProduto);
 
-        SubMenuCadastroCliente.setForeground(java.awt.Color.black);
-        SubMenuCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/adicionar-usuário-masculino-24.png"))); // NOI18N
+        SubMenuCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/adicionar-usuário-masculino-24.png"))); // NOI18N
         SubMenuCadastroCliente.setText("Cliente");
         SubMenuCadastroCliente.setFont(SubMenuCadastroCliente.getFont().deriveFont(SubMenuCadastroCliente.getFont().getStyle() | java.awt.Font.BOLD));
 
-        SubMenucadastoCleinte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/adicionar-usuário-masculino-24.png"))); // NOI18N
+        SubMenucadastoCleinte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/adicionar-usuário-masculino-24.png"))); // NOI18N
         SubMenucadastoCleinte.setText("Cadastro");
         SubMenucadastoCleinte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,20 +125,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         SubMenuCadastroCliente.add(SubMenucadastoCleinte);
 
-        SubMenuConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/procurar-usuário-masculino-24.png"))); // NOI18N
+        SubMenuConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/procurar-usuário-masculino-24.png"))); // NOI18N
         SubMenuConsultaCliente.setText("Consulta");
         SubMenuCadastroCliente.add(SubMenuConsultaCliente);
 
         BarraMenus.add(SubMenuCadastroCliente);
 
-        MenuRelatorios.setForeground(java.awt.Color.black);
-        MenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/graficoPizza.png"))); // NOI18N
+        MenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/graficoPizza.png"))); // NOI18N
         MenuRelatorios.setText("Relatórios");
         MenuRelatorios.setFont(MenuRelatorios.getFont().deriveFont(MenuRelatorios.getFont().getStyle() | java.awt.Font.BOLD));
         BarraMenus.add(MenuRelatorios);
 
-        MenuSobre.setForeground(java.awt.Color.black);
-        MenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/sobre-24.png"))); // NOI18N
+        MenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/sobre-24.png"))); // NOI18N
         MenuSobre.setText("Sobre");
         MenuSobre.setFont(MenuSobre.getFont().deriveFont(MenuSobre.getFont().getStyle() | java.awt.Font.BOLD));
         BarraMenus.add(MenuSobre);

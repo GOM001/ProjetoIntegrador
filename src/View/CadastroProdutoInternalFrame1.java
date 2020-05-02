@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetointegrador;
+package View;
 
 /**
  *
@@ -48,7 +48,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         jTextField5 = new javax.swing.JTextField();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -69,7 +69,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         PanelAjudaPesquisa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         MenuAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        MenuAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/ajuda.png"))); // NOI18N
+        MenuAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
         MenuAjuda.setText("Ajuda");
 
         TxtFildePesquisar.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
@@ -84,7 +84,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         });
 
         MenuPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        MenuPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/pesquisa.png"))); // NOI18N
+        MenuPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/pesquisa.png"))); // NOI18N
         MenuPesquisar.setText("Pesquisar");
         MenuPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +120,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         LabelAdicionarExcluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         MenuAdicionar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        MenuAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/petals.png"))); // NOI18N
+        MenuAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/petals.png"))); // NOI18N
         MenuAdicionar.setText("Cadastrar");
         MenuAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +169,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
         jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
         jFormattedTextField2.setText("R$ ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flor", "Cacto", "Suculenta" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Flor", "Cacto", "Suculenta" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -178,7 +178,7 @@ public class CadastroProdutoInternalFrame1 extends javax.swing.JInternalFrame {
 
         jPanel3.setLayout(null);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/margarida 2.jpg"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/margarida 2.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPanel3.add(jLabel7);
         jLabel7.setBounds(0, 0, 240, 210);
