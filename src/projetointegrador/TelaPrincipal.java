@@ -74,6 +74,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuMovimentacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/cesta-de-compras-24.png"))); // NOI18N
         MenuMovimentacoes.setText("Movimentações");
         MenuMovimentacoes.setFont(MenuMovimentacoes.getFont().deriveFont(MenuMovimentacoes.getFont().getStyle() | java.awt.Font.BOLD));
+        MenuMovimentacoes.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                MenuMovimentacoesMenuSelected(evt);
+            }
+        });
         MenuMovimentacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuMovimentacoesActionPerformed(evt);
@@ -153,19 +162,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SubMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenuCadastroProdutoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_SubMenuCadastroProdutoActionPerformed
 
     private void MenuMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovimentacoesActionPerformed
-        MovimentacoesInternalFrame telaMovimentacoes = new MovimentacoesInternalFrame();
-        PainelPrincipal.add(telaMovimentacoes);
-        telaMovimentacoes.setVisible(true);
+
     }//GEN-LAST:event_MenuMovimentacoesActionPerformed
 
     private void MenuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuProdutoActionPerformed
-        MovimentacoesInternalFrame telaMovimentacoes = new MovimentacoesInternalFrame();
+            }//GEN-LAST:event_MenuProdutoActionPerformed
+
+    private void MenuMovimentacoesMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_MenuMovimentacoesMenuSelected
+    MovimentacoesInternalFrame telaMovimentacoes = new MovimentacoesInternalFrame();
         PainelPrincipal.add(telaMovimentacoes);
-        telaMovimentacoes.setVisible(true);    }//GEN-LAST:event_MenuProdutoActionPerformed
+        telaMovimentacoes.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuMovimentacoesMenuSelected
 
     /**
      * @param args the command line arguments
