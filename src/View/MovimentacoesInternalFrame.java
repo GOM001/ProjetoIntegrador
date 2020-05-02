@@ -30,9 +30,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         PanelMovimentacoes = new javax.swing.JPanel();
         LabelMovimentacoes = new javax.swing.JLabel();
         PainelAudaPesquisa = new javax.swing.JPanel();
-        TxtFielPequisa = new javax.swing.JTextField();
-        BotaoAjuda = new javax.swing.JButton();
-        BotaoPesquisar = new javax.swing.JButton();
+        btnAjuda = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        txtPesquisaPlanta = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -72,20 +72,29 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         PainelAudaPesquisa.setBackground(new java.awt.Color(204, 204, 204));
 
-        TxtFielPequisa.setText("Ex: rosa vermelha");
-        TxtFielPequisa.addActionListener(new java.awt.event.ActionListener() {
+        btnAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
+        btnAjuda.setText("Ajuda");
+
+        btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/pesquisa.png"))); // NOI18N
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtFielPequisaActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        BotaoAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
-        BotaoAjuda.setText("Ajuda");
-        BotaoAjuda.setBorderPainted(false);
-
-        BotaoPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
-        BotaoPesquisar.setText("Pesquisar");
-        BotaoPesquisar.setBorderPainted(false);
+        txtPesquisaPlanta.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        txtPesquisaPlanta.setText("Ex. Bromélia");
+        txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
+        txtPesquisaPlanta.setOpaque(false);
+        txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
+        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaPlantaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelAudaPesquisaLayout = new javax.swing.GroupLayout(PainelAudaPesquisa);
         PainelAudaPesquisa.setLayout(PainelAudaPesquisaLayout);
@@ -93,22 +102,22 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelAudaPesquisaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BotaoAjuda)
+                .addComponent(btnAjuda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtFielPequisa, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotaoPesquisar)
-                .addContainerGap())
+                .addComponent(btnPesquisar)
+                .addGap(10, 10, 10))
         );
         PainelAudaPesquisaLayout.setVerticalGroup(
             PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelAudaPesquisaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtFielPequisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotaoAjuda)
-                    .addComponent(BotaoPesquisar))
-                .addGap(15, 15, 15))
+                    .addComponent(btnAjuda)
+                    .addComponent(btnPesquisar)
+                    .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -239,26 +248,32 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TxtFielPequisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFielPequisaActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtFielPequisaActionPerformed
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
+        // TODO add your handling code here:
+
+        String a = evt.toString();
+        System.out.println(a);
+    }//GEN-LAST:event_txtPesquisaPlantaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAdicionarProduto;
-    private javax.swing.JButton BotaoAjuda;
     private javax.swing.JButton BotaoExcluirProduto;
-    private javax.swing.JButton BotaoPesquisar;
     private javax.swing.JLabel LabelMovimentacoes;
     private javax.swing.JPanel PainelAudaPesquisa;
     private javax.swing.JPanel PanelMovimentacoes;
-    private javax.swing.JTextField TxtFielPequisa;
+    private javax.swing.JButton btnAjuda;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -267,5 +282,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtPesquisaPlanta;
     // End of variables declaration//GEN-END:variables
 }

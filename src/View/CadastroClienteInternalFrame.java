@@ -337,7 +337,7 @@ String uf;
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 592, 567);
+        setBounds(0, 0, 800, 602);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

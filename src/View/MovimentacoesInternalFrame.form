@@ -46,7 +46,7 @@
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="304" max="32767" attributes="0"/>
+              <EmptySpace pref="307" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,12 +105,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="BotaoAjuda" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAjuda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="TxtFielPequisa" min="-2" pref="240" max="-2" attributes="0"/>
+                  <Component id="txtPesquisaPlanta" min="-2" pref="220" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="BotaoPesquisar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnPesquisar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -119,41 +119,58 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="TxtFielPequisa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotaoAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotaoPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPesquisaPlanta" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="TxtFielPequisa">
+        <Component class="javax.swing.JButton" name="btnAjuda">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ex: rosa vermelha"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtFielPequisaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="BotaoAjuda">
-          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="15" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/View/img/ajuda.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ajuda"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="BotaoPesquisar">
+        <Component class="javax.swing.JButton" name="btnPesquisar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="15" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/ajuda.png"/>
+              <Image iconType="3" name="/View/img/pesquisa.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPesquisaPlanta">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="10" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ex. Brom&#xe9;lia"/>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[23, 24]"/>
+            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[100, 24]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPesquisaPlantaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
