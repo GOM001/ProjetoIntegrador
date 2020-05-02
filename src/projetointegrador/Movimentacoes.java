@@ -52,8 +52,12 @@ public class Movimentacoes extends javax.swing.JFrame {
         SubMenuCadastroCliente = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         SubMenuConsultaCliente = new javax.swing.JMenuItem();
+        MenuRelatorios = new javax.swing.JMenu();
+        MenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movimentações");
+        setPreferredSize(new java.awt.Dimension(850, 600));
         setResizable(false);
 
         LabelMovimentacoes.setBackground(new java.awt.Color(228, 228, 228));
@@ -326,6 +330,11 @@ public class Movimentacoes extends javax.swing.JFrame {
 
         SubMenuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/adicionar24.png"))); // NOI18N
         SubMenuCadastroProduto.setText("Cadastro");
+        SubMenuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubMenuCadastroProdutoActionPerformed(evt);
+            }
+        });
         MenuProduto.add(SubMenuCadastroProduto);
 
         SubMenuConsutaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/pesquisa.png"))); // NOI18N
@@ -349,6 +358,18 @@ public class Movimentacoes extends javax.swing.JFrame {
 
         BarraMenus.add(SubMenuCadastroCliente);
 
+        MenuRelatorios.setForeground(java.awt.Color.black);
+        MenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/graficoPizza.png"))); // NOI18N
+        MenuRelatorios.setText("Relatórios");
+        MenuRelatorios.setFont(MenuRelatorios.getFont().deriveFont(MenuRelatorios.getFont().getStyle() | java.awt.Font.BOLD));
+        BarraMenus.add(MenuRelatorios);
+
+        MenuSobre.setForeground(java.awt.Color.black);
+        MenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/sobre-24.png"))); // NOI18N
+        MenuSobre.setText("Sobre");
+        MenuSobre.setFont(MenuSobre.getFont().deriveFont(MenuSobre.getFont().getStyle() | java.awt.Font.BOLD));
+        BarraMenus.add(MenuSobre);
+
         setJMenuBar(BarraMenus);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -365,6 +386,7 @@ public class Movimentacoes extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtFildePesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFildePesquisarActionPerformed
@@ -385,6 +407,10 @@ public class Movimentacoes extends javax.swing.JFrame {
     private void MenuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAdicionarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuAdicionarActionPerformed
+
+    private void SubMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenuCadastroProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SubMenuCadastroProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,6 +460,8 @@ public class Movimentacoes extends javax.swing.JFrame {
     private javax.swing.JMenu MenuMovimentacoes;
     private javax.swing.JButton MenuPesquisar;
     private javax.swing.JMenu MenuProduto;
+    private javax.swing.JMenu MenuRelatorios;
+    private javax.swing.JMenu MenuSobre;
     private javax.swing.JPanel PanelAjudaPesquisa;
     private javax.swing.JMenu SubMenuCadastroCliente;
     private javax.swing.JMenuItem SubMenuCadastroProduto;
