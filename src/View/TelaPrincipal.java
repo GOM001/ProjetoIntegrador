@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author pedrogomes
@@ -17,7 +19,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
     }
-
+    public void deletarTela(){
+        for (JInternalFrame allFrame : PainelPrincipal.getAllFrames()) {
+            allFrame.dispose();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,9 +167,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SubMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenuCadastroProdutoActionPerformed
-    CadastroProdutoInternalFrame1 TelaCadastroProduto = new CadastroProdutoInternalFrame1();
-    PainelPrincipal.add(TelaCadastroProduto);
-    TelaCadastroProduto.setVisible(true);
+        deletarTela();
+        CadastroProdutoInternalFrame1 TelaCadastroProduto = new CadastroProdutoInternalFrame1();
+        PainelPrincipal.add(TelaCadastroProduto);
+        TelaCadastroProduto.setVisible(true);
     }//GEN-LAST:event_SubMenuCadastroProdutoActionPerformed
 
     private void MenuMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovimentacoesActionPerformed
@@ -174,12 +181,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }//GEN-LAST:event_MenuProdutoActionPerformed
 
     private void MenuMovimentacoesMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_MenuMovimentacoesMenuSelected
-    MovimentacoesInternalFrame telaMovimentacoes = new MovimentacoesInternalFrame();
+        deletarTela();
+        MovimentacoesInternalFrame telaMovimentacoes = new MovimentacoesInternalFrame();
         PainelPrincipal.add(telaMovimentacoes);
         telaMovimentacoes.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_MenuMovimentacoesMenuSelected
 
     private void SubMenucadastoCleinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenucadastoCleinteActionPerformed
+        deletarTela();
         CadastroClienteInternalFrame TelaCadastroCliente = new CadastroClienteInternalFrame();
         PainelPrincipal.add(TelaCadastroCliente);
         TelaCadastroCliente.setVisible(true);
