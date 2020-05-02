@@ -35,7 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         SubMenuCadastroProduto = new javax.swing.JMenuItem();
         SubMenuConsutaCliente = new javax.swing.JMenuItem();
         SubMenuCadastroCliente = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        SubMenucadastoCleinte = new javax.swing.JMenuItem();
         SubMenuConsultaCliente = new javax.swing.JMenuItem();
         MenuRelatorios = new javax.swing.JMenu();
         MenuSobre = new javax.swing.JMenu();
@@ -120,9 +120,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         SubMenuCadastroCliente.setText("Cliente");
         SubMenuCadastroCliente.setFont(SubMenuCadastroCliente.getFont().deriveFont(SubMenuCadastroCliente.getFont().getStyle() | java.awt.Font.BOLD));
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/adicionar-usuário-masculino-24.png"))); // NOI18N
-        jMenuItem6.setText("Cadastro");
-        SubMenuCadastroCliente.add(jMenuItem6);
+        SubMenucadastoCleinte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/adicionar-usuário-masculino-24.png"))); // NOI18N
+        SubMenucadastoCleinte.setText("Cadastro");
+        SubMenucadastoCleinte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubMenucadastoCleinteActionPerformed(evt);
+            }
+        });
+        SubMenuCadastroCliente.add(SubMenucadastoCleinte);
 
         SubMenuConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/img/procurar-usuário-masculino-24.png"))); // NOI18N
         SubMenuConsultaCliente.setText("Consulta");
@@ -178,6 +183,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaMovimentacoes.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_MenuMovimentacoesMenuSelected
 
+    private void SubMenucadastoCleinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenucadastoCleinteActionPerformed
+        CadastroClienteInternalFrame TelaCadastroCliente = new CadastroClienteInternalFrame();
+        PainelPrincipal.add(TelaCadastroCliente);
+        TelaCadastroCliente.setVisible(true);
+    }//GEN-LAST:event_SubMenucadastoCleinteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,7 +238,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem SubMenuCadastroProduto;
     private javax.swing.JMenuItem SubMenuConsultaCliente;
     private javax.swing.JMenuItem SubMenuConsutaCliente;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem SubMenucadastoCleinte;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
