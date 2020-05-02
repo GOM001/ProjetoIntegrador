@@ -47,9 +47,10 @@ public class Movimentacoes extends javax.swing.JFrame {
         jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Movimentações");
+        jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(228, 228, 228));
-        jLabel2.setText("Ajuda");
+        jLabel2.setOpaque(true);
 
         BarraMenus.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, java.awt.Color.black));
         BarraMenus.setForeground(java.awt.Color.black);
