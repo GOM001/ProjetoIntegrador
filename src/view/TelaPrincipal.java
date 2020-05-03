@@ -5,9 +5,7 @@
  */
 package view;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import java.util.concurrent.CompletableFuture;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -38,14 +36,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/background/TelaPrincipal.png"));
-        Image image = icon.getImage();
-        PainelPrincipal = new javax.swing.JDesktopPane(){
-
-            public void paintComponent(Graphics g){
-                g.drawImage(image,0,0,getWidth(),getHeight(),this);
-            }
-        };
+        PainelPrincipal = new javax.swing.JDesktopPane();
         BarraMenus = new javax.swing.JMenuBar();
         MenuMovimentacoes = new javax.swing.JMenu();
         MenuProduto = new javax.swing.JMenu();
