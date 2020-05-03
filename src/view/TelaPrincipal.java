@@ -11,15 +11,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import model.Produto;
+import java.util.Locale;
 /**
  *
  * @author pedrogomes
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Movimentacoes
-     */
+    
     public TelaPrincipal() {
         initComponents();
     }
@@ -294,6 +293,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Locale.setDefault(Locale.US);
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
