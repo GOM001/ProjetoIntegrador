@@ -10,7 +10,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-
+import model.Produto;
 /**
  *
  * @author pedrogomes
