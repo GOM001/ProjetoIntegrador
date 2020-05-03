@@ -54,8 +54,8 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         imgCadastroProduto = new javax.swing.JLabel();
         lblQuantidade = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JTextField();
-        txtPrecoCompra = new javax.swing.JFormattedTextField();
         txtPrecoVenda = new javax.swing.JFormattedTextField();
+        txtPrecoCompra = new javax.swing.JTextField();
 
         setClosable(true);
         setResizable(true);
@@ -209,9 +209,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        txtPrecoCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("R$ #0.00"))));
-
-        txtPrecoVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtPrecoVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout LabelAdicionarExcluirLayout = new javax.swing.GroupLayout(LabelAdicionarExcluir);
         LabelAdicionarExcluir.setLayout(LabelAdicionarExcluirLayout);
@@ -250,16 +248,17 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LabelAdicionarExcluirLayout.createSequentialGroup()
                                 .addComponent(btnCadastrar)
                                 .addGap(77, 77, 77))))
-                    .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
-                        .addComponent(lblPrecoCompra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LabelAdicionarExcluirLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblPrecoVenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LabelAdicionarExcluirLayout.createSequentialGroup()
+                                .addComponent(lblPrecoCompra)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPrecoCompra))
+                            .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblPrecoVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(552, 552, 552))))
         );
         LabelAdicionarExcluirLayout.setVerticalGroup(
@@ -289,11 +288,11 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCodProduto)
                             .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
+                        .addGap(19, 19, 19)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPrecoCompra)
                             .addComponent(txtPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                        .addGap(22, 22, 22)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPrecoVenda)
                             .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -497,7 +496,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtFornecedor;
     private javax.swing.JTextField txtNomePlanta;
     private javax.swing.JTextField txtPesquisaPlanta;
-    private javax.swing.JFormattedTextField txtPrecoCompra;
+    private javax.swing.JTextField txtPrecoCompra;
     private javax.swing.JFormattedTextField txtPrecoVenda;
     private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables

@@ -280,17 +280,20 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblPrecoCompra" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtPrecoCompra" min="-2" pref="102" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="lblPrecoVenda" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtPrecoVenda" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblPrecoCompra" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtPrecoCompra" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="lblPrecoVenda" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtPrecoVenda" min="-2" pref="105" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                       <EmptySpace min="-2" pref="552" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -330,12 +333,12 @@
                                           <Component id="lblCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lblPrecoCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtPrecoCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lblPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -489,19 +492,14 @@
                         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQuantidadeKeyTyped"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="txtPrecoCompra">
-                      <Properties>
-                        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                          <Format format="R$ #0.00" subtype="-1" type="0"/>
-                        </Property>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JFormattedTextField" name="txtPrecoVenda">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                          <Format format="#0.00" subtype="-1" type="0"/>
+                          <Format format="#0" subtype="-1" type="0"/>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtPrecoCompra">
                     </Component>
                   </SubComponents>
                 </Container>

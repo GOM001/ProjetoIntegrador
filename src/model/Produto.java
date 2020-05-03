@@ -144,7 +144,7 @@ public class Produto {
             }
             if(precoVenda <= 0)
             {
-                JOptionPane.showMessageDialog(null, "Insira uma quantidade de produtos valida!");
+                JOptionPane.showMessageDialog(null, "Insira um preco de venda valido!");
                 return !dadosValidados;
             }
             if(precoVendaValidar.trim().equals(""))
