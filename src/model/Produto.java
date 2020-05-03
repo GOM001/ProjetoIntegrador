@@ -82,7 +82,7 @@ public class Produto {
     }
 
     //Codar Validação de dados
-    public void validarDado(String a, String b, String c, String d, String e, String f, String g) {
+    public void validarDados(String a, String b, String c, String d, String e, String f, String g) {
         this.nome = a;
         this.tipo = b;
         this.quantidade = Integer.parseInt(c);
