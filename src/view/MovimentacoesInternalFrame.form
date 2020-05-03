@@ -88,7 +88,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="3f" red="3c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Movimentacoes"/>
+            <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xf5;es"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -135,7 +135,7 @@
               <Font name="Ubuntu" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/ajuda.png"/>
+              <Image iconType="3" name="/img/ajuda.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ajuda"/>
           </Properties>
@@ -146,7 +146,7 @@
               <Font name="Ubuntu" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/pesquisa.png"/>
+              <Image iconType="3" name="/img/pesquisa.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
           </Properties>
@@ -261,9 +261,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="BotaoAdicionarProduto" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAdicionarProduto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="BotaoExcluirProduto" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnExcluirProduto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Component id="jPanel5" alignment="1" max="32767" attributes="0"/>
@@ -273,8 +273,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="BotaoAdicionarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotaoExcluirProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAdicionarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExcluirProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
@@ -284,19 +284,19 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="BotaoAdicionarProduto">
+        <Component class="javax.swing.JButton" name="btnAdicionarProduto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/adicionarCesta.png"/>
+              <Image iconType="3" name="/img/adicionarCesta.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Adicionar Item"/>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="BotaoExcluirProduto">
+        <Component class="javax.swing.JButton" name="btnExcluirProduto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/excluirCesta.png"/>
+              <Image iconType="3" name="/img/excluirCesta.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Excluir Item"/>
             <Property name="borderPainted" type="boolean" value="false"/>

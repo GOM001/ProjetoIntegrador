@@ -27,7 +27,7 @@
               <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/cesta-de-compras-24.png"/>
+              <Image iconType="3" name="/img/cesta-de-compras-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xf5;es"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
@@ -44,7 +44,7 @@
         <Menu class="javax.swing.JMenu" name="MenuProduto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/procurar-estoque-24.png"/>
+              <Image iconType="3" name="/img/procurar-estoque-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Produto"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
@@ -60,7 +60,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="SubMenuCadastroProduto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/img/adicionar24.png"/>
+                  <Image iconType="3" name="/img/adicionar24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastro"/>
               </Properties>
@@ -71,7 +71,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="SubMenuConsutaCliente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/img/pesquisa.png"/>
+                  <Image iconType="3" name="/img/pesquisa.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consulta"/>
               </Properties>
@@ -81,7 +81,7 @@
         <Menu class="javax.swing.JMenu" name="SubMenuCadastroCliente">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/adicionar-usu&#xe1;rio-masculino-24.png"/>
+              <Image iconType="3" name="/img/adicionar-usu&#xe1;rio-masculino-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
@@ -94,7 +94,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="SubMenucadastoCleinte">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/img/adicionar-usu&#xe1;rio-masculino-24.png"/>
+                  <Image iconType="3" name="/img/adicionar-usu&#xe1;rio-masculino-24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastro"/>
               </Properties>
@@ -105,7 +105,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="SubMenuConsultaCliente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/img/procurar-usu&#xe1;rio-masculino-24.png"/>
+                  <Image iconType="3" name="/img/procurar-usu&#xe1;rio-masculino-24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consulta"/>
               </Properties>
@@ -115,7 +115,7 @@
         <Menu class="javax.swing.JMenu" name="MenuRelatorios">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/graficoPizza.png"/>
+              <Image iconType="3" name="/img/graficoPizza.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
@@ -128,7 +128,7 @@
         <Menu class="javax.swing.JMenu" name="MenuSobre">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/sobre-24.png"/>
+              <Image iconType="3" name="/img/sobre-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sobre"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
@@ -137,6 +137,10 @@
               </FontInfo>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuSobreMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuSobreActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

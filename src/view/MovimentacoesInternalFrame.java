@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package view;
 
 /**
  *
@@ -38,8 +38,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        BotaoAdicionarProduto = new javax.swing.JButton();
-        BotaoExcluirProduto = new javax.swing.JButton();
+        btnAdicionarProduto = new javax.swing.JButton();
+        btnExcluirProduto = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -51,7 +51,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         LabelMovimentacoes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelMovimentacoes.setForeground(new java.awt.Color(60, 63, 65));
-        LabelMovimentacoes.setText("Movimentacoes");
+        LabelMovimentacoes.setText("Movimentações");
 
         javax.swing.GroupLayout PanelMovimentacoesLayout = new javax.swing.GroupLayout(PanelMovimentacoes);
         PanelMovimentacoes.setLayout(PanelMovimentacoesLayout);
@@ -73,11 +73,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         PainelAudaPesquisa.setBackground(new java.awt.Color(204, 204, 204));
 
         btnAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/ajuda.png"))); // NOI18N
+        btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ajuda.png"))); // NOI18N
         btnAjuda.setText("Ajuda");
 
         btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/pesquisa.png"))); // NOI18N
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,13 +161,13 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        BotaoAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/adicionarCesta.png"))); // NOI18N
-        BotaoAdicionarProduto.setText("Adicionar Item");
-        BotaoAdicionarProduto.setBorderPainted(false);
+        btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionarCesta.png"))); // NOI18N
+        btnAdicionarProduto.setText("Adicionar Item");
+        btnAdicionarProduto.setBorderPainted(false);
 
-        BotaoExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/excluirCesta.png"))); // NOI18N
-        BotaoExcluirProduto.setText("Excluir Item");
-        BotaoExcluirProduto.setBorderPainted(false);
+        btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluirCesta.png"))); // NOI18N
+        btnExcluirProduto.setText("Excluir Item");
+        btnExcluirProduto.setBorderPainted(false);
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -207,9 +207,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BotaoAdicionarProduto)
+                .addComponent(btnAdicionarProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotaoExcluirProduto)
+                .addComponent(btnExcluirProduto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -217,8 +217,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotaoAdicionarProduto)
-                    .addComponent(BotaoExcluirProduto))
+                    .addComponent(btnAdicionarProduto)
+                    .addComponent(btnExcluirProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -267,12 +267,12 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoAdicionarProduto;
-    private javax.swing.JButton BotaoExcluirProduto;
     private javax.swing.JLabel LabelMovimentacoes;
     private javax.swing.JPanel PainelAudaPesquisa;
     private javax.swing.JPanel PanelMovimentacoes;
+    private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnAjuda;
+    private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

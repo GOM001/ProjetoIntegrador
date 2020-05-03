@@ -67,60 +67,60 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnSalvar" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCEP" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCPF" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBairro" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCelular" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="txtTelefone" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jTxtCep" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <Component id="txtCEP" min="-2" pref="118" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnVerificar" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jTxtBairro" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTxtCidade" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtNome" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
-                                              <Component id="jTxtLogradouro" alignment="0" pref="200" max="32767" attributes="0"/>
-                                              <Component id="jTxtEstado" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                                              <Component id="txtBairro" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtCidade" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtNomeCliente" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                              <Component id="txtLogradouro" alignment="0" pref="200" max="32767" attributes="0"/>
+                                              <Component id="txtEstado" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                                               <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="radioMasculino" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="radioFeminino" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="txtCpf" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtNum" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="txtNumero" min="-2" pref="65" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="197" max="32767" attributes="0"/>
+                  <EmptySpace pref="380" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -129,62 +129,62 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCpf" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioMasculino" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioFeminino" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtCep" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnVerificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCEP" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCEP" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel9" max="32767" attributes="0"/>
-                      <Component id="txtCelular" max="32767" attributes="0"/>
+                      <Component id="lblTelefone" max="32767" attributes="0"/>
+                      <Component id="txtTelefone" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton2" pref="50" max="32767" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="btnCancelar" pref="50" max="32767" attributes="0"/>
+                      <Component id="btnSalvar" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -192,92 +192,92 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblNome">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-usu&#xe1;rio-24.png"/>
+              <Image iconType="3" name="/img/icons8-usu&#xe1;rio-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblCPF">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-roubo-de-identidade-30.png"/>
+              <Image iconType="3" name="/img/icons8-roubo-de-identidade-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CPF:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblSexo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-g&#xea;nero-30.png"/>
+              <Image iconType="3" name="/img/icons8-g&#xea;nero-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sexo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblCEP">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-endere&#xe7;o-30.png"/>
+              <Image iconType="3" name="/img/icons8-endere&#xe7;o-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CEP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="lblEndereco">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-p&#xe1;gina-inicial-30.png"/>
+              <Image iconType="3" name="/img/icons8-p&#xe1;gina-inicial-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="lblCidade">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-edif&#xed;cios-da-cidade-30.png"/>
+              <Image iconType="3" name="/img/icons8-edif&#xed;cios-da-cidade-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cidade:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="lblEstado">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-pa&#xed;s-30.png"/>
+              <Image iconType="3" name="/img/icons8-pa&#xed;s-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Estado:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="lblEmail">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-enviar-documento-por-e-mail-30.png"/>
+              <Image iconType="3" name="/img/icons8-enviar-documento-por-e-mail-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="E-mail:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="lblTelefone">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-telefone-celular-30.png"/>
+              <Image iconType="3" name="/img/icons8-telefone-celular-30.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Celular:"/>
+            <Property name="text" type="java.lang.String" value="Telefone"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNome">
+        <Component class="javax.swing.JTextField" name="txtNomeCliente">
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtCpf">
           <Properties>
@@ -286,61 +286,61 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="radioMasculino">
           <Properties>
             <Property name="text" type="java.lang.String" value="Masculino"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+        <Component class="javax.swing.JRadioButton" name="radioFeminino">
           <Properties>
             <Property name="text" type="java.lang.String" value="Feminino"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jTxtCep">
+        <Component class="javax.swing.JFormattedTextField" name="txtCEP">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="#####-###" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtLogradouro">
+        <Component class="javax.swing.JTextField" name="txtLogradouro">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtCidade">
+        <Component class="javax.swing.JTextField" name="txtCidade">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
+        <Component class="javax.swing.JLabel" name="lblBairro">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/img/icons8-im&#xf3;veis-30.png"/>
+              <Image iconType="3" name="/img/icons8-im&#xf3;veis-30.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bairro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtEstado">
+        <Component class="javax.swing.JTextField" name="txtEstado">
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtBairro">
+        <Component class="javax.swing.JTextField" name="txtBairro">
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtCelular">
+        <Component class="javax.swing.JFormattedTextField" name="txtTelefone">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="(##)#####-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
+        <Component class="javax.swing.JLabel" name="lblNumero">
           <Properties>
             <Property name="text" type="java.lang.String" value="N&#xb0;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNum">
+        <Component class="javax.swing.JTextField" name="txtNumero">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnVerificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Verificar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerificarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
