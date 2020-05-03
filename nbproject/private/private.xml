@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/model/test.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/CadastroClienteInternalFrame.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/util/GerenciadorConexao.java</file>
             <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/model/Produto.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/DAO/ProdutoDAO.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/MovimentacoesInternalFrame.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/controller/ProdutoController.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/TelaPrincipal.java</file>
             <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/CadastroProdutoInternalFrame.java</file>
         </group>
     </open-files>

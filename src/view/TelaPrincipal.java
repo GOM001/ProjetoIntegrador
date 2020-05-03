@@ -39,11 +39,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BarraMenus = new javax.swing.JMenuBar();
         MenuMovimentacoes = new javax.swing.JMenu();
         MenuProduto = new javax.swing.JMenu();
-        SubMenuCadastroProduto = new javax.swing.JMenuItem();
-        SubMenuConsutaCliente = new javax.swing.JMenuItem();
-        SubMenuCadastroCliente = new javax.swing.JMenu();
-        SubMenucadastoCleinte = new javax.swing.JMenuItem();
-        SubMenuConsultaCliente = new javax.swing.JMenuItem();
+        subMenuConsultaCliente = new javax.swing.JMenuItem();
+        subMenuCadastroProduto = new javax.swing.JMenuItem();
+        subMenuProdutoManutencao = new javax.swing.JMenuItem();
+        MenuCliente = new javax.swing.JMenu();
+        subMenuCadastrarCliente = new javax.swing.JMenuItem();
+        subMenuItemConsultarCliente = new javax.swing.JMenuItem();
+        subMenuItemAlterarCliente = new javax.swing.JMenuItem();
+        subMenuItemRemoverCliente = new javax.swing.JMenuItem();
         MenuRelatorios = new javax.swing.JMenu();
         MenuSobre = new javax.swing.JMenu();
 
@@ -52,7 +55,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
-        PainelPrincipal.setBackground(java.awt.Color.blue);
+        PainelPrincipal.setBackground(new java.awt.Color(51, 51, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -95,7 +98,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         BarraMenus.add(MenuMovimentacoes);
 
-        MenuProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-estoque-24.png"))); // NOI18N
+        MenuProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-rosa.png"))); // NOI18N
         MenuProduto.setText("Produto");
         MenuProduto.setFont(MenuProduto.getFont().deriveFont(MenuProduto.getFont().getStyle() | java.awt.Font.BOLD));
         MenuProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -104,39 +107,76 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        SubMenuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar24.png"))); // NOI18N
-        SubMenuCadastroProduto.setText("Cadastro");
-        SubMenuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+        subMenuConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
+        subMenuConsultaCliente.setText("Consulta");
+        subMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubMenuCadastroProdutoActionPerformed(evt);
+                subMenuConsultaClienteActionPerformed(evt);
             }
         });
-        MenuProduto.add(SubMenuCadastroProduto);
+        MenuProduto.add(subMenuConsultaCliente);
 
-        SubMenuConsutaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
-        SubMenuConsutaCliente.setText("Consulta");
-        MenuProduto.add(SubMenuConsutaCliente);
+        subMenuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-adicionar-24.png"))); // NOI18N
+        subMenuCadastroProduto.setText("Inclusão");
+        subMenuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuCadastroProdutoActionPerformed(evt);
+            }
+        });
+        MenuProduto.add(subMenuCadastroProduto);
+
+        subMenuProdutoManutencao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-manutenção-24.png"))); // NOI18N
+        subMenuProdutoManutencao.setText("Manutenção");
+        subMenuProdutoManutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuProdutoManutencaoActionPerformed(evt);
+            }
+        });
+        MenuProduto.add(subMenuProdutoManutencao);
 
         BarraMenus.add(MenuProduto);
 
-        SubMenuCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-usuário-masculino-24.png"))); // NOI18N
-        SubMenuCadastroCliente.setText("Cliente");
-        SubMenuCadastroCliente.setFont(SubMenuCadastroCliente.getFont().deriveFont(SubMenuCadastroCliente.getFont().getStyle() | java.awt.Font.BOLD));
+        MenuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-usuário-masculino-24.png"))); // NOI18N
+        MenuCliente.setText("Cliente");
+        MenuCliente.setFont(MenuCliente.getFont().deriveFont(MenuCliente.getFont().getStyle() | java.awt.Font.BOLD));
 
-        SubMenucadastoCleinte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-usuário-masculino-24.png"))); // NOI18N
-        SubMenucadastoCleinte.setText("Cadastro");
-        SubMenucadastoCleinte.addActionListener(new java.awt.event.ActionListener() {
+        subMenuCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-usuário-masculino-24.png"))); // NOI18N
+        subMenuCadastrarCliente.setText("Cadastrar");
+        subMenuCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubMenucadastoCleinteActionPerformed(evt);
+                subMenuCadastrarClienteActionPerformed(evt);
             }
         });
-        SubMenuCadastroCliente.add(SubMenucadastoCleinte);
+        MenuCliente.add(subMenuCadastrarCliente);
 
-        SubMenuConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
-        SubMenuConsultaCliente.setText("Consulta");
-        SubMenuCadastroCliente.add(SubMenuConsultaCliente);
+        subMenuItemConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
+        subMenuItemConsultarCliente.setText("Consultar");
+        subMenuItemConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuItemConsultarClienteActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(subMenuItemConsultarCliente);
 
-        BarraMenus.add(SubMenuCadastroCliente);
+        subMenuItemAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-alterar-usuário-masculino-24.png"))); // NOI18N
+        subMenuItemAlterarCliente.setText("Alterar");
+        subMenuItemAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuItemAlterarClienteActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(subMenuItemAlterarCliente);
+
+        subMenuItemRemoverCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-remover-usuário-masculino-24.png"))); // NOI18N
+        subMenuItemRemoverCliente.setText("Remover");
+        subMenuItemRemoverCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuItemRemoverClienteActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(subMenuItemRemoverCliente);
+
+        BarraMenus.add(MenuCliente);
 
         MenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/graficoPizza.png"))); // NOI18N
         MenuRelatorios.setText("Relatórios");
@@ -177,12 +217,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SubMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenuCadastroProdutoActionPerformed
+    private void subMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastroProdutoActionPerformed
         deletarTela();
         CadastroProdutoInternalFrame TelaCadastroProduto = new CadastroProdutoInternalFrame();
         PainelPrincipal.add(TelaCadastroProduto);
         TelaCadastroProduto.setVisible(true);
-    }//GEN-LAST:event_SubMenuCadastroProdutoActionPerformed
+    }//GEN-LAST:event_subMenuCadastroProdutoActionPerformed
 
     private void MenuMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovimentacoesActionPerformed
 
@@ -198,12 +238,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaMovimentacoes.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_MenuMovimentacoesMenuSelected
 
-    private void SubMenucadastoCleinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubMenucadastoCleinteActionPerformed
+    private void subMenuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastrarClienteActionPerformed
         deletarTela();
         CadastroClienteInternalFrame TelaCadastroCliente = new CadastroClienteInternalFrame();
         PainelPrincipal.add(TelaCadastroCliente);
         TelaCadastroCliente.setVisible(true);
-    }//GEN-LAST:event_SubMenucadastoCleinteActionPerformed
+    }//GEN-LAST:event_subMenuCadastrarClienteActionPerformed
 
     private void MenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSobreActionPerformed
 
@@ -213,6 +253,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         deletarTela();
         JOptionPane.showMessageDialog(null, "Projeto Integrador II - Floricultura\n\nDesenvolvido por:\n- Caio Moreno\n- Gustavo Fonseca\n- João Vitor Alves\n- Paulo Costa\n- Pedro Gomes\n");
     }//GEN-LAST:event_MenuSobreMouseClicked
+
+    private void subMenuProdutoManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuProdutoManutencaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subMenuProdutoManutencaoActionPerformed
+
+    private void subMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuConsultaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subMenuConsultaClienteActionPerformed
+
+    private void subMenuItemRemoverClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuItemRemoverClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subMenuItemRemoverClienteActionPerformed
+
+    private void subMenuItemConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuItemConsultarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subMenuItemConsultarClienteActionPerformed
+
+    private void subMenuItemAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuItemAlterarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subMenuItemAlterarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,16 +314,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenus;
+    private javax.swing.JMenu MenuCliente;
     private javax.swing.JMenu MenuMovimentacoes;
     private javax.swing.JMenu MenuProduto;
     private javax.swing.JMenu MenuRelatorios;
     private javax.swing.JMenu MenuSobre;
     private javax.swing.JDesktopPane PainelPrincipal;
-    private javax.swing.JMenu SubMenuCadastroCliente;
-    private javax.swing.JMenuItem SubMenuCadastroProduto;
-    private javax.swing.JMenuItem SubMenuConsultaCliente;
-    private javax.swing.JMenuItem SubMenuConsutaCliente;
-    private javax.swing.JMenuItem SubMenucadastoCleinte;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem subMenuCadastrarCliente;
+    private javax.swing.JMenuItem subMenuCadastroProduto;
+    private javax.swing.JMenuItem subMenuConsultaCliente;
+    private javax.swing.JMenuItem subMenuItemAlterarCliente;
+    private javax.swing.JMenuItem subMenuItemConsultarCliente;
+    private javax.swing.JMenuItem subMenuItemRemoverCliente;
+    private javax.swing.JMenuItem subMenuProdutoManutencao;
     // End of variables declaration//GEN-END:variables
 }
