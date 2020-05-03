@@ -38,7 +38,6 @@
           </Properties>
           <Events>
             <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="MenuMovimentacoesMenuSelected"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuMovimentacoesActionPerformed"/>
           </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MenuProduto">
@@ -53,11 +52,8 @@
               </FontInfo>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuProdutoActionPerformed"/>
-          </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="subMenuConsultaCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="subMenuConsultaProduto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/pesquisa.png"/>
@@ -65,7 +61,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subMenuConsultaClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subMenuConsultaProdutoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="subMenuCadastroProduto">
@@ -163,6 +159,9 @@
               </FontInfo>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="MenuRelatoriosMenuSelected"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MenuSobre">
           <Properties>
@@ -178,7 +177,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuSobreMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuSobreActionPerformed"/>
           </Events>
         </Menu>
       </SubComponents>

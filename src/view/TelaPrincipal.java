@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.util.concurrent.CompletableFuture;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -39,7 +40,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BarraMenus = new javax.swing.JMenuBar();
         MenuMovimentacoes = new javax.swing.JMenu();
         MenuProduto = new javax.swing.JMenu();
-        subMenuConsultaCliente = new javax.swing.JMenuItem();
+        subMenuConsultaProduto = new javax.swing.JMenuItem();
         subMenuCadastroProduto = new javax.swing.JMenuItem();
         subMenuProdutoManutencao = new javax.swing.JMenuItem();
         MenuCliente = new javax.swing.JMenu();
@@ -91,30 +92,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 MenuMovimentacoesMenuSelected(evt);
             }
         });
-        MenuMovimentacoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuMovimentacoesActionPerformed(evt);
-            }
-        });
         BarraMenus.add(MenuMovimentacoes);
 
         MenuProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-rosa.png"))); // NOI18N
         MenuProduto.setText("Produto");
         MenuProduto.setFont(MenuProduto.getFont().deriveFont(MenuProduto.getFont().getStyle() | java.awt.Font.BOLD));
-        MenuProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuProdutoActionPerformed(evt);
-            }
-        });
 
-        subMenuConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
-        subMenuConsultaCliente.setText("Consulta");
-        subMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+        subMenuConsultaProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
+        subMenuConsultaProduto.setText("Consulta");
+        subMenuConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subMenuConsultaClienteActionPerformed(evt);
+                subMenuConsultaProdutoActionPerformed(evt);
             }
         });
-        MenuProduto.add(subMenuConsultaCliente);
+        MenuProduto.add(subMenuConsultaProduto);
 
         subMenuCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-adicionar-24.png"))); // NOI18N
         subMenuCadastroProduto.setText("Inclusão");
@@ -181,6 +172,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/graficoPizza.png"))); // NOI18N
         MenuRelatorios.setText("Relatórios");
         MenuRelatorios.setFont(MenuRelatorios.getFont().deriveFont(MenuRelatorios.getFont().getStyle() | java.awt.Font.BOLD));
+        MenuRelatorios.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                MenuRelatoriosMenuSelected(evt);
+            }
+        });
         BarraMenus.add(MenuRelatorios);
 
         MenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sobre-24.png"))); // NOI18N
@@ -189,11 +189,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MenuSobreMouseClicked(evt);
-            }
-        });
-        MenuSobre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuSobreActionPerformed(evt);
             }
         });
         BarraMenus.add(MenuSobre);
@@ -217,20 +212,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void subMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastroProdutoActionPerformed
-        deletarTela();
-        CadastroProdutoInternalFrame TelaCadastroProduto = new CadastroProdutoInternalFrame();
-        PainelPrincipal.add(TelaCadastroProduto);
-        TelaCadastroProduto.setVisible(true);
-    }//GEN-LAST:event_subMenuCadastroProdutoActionPerformed
-
-    private void MenuMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovimentacoesActionPerformed
-
-    }//GEN-LAST:event_MenuMovimentacoesActionPerformed
-
-    private void MenuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuProdutoActionPerformed
-            }//GEN-LAST:event_MenuProdutoActionPerformed
-
     private void MenuMovimentacoesMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_MenuMovimentacoesMenuSelected
         deletarTela();
         MovimentacoesInternalFrame telaMovimentacoes = new MovimentacoesInternalFrame();
@@ -245,34 +226,59 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaCadastroCliente.setVisible(true);
     }//GEN-LAST:event_subMenuCadastrarClienteActionPerformed
 
-    private void MenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSobreActionPerformed
-
-    }//GEN-LAST:event_MenuSobreActionPerformed
-
     private void MenuSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuSobreMouseClicked
         deletarTela();
         JOptionPane.showMessageDialog(null, "Projeto Integrador II - Floricultura\n\nDesenvolvido por:\n- Caio Moreno\n- Gustavo Fonseca\n- João Vitor Alves\n- Paulo Costa\n- Pedro Gomes\n");
     }//GEN-LAST:event_MenuSobreMouseClicked
 
     private void subMenuProdutoManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuProdutoManutencaoActionPerformed
-        // TODO add your handling code here:
+        deletarTela();
+        ManutencaoProdutoInternalFrame TelaManutencaoProduto = new ManutencaoProdutoInternalFrame();
+        PainelPrincipal.add(TelaManutencaoProduto);
+        TelaManutencaoProduto.setVisible(true);
     }//GEN-LAST:event_subMenuProdutoManutencaoActionPerformed
 
-    private void subMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuConsultaClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_subMenuConsultaClienteActionPerformed
+    private void subMenuConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuConsultaProdutoActionPerformed
+        deletarTela();
+        ConsultaProdutonternalFrame TelaConsultaProduto = new ConsultaProdutonternalFrame();
+        PainelPrincipal.add(TelaConsultaProduto);
+        TelaConsultaProduto.setVisible(true);
+    }//GEN-LAST:event_subMenuConsultaProdutoActionPerformed
 
     private void subMenuItemRemoverClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuItemRemoverClienteActionPerformed
-        // TODO add your handling code here:
+        deletarTela();
+        ExcluirClienteInternalFrame TelaExcluirCliente = new ExcluirClienteInternalFrame();
+        PainelPrincipal.add(TelaExcluirCliente);
+        TelaExcluirCliente.setVisible(true);
     }//GEN-LAST:event_subMenuItemRemoverClienteActionPerformed
 
     private void subMenuItemConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuItemConsultarClienteActionPerformed
-        // TODO add your handling code here:
+        deletarTela();
+        ConsultaClienteInternalFrame TelaConsultaCliente = new ConsultaClienteInternalFrame();
+        PainelPrincipal.add(TelaConsultaCliente);
+        TelaConsultaCliente.setVisible(true);
     }//GEN-LAST:event_subMenuItemConsultarClienteActionPerformed
 
     private void subMenuItemAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuItemAlterarClienteActionPerformed
-        // TODO add your handling code here:
+        deletarTela();
+        AlterarClienteInternalFrame TelaAlterarCliente = new AlterarClienteInternalFrame();
+        PainelPrincipal.add(TelaAlterarCliente);
+        TelaAlterarCliente.setVisible(true);
     }//GEN-LAST:event_subMenuItemAlterarClienteActionPerformed
+
+    private void MenuRelatoriosMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_MenuRelatoriosMenuSelected
+        deletarTela();
+        RelatoriosInternalFrame TelaRelatorios = new RelatoriosInternalFrame();
+        PainelPrincipal.add(TelaRelatorios);
+        TelaRelatorios.setVisible(true);
+    }//GEN-LAST:event_MenuRelatoriosMenuSelected
+
+    private void subMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastroProdutoActionPerformed
+        deletarTela();
+        CadastroProdutoInternalFrame TelaCadastroProduto = new CadastroProdutoInternalFrame();
+        PainelPrincipal.add(TelaCadastroProduto);
+        TelaCadastroProduto.setVisible(true);
+    }//GEN-LAST:event_subMenuCadastroProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,7 +329,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuItem subMenuCadastrarCliente;
     private javax.swing.JMenuItem subMenuCadastroProduto;
-    private javax.swing.JMenuItem subMenuConsultaCliente;
+    private javax.swing.JMenuItem subMenuConsultaProduto;
     private javax.swing.JMenuItem subMenuItemAlterarCliente;
     private javax.swing.JMenuItem subMenuItemConsultarCliente;
     private javax.swing.JMenuItem subMenuItemRemoverCliente;
