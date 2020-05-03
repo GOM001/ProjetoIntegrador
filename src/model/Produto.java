@@ -92,10 +92,7 @@ public class Produto {
         this.codigo = codProduto;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
-        String quantidadeValidar = this.quantidade + "";
-        String codigoValidar = this.codigo + "";
-        String precoCompraValidar = this.precoCompra + "";
-        String precoVendaValidar = this.precoVenda +"";
+       
 
         try {
             if (this.nome.trim().equals("")) {
@@ -117,41 +114,25 @@ public class Produto {
                 JOptionPane.showMessageDialog(null, "Insira uma quantidade de produtos valida!");
                 return !dadosValidados;
             }
-            if(quantidadeValidar.trim().equals(""))
-            {
-                JOptionPane.showMessageDialog(null, "Preenche o campo quantidade!");
-                return !dadosValidados;
-            }
+           
             if(this.codigo <= 0)
             {
                 JOptionPane.showMessageDialog(null, "Insira um codigo valido!");
                 return !dadosValidados;
             }
-            if(codigoValidar.trim().equals(""))
-            {
-                JOptionPane.showMessageDialog(null, "Preencha o campo codigo!");
-                return !dadosValidados;
-            }
+           
             if(precoCompra <= 0)
             {
                 JOptionPane.showMessageDialog(null, "Insira um valor de compra valido!");
                 return !dadosValidados;
             }
-            if(precoCompraValidar.trim().equals(""))
-            {
-                JOptionPane.showMessageDialog(null, "Preencha o campo preco de compra!");
-                return !dadosValidados;
-            }
+           
             if(precoVenda <= 0)
             {
                 JOptionPane.showMessageDialog(null, "Insira um preco de venda valido!");
                 return !dadosValidados;
             }
-            if(precoVendaValidar.trim().equals(""))
-            {
-                JOptionPane.showMessageDialog(null, "Preencha o campo preco de venda!");
-                return !dadosValidados;
-            }
+            
             
             return dadosValidados;
                     

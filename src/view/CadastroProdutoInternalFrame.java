@@ -380,6 +380,23 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
+        if(txtPrecoCompra.getText().trim().equals(""))
+        {
+            txtPrecoCompra.setText("0");
+        }
+        if(txtPrecoVenda.getText().trim().equals(""))
+        {
+            txtPrecoVenda.setText("0");
+        }
+        if(txtCodProduto.getText().trim().equals(""))
+        {
+            txtCodProduto.setText("0");
+        }
+        if(txtQuantidade.getText().trim().equals(""))
+        {
+            txtQuantidade.setText("0");
+        }
+        
         String nomeProduto = txtNomePlanta.getText().trim();
         String tipo = cbTipoPlanta.getSelectedItem().toString();
         String fornecedor = txtFornecedor.getText().trim();
