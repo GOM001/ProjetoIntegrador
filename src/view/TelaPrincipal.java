@@ -37,7 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/background/TelaPrincipal.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/TelaPrincipal.png"));
         Image image = icon.getImage();
         PainelPrincipal = new javax.swing.JDesktopPane(){
 
