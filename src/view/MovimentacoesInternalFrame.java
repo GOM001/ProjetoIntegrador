@@ -34,9 +34,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnPesquisar = new javax.swing.JButton();
         txtPesquisaPlanta = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BotaoDesconto = new javax.swing.JButton();
+        BotaoValorTotal = new javax.swing.JButton();
+        BotaoNomeDoCliente = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnAdicionarProduto = new javax.swing.JButton();
         btnExcluirProduto = new javax.swing.JButton();
@@ -122,20 +122,25 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton2.setBackground(new java.awt.Color(153, 204, 255));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 255));
-        jButton2.setText("Desconto R$ 100,00");
+        BotaoDesconto.setBackground(new java.awt.Color(153, 204, 255));
+        BotaoDesconto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        BotaoDesconto.setForeground(new java.awt.Color(51, 51, 255));
+        BotaoDesconto.setText("Desconto R$ 50,00");
 
-        jButton3.setBackground(new java.awt.Color(153, 204, 255));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(51, 51, 255));
-        jButton3.setText("Desconto R$ 50,00");
+        BotaoValorTotal.setBackground(new java.awt.Color(153, 204, 255));
+        BotaoValorTotal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        BotaoValorTotal.setForeground(new java.awt.Color(51, 51, 255));
+        BotaoValorTotal.setText("Valor Total R$ 450,00");
+        BotaoValorTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoValorTotalActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(153, 204, 255));
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(51, 51, 255));
-        jButton4.setText("Valor total R$ 500,00");
+        BotaoNomeDoCliente.setBackground(new java.awt.Color(153, 204, 255));
+        BotaoNomeDoCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        BotaoNomeDoCliente.setForeground(new java.awt.Color(51, 51, 255));
+        BotaoNomeDoCliente.setText("Cliente da Silva Santos");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -143,11 +148,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(BotaoNomeDoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotaoDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotaoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
         jPanel3Layout.setVerticalGroup(
@@ -155,9 +160,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BotaoValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotaoNomeDoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(BotaoDesconto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -265,8 +270,15 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         System.out.println(a);
     }//GEN-LAST:event_txtPesquisaPlantaActionPerformed
 
+    private void BotaoValorTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoValorTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoValorTotalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotaoDesconto;
+    private javax.swing.JButton BotaoNomeDoCliente;
+    private javax.swing.JButton BotaoValorTotal;
     private javax.swing.JLabel LabelMovimentacoes;
     private javax.swing.JPanel PainelAudaPesquisa;
     private javax.swing.JPanel PanelMovimentacoes;
@@ -274,9 +286,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAjuda;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
