@@ -108,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuProduto.setFont(MenuProduto.getFont().deriveFont(MenuProduto.getFont().getStyle() | java.awt.Font.BOLD));
 
         subMenuConsultaProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
-        subMenuConsultaProduto.setText("Consulta");
+        subMenuConsultaProduto.setText("Consultar/Atualizar");
         subMenuConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subMenuConsultaProdutoActionPerformed(evt);

@@ -97,7 +97,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        txtPesquisaPlanta.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        txtPesquisaPlanta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
         txtPesquisaPlanta.setOpaque(false);
         txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
@@ -123,7 +123,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20)
-                .addComponent(jComboBox1, 0, 128, Short.MAX_VALUE)
+                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
