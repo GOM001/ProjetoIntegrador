@@ -82,23 +82,67 @@ public class Produto {
     }
 
     //Codar Validação de dados
-    public void validarDados(String a, String b, String c, String d, String e, String f, String g) {
-        this.nome = a;
-        this.tipo = b;
-        this.quantidade = Integer.parseInt(c);
-        this.fornecedor = d;
-        this.codigo = Integer.parseInt(e);
-        this.precoCompra = Double.parseDouble(f);
-        this.precoVenda = Double.parseDouble(g);
+    public boolean validarDados(String nomeProduto, String tipo, String fornecedor, int quantidade, int codProduto, double precoCompra, double precoVenda) {
+        boolean dadosValidados = true;
+        
+        this.nome = nomeProduto;
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+        this.fornecedor = fornecedor;
+        this.codigo = codProduto;
+        this.precoCompra = precoCompra;
+        this.precoVenda = precoVenda;
+       
 
         try {
-            if (nome.trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o nome do produto");
+            if (this.nome.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Preencha o nome do produto");
+                return !dadosValidados;
             }
+            if(this.tipo.trim().equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Preecha o tipo do produto");
+                return !dadosValidados;
+            }
+            if(this.fornecedor.trim().equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Preencha o fornecedor");
+                return !dadosValidados;
+            }
+            if(this.quantidade <= 0)
+            {
+                JOptionPane.showMessageDialog(null, "Insira uma quantidade de produtos valida!");
+                return !dadosValidados;
+            }
+           
+            if(this.codigo <= 0)
+            {
+                JOptionPane.showMessageDialog(null, "Insira um codigo valido!");
+                return !dadosValidados;
+            }
+           
+            if(precoCompra <= 0)
+            {
+                JOptionPane.showMessageDialog(null, "Insira um valor de compra valido!");
+                return !dadosValidados;
+            }
+           
+            if(precoVenda <= 0)
+            {
+                JOptionPane.showMessageDialog(null, "Insira um preco de venda valido!");
+                return !dadosValidados;
+            }
+            
+            
+            return dadosValidados;
+                    
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro: " + ex);
         }
+        
+        
+        return dadosValidados;
     }
 
 }
