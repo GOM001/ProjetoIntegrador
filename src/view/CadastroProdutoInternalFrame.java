@@ -14,7 +14,6 @@ import model.Produto;
  * @author pedrogomes
  */
 public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
-   
 
     /**
      * Creates new form MovimentacoesInternalFrame
@@ -392,23 +391,19 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-        if(txtPrecoCompra.getText().trim().equals(""))
-        {
+        if (txtPrecoCompra.getText().trim().equals("")) {
             txtPrecoCompra.setText("0");
         }
-        if(txtPrecoVenda.getText().trim().equals(""))
-        {
+        if (txtPrecoVenda.getText().trim().equals("")) {
             txtPrecoVenda.setText("0");
         }
-        if(txtCodProduto.getText().trim().equals(""))
-        {
+        if (txtCodProduto.getText().trim().equals("")) {
             txtCodProduto.setText("0");
         }
-        if(txtQuantidade.getText().trim().equals(""))
-        {
+        if (txtQuantidade.getText().trim().equals("")) {
             txtQuantidade.setText("0");
         }
-        
+
         String nomeProduto = txtNomePlanta.getText().trim();
         String tipo = cbTipoPlanta.getSelectedItem().toString();
         String fornecedor = txtFornecedor.getText().trim();
@@ -416,20 +411,19 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         int codProduto = Integer.parseInt(txtCodProduto.getText().trim());
         double precoCompra = Double.parseDouble(txtPrecoCompra.getText().trim());
         double precoVenda = Double.parseDouble(txtPrecoVenda.getText().trim());
-        
-        Produto produto = new Produto();
-        
-        boolean dadosValidados = produto.validarDados(nomeProduto, tipo, fornecedor, quantidade, codProduto, precoCompra, precoVenda);
-        
-        
-        if(dadosValidados){
-        boolean cadastrou = ProdutoController.cadastrar(nomeProduto, tipo, quantidade, fornecedor, codProduto, precoCompra, precoVenda);
 
-        if (cadastrou) {
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Registro realizado", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "Falha", JOptionPane.ERROR_MESSAGE);
-        }
+        Produto produto = new Produto();
+
+        boolean dadosValidados = produto.validarDados(nomeProduto, tipo, fornecedor, quantidade, codProduto, precoCompra, precoVenda);
+
+        if (dadosValidados) {
+            boolean cadastrou = ProdutoController.cadastrar(nomeProduto, tipo, quantidade, fornecedor, codProduto, precoCompra, precoVenda);
+
+            if (cadastrou) {
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Registro realizado", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "Falha", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -458,45 +452,25 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     private void txtQuantidadeKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtQuantidadeKeyTyped
     {//GEN-HEADEREND:event_txtQuantidadeKeyTyped
-        String caracteres="0987654321";
-        
-        if(txtQuantidade.getText().length() > 3)
-        {
+        String caracteres = "0987654321";
+
+        if (txtQuantidade.getText().length() > 4 || !caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
-            
-        }   
-        
-    
-    
-        if(!caracteres.contains(evt.getKeyChar()+""))
-        {
-        evt.consume();
         }
-    
-    
     }//GEN-LAST:event_txtQuantidadeKeyTyped
 
     private void txtCodProdutoKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtCodProdutoKeyTyped
     {//GEN-HEADEREND:event_txtCodProdutoKeyTyped
-        String caracteres="0987654321";
-        
-        if(txtCodProduto.getText().length() > 3)
-        {
+        String caracteres = "0987654321";
+
+        if (txtCodProduto.getText().length() > 4 || !caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
-            
-        }   
-        
-    
-    
-        if(!caracteres.contains(evt.getKeyChar()+""))
-        {
-        evt.consume();
         }
-    
+
     }//GEN-LAST:event_txtCodProdutoKeyTyped
 
     //private boolean validaDados(nomeProduto, tipo, quantidade, fornecedor, codProduto, precoCompra, precoVenda) {
-      //  if (nomeProduto == null )
+    //  if (nomeProduto == null )
     //}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
