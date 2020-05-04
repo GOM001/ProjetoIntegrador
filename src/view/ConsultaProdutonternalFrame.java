@@ -29,35 +29,57 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         PanelMovimentacoes = new javax.swing.JPanel();
         LabelMovimentacoes = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         PainelAudaPesquisa = new javax.swing.JPanel();
         btnAjuda = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
         txtPesquisaPlanta = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setClosable(true);
         setResizable(true);
+        setPreferredSize(new java.awt.Dimension(784, 550));
 
         PanelMovimentacoes.setBackground(new java.awt.Color(204, 204, 204));
 
-        LabelMovimentacoes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelMovimentacoes.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         LabelMovimentacoes.setForeground(new java.awt.Color(60, 63, 65));
-        LabelMovimentacoes.setText("Consulta Produto");
+        LabelMovimentacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelMovimentacoes.setText("Estoque");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/envio-e-entrega.png"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/envio-e-entrega.png"))); // NOI18N
 
         javax.swing.GroupLayout PanelMovimentacoesLayout = new javax.swing.GroupLayout(PanelMovimentacoes);
         PanelMovimentacoes.setLayout(PanelMovimentacoesLayout);
         PanelMovimentacoesLayout.setHorizontalGroup(
             PanelMovimentacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMovimentacoesLayout.createSequentialGroup()
-                .addContainerGap(284, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(263, 263, 263)
                 .addComponent(LabelMovimentacoes)
-                .addGap(313, 313, 313))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
         PanelMovimentacoesLayout.setVerticalGroup(
             PanelMovimentacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMovimentacoesLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(LabelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(PanelMovimentacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PanelMovimentacoesLayout.createSequentialGroup()
+                        .addGroup(PanelMovimentacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         PainelAudaPesquisa.setBackground(new java.awt.Color(204, 204, 204));
@@ -76,7 +98,6 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         });
 
         txtPesquisaPlanta.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
-        txtPesquisaPlanta.setText("Ex. Bromélia");
         txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
         txtPesquisaPlanta.setOpaque(false);
         txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
@@ -86,6 +107,12 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Consultar por:");
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Produto", "Fornecedor" }));
+
         javax.swing.GroupLayout PainelAudaPesquisaLayout = new javax.swing.GroupLayout(PainelAudaPesquisa);
         PainelAudaPesquisa.setLayout(PainelAudaPesquisaLayout);
         PainelAudaPesquisaLayout.setHorizontalGroup(
@@ -93,22 +120,50 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
             .addGroup(PainelAudaPesquisaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAjuda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(20, 20, 20)
+                .addComponent(jComboBox1, 0, 128, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(btnPesquisar)
                 .addGap(10, 10, 10))
         );
         PainelAudaPesquisaLayout.setVerticalGroup(
             PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelAudaPesquisaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAjuda)
-                    .addComponent(btnPesquisar)
-                    .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelAudaPesquisaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PainelAudaPesquisaLayout.createSequentialGroup()
+                        .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3))
+                    .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAjuda)
+                        .addComponent(btnPesquisar)
+                        .addComponent(jComboBox1)
+                        .addComponent(jLabel1)))
+                .addGap(12, 12, 12))
         );
+
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Produto", "Fornecedor", "Quantidade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Byte.class, java.lang.String.class, java.lang.String.class, java.lang.Byte.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +172,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addComponent(PanelMovimentacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PainelAudaPesquisa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -125,10 +181,12 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(PainelAudaPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(569, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(420, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +210,12 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel PanelMovimentacoes;
     private javax.swing.JButton btnAjuda;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtPesquisaPlanta;
     // End of variables declaration//GEN-END:variables
 }
