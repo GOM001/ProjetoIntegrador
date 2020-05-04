@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Y:/OneDrive/Documentos/Projetos/InProgress/faculdade/ProjetoIntegrador/src/view/TelaPrincipal.java</file>
-            <file>file:/Y:/OneDrive/Documentos/Projetos/InProgress/faculdade/ProjetoIntegrador/src/view/CadastroProdutoInternalFrame.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/ConsultaProdutonternalFrame.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/CadastroClienteInternalFrame.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/util/CpfCnpjUtil.java</file>
+            <file>file:/C:/Users/phnco/Desktop/PI/ProjetoIntegrador/src/view/CadastroProdutoInternalFrame.java</file>
         </group>
     </open-files>
 </project-private>
