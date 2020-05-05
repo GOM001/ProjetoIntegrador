@@ -178,7 +178,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Pranta", "500", "50", "1", "450"},
+                {"Planta", "500", "50", "1", "450"},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
