@@ -108,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuProduto.setFont(MenuProduto.getFont().deriveFont(MenuProduto.getFont().getStyle() | java.awt.Font.BOLD));
 
         subMenuConsultaProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
-        subMenuConsultaProduto.setText("Consulta");
+        subMenuConsultaProduto.setText("Consultar/Atualizar");
         subMenuConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subMenuConsultaProdutoActionPerformed(evt);
@@ -150,7 +150,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuCliente.add(subMenuCadastrarCliente);
 
         subMenuItemConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
-        subMenuItemConsultarCliente.setText("Consultar");
+        subMenuItemConsultarCliente.setText("Consultar/Atualizar");
         subMenuItemConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subMenuItemConsultarClienteActionPerformed(evt);
