@@ -49,14 +49,10 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         PanelMovimentacoes.setBackground(new java.awt.Color(204, 204, 204));
         PanelMovimentacoes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         PanelMovimentacoes.setMaximumSize(null);
-        PanelMovimentacoes.setMinimumSize(null);
 
         LabelMovimentacoes.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         LabelMovimentacoes.setForeground(new java.awt.Color(60, 63, 65));
-        LabelMovimentacoes.setText("<html>Consultar & Atualizar <br>\nCadastros de Clientes </html>");
-        LabelMovimentacoes.setMaximumSize(null);
-        LabelMovimentacoes.setMinimumSize(null);
-        LabelMovimentacoes.setPreferredSize(null);
+        LabelMovimentacoes.setText("Consultar & Atualizar Cadastros de Clientes");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-manutenção-40.png"))); // NOI18N
 
@@ -69,9 +65,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(PanelMovimentacoesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(195, 195, 195)
-                .addComponent(LabelMovimentacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(195, 195, 195)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -80,12 +76,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(PanelMovimentacoesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelMovimentacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMovimentacoesLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMovimentacoesLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
             .addGroup(PanelMovimentacoesLayout.createSequentialGroup()
                 .addComponent(LabelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
@@ -135,7 +128,7 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPesquisar)
                 .addGap(28, 28, 28))
@@ -219,7 +212,7 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
                 .addComponent(PainelAudaPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))

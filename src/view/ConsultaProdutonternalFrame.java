@@ -220,7 +220,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setBounds(0, 0, 800, 602);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
