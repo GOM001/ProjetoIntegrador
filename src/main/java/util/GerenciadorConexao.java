@@ -15,7 +15,7 @@ public class GerenciadorConexao {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String SERVER = "localhost:3306";
 
-    private static final String DATABASE = "lojainformatica";
+    private static final String DATABASE = "floricultura";
     private static final String LOGIN = "root";
     private static final String SENHA = ""; // preencha a senha do seu BD
 
