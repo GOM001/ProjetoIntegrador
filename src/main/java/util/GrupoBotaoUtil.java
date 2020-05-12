@@ -8,7 +8,7 @@ import javax.swing.ButtonGroup;
  *
  * @author Paulo Henrique
  */
-public class GroupButtonUtil {
+public class GrupoBotaoUtil {
 
     public static String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {

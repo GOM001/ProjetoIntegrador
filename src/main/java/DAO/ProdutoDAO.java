@@ -40,9 +40,8 @@ public class ProdutoDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             cadastrou = linhasAfetadas > 0;
-            instrucaoSQL.close();
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Driver não encontrado!");
+            GerenciadorConexao.closeConnection(conexao, instrucaoSQL);
+
         } catch (SQLException ex) {
             System.out.println("Erro de banco: " + ex.getMessage());
         }

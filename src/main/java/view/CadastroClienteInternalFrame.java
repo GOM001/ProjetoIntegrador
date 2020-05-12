@@ -13,7 +13,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import javax.swing.JOptionPane;
 import util.CpfCnpjUtil;
-import util.GroupButtonUtil;
+import util.GrupoBotaoUtil;
 
 /**
  *
@@ -494,7 +494,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
                 && !txtLogradouro.getText().trim().isEmpty()
                 && !txtCEP.getText().trim().isEmpty()
                 && !txtNumero.getText().trim().isEmpty()
-                && !GroupButtonUtil.getSelectedButtonText(grupoBotaoGenero).isEmpty()),
+                && !GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero).isEmpty()),
                 dadosValidos = false;
 
         if (dadosPreenchidos) {
@@ -516,7 +516,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             String celular = txtCelular.getText();
             String estadoCivil = String.valueOf(cbEstadoCivil.getSelectedItem());
             int cep = Integer.parseInt(txtCEP.getText().replace("-", ""));
-            char genero = GroupButtonUtil.getSelectedButtonText(grupoBotaoGenero)
+            char genero = GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero)
                     .replace("Masculino", "M").replace("Feminino", "F").charAt(0); // M ou F
             int numeroEndereco = Integer.parseInt(txtNumero.getText());
 
