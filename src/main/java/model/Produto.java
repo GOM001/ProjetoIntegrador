@@ -82,7 +82,7 @@ public class Produto {
     }
 
     //Codar Validação de dados
-    public boolean validarDados(String nomeProduto, String tipo, String fornecedor, int quantidade, int codProduto, double precoCompra, double precoVenda) {
+    public  boolean validarDados(String nomeProduto, String tipo, String fornecedor, int quantidade, int codProduto, double precoCompra, double precoVenda) {
         boolean dadosValidados = true;
 
         this.nome = nomeProduto;

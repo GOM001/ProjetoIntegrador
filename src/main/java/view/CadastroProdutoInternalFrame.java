@@ -27,7 +27,8 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -38,7 +39,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         txtPesquisaPlanta = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         LabelAdicionarExcluir = new javax.swing.JPanel();
-        btnCadastrar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         lblNome = new javax.swing.JLabel();
         txtNomeProduto = new javax.swing.JTextField();
         lblTipoProduto = new javax.swing.JLabel();
@@ -48,7 +49,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         lblPrecoVenda = new javax.swing.JLabel();
         txtCodProduto = new javax.swing.JTextField();
         txtFornecedor = new javax.swing.JTextField();
-        cbTipoPlanta = new javax.swing.JComboBox<>();
+        cbTipoPlanta = new javax.swing.JComboBox<String>();
         jPanel3 = new javax.swing.JPanel();
         imgCadastroProduto = new javax.swing.JLabel();
         lblQuantidade = new javax.swing.JLabel();
@@ -57,7 +58,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         txtPrecoVenda = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnCadastrar1 = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
 
         setClosable(true);
         setResizable(true);
@@ -83,8 +84,10 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
         txtPesquisaPlanta.setOpaque(false);
         txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
-        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtPesquisaPlantaActionPerformed(evt);
             }
         });
@@ -92,8 +95,10 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPesquisarActionPerformed(evt);
             }
         });
@@ -125,14 +130,16 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         LabelAdicionarExcluir.setBackground(new java.awt.Color(228, 228, 228));
         LabelAdicionarExcluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnCadastrar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Flor_triste.png"))); // NOI18N
-        btnCadastrar.setText("Cancelar");
-        btnCadastrar.setMaximumSize(new java.awt.Dimension(129, 33));
-        btnCadastrar.setMinimumSize(new java.awt.Dimension(129, 33));
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
+        btnCancelar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Flor_triste.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setMaximumSize(new java.awt.Dimension(129, 33));
+        btnCancelar.setMinimumSize(new java.awt.Dimension(129, 33));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -140,13 +147,17 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         lblNome.setText("Nome:");
 
         txtNomeProduto.setText("Margarida");
-        txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNomeProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtNomeProdutoActionPerformed(evt);
             }
         });
-        txtNomeProduto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtNomeProduto.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtNomeProdutoKeyPressed(evt);
             }
         });
@@ -167,22 +178,28 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         lblPrecoVenda.setText("Preço/Venda:");
 
         txtCodProduto.setText("4975");
-        txtCodProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtCodProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtCodProdutoActionPerformed(evt);
             }
         });
-        txtCodProduto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtCodProduto.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
                 txtCodProdutoKeyTyped(evt);
             }
         });
 
         txtFornecedor.setText("Kazuo Flores");
 
-        cbTipoPlanta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flor", "Cacto", "Suculenta" }));
-        cbTipoPlanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cbTipoPlanta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Flor", "Cacto", "Suculenta" }));
+        cbTipoPlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cbTipoPlantaActionPerformed(evt);
             }
         });
@@ -197,22 +214,28 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         lblQuantidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblQuantidade.setText("Quantidade:");
 
-        txtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtQuantidade.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
                 txtQuantidadeKeyTyped(evt);
             }
         });
 
         txtPrecoCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txtPrecoCompra.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtPrecoCompra.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
                 txtPrecoCompraKeyTyped(evt);
             }
         });
 
         txtPrecoVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txtPrecoVenda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtPrecoVenda.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtPrecoVendaKeyPressed(evt);
             }
         });
@@ -221,12 +244,14 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel2.setText("R$");
 
-        btnCadastrar1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnCadastrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/petals.png"))); // NOI18N
-        btnCadastrar1.setText("Cadastrar");
-        btnCadastrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrar1ActionPerformed(evt);
+        btnCadastrar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/petals.png"))); // NOI18N
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -239,9 +264,9 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(btnCadastrar1))
+                        .addComponent(btnCadastrar))
                     .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(LabelAdicionarExcluirLayout.createSequentialGroup()
@@ -326,8 +351,8 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(LabelAdicionarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30))))
         );
 
@@ -405,43 +430,10 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
         setBounds(0, 0, 800, 602);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
-        if (txtPrecoCompra.getText().trim().equals("")) {
-            txtPrecoCompra.setText("0");
-        }
-        if (txtPrecoVenda.getText().trim().equals("")) {
-            txtPrecoVenda.setText("0");
-        }
-        if (txtCodProduto.getText().trim().equals("")) {
-            txtCodProduto.setText("0");
-        }
-        if (txtQuantidade.getText().trim().equals("")) {
-            txtQuantidade.setText("0");
-        }
-
-        String nomeProduto = txtNomeProduto.getText().trim();
-        String tipo = cbTipoPlanta.getSelectedItem().toString();
-        String fornecedor = txtFornecedor.getText().trim();
-        int quantidade = Integer.parseInt(txtQuantidade.getText().trim());
-        int codProduto = Integer.parseInt(txtCodProduto.getText().trim());
-        double precoCompra = Double.parseDouble(txtPrecoCompra.getText().trim());
-        double precoVenda = Double.parseDouble(txtPrecoVenda.getText().trim());
-
-        Produto produto = new Produto();
-
-        boolean dadosValidados = produto.validarDados(nomeProduto, tipo, fornecedor, quantidade, codProduto, precoCompra, precoVenda);
-
-        if (dadosValidados) {
-            boolean cadastrou = ProdutoController.cadastrar(nomeProduto, tipo, quantidade, fornecedor, codProduto, precoCompra, precoVenda);
-
-            if (cadastrou) {
-                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Registro realizado", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "Falha", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+       
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
@@ -485,9 +477,42 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtCodProdutoKeyTyped
 
-    private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastrar1ActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+         if (txtPrecoCompra.getText().trim().equals("")) {
+            txtPrecoCompra.setText("0");
+        }
+        if (txtPrecoVenda.getText().trim().equals("")) {
+            txtPrecoVenda.setText("0");
+        }
+        if (txtCodProduto.getText().trim().equals("")) {
+            txtCodProduto.setText("0");
+        }
+        if (txtQuantidade.getText().trim().equals("")) {
+            txtQuantidade.setText("0");
+        }
+
+        String nomeProduto = txtNomeProduto.getText().trim();
+        String tipo = cbTipoPlanta.getSelectedItem().toString();
+        String fornecedor = txtFornecedor.getText().trim();
+        int quantidade = Integer.parseInt(txtQuantidade.getText().trim());
+        int codProduto = Integer.parseInt(txtCodProduto.getText().trim());
+        double precoCompra = Double.parseDouble(txtPrecoCompra.getText().trim());
+        double precoVenda = Double.parseDouble(txtPrecoVenda.getText().trim());
+
+        Produto produto = new Produto();
+
+        boolean dadosValidados = produto.validarDados(nomeProduto, tipo, fornecedor, quantidade, codProduto, precoCompra, precoVenda);
+
+        if (dadosValidados) {
+            boolean cadastrou = ProdutoController.cadastrar(nomeProduto, tipo, quantidade, fornecedor, codProduto, precoCompra, precoVenda);
+
+            if (cadastrou) {
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Registro realizado", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "Falha", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyPressed
         // TODO add your handling code here:
@@ -519,7 +544,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel PanelAjudaPesquisa;
     private javax.swing.JButton btnAjuda;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCadastrar1;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JComboBox<String> cbTipoPlanta;
     private javax.swing.JLabel imgCadastroProduto;
