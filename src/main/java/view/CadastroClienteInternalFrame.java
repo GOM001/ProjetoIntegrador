@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import util.CpfCnpjUtil;
 import util.GrupoBotaoUtil;
 
@@ -474,7 +475,13 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        buscarCep(txtCEP.getText());
+        boolean campoValido = txtCEP.getText().trim().length() == 9;
+
+        if (campoValido) {
+            buscarCep(txtCEP.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite um CEP válido.", "CEP inválido!", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void txtNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeClienteActionPerformed
