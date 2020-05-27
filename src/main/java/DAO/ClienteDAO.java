@@ -27,7 +27,7 @@ public class ClienteDAO {
                 + "bairro, "
                 + "complemento, "
                 + "email, "
-                + "celular) VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ? ,? ,?)";
+                + "celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conexao = GerenciadorConexao.getConnection();
                 PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT);) {
