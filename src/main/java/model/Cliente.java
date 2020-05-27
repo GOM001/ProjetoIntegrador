@@ -6,8 +6,12 @@ package model;
  */
 public class Cliente {
 
-    String nome, cpf, sexo, rua, cidade, estadoEndereco, bairro, complemento, email, celular, estadoCivil;
+    String nome, cpf, rua, cidade, estadoEndereco, bairro, complemento, email, celular, estadoCivil;
     int cep, numeroEndereco;
+    char sexo;
+
+    public Cliente() {
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -17,7 +21,7 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
@@ -69,7 +73,7 @@ public class Cliente {
         return cpf;
     }
 
-    public String getSexo() {
+    public char getSexo() {
         return sexo;
     }
 

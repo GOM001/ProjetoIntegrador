@@ -27,20 +27,20 @@ public class ProdutoDAO {
                 + "values (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement instrucaoSQL = conexao.prepareStatement(SQL_INSERT);) {
+                PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT);) {
 
-            instrucaoSQL.setString(1, produto.getNome());
-            instrucaoSQL.setString(2, produto.getTipo());
-            instrucaoSQL.setInt(3, produto.getQuantidade());
-            instrucaoSQL.setString(4, produto.getFornecedor());
-            instrucaoSQL.setInt(5, produto.getCodigo());
-            instrucaoSQL.setDouble(6, produto.getPrecoCompra());
-            instrucaoSQL.setDouble(7, produto.getPrecoVenda());
+            SQL.setString(1, produto.getNome());
+            SQL.setString(2, produto.getTipo());
+            SQL.setInt(3, produto.getQuantidade());
+            SQL.setString(4, produto.getFornecedor());
+            SQL.setInt(5, produto.getCodigo());
+            SQL.setDouble(6, produto.getPrecoCompra());
+            SQL.setDouble(7, produto.getPrecoVenda());
 
-            int linhasAfetadas = instrucaoSQL.executeUpdate();
+            int linhasAfetadas = SQL.executeUpdate();
 
             cadastrou = linhasAfetadas > 0;
-            GerenciadorConexao.closeConnection(conexao, instrucaoSQL);
+            GerenciadorConexao.closeConnection(conexao, SQL);
 
         } catch (SQLException ex) {
             System.out.println("Erro de banco: " + ex.getMessage());

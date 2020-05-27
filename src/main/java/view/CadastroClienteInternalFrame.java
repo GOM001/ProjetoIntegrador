@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ClienteController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -489,9 +490,10 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNomeClienteActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        boolean dadosPreenchidos, cadastrou = false, cpfValido;
 
         //complemento e celular podem ser vazios
-        boolean dadosPreenchidos = (!txtNomeCliente.getText().trim().isEmpty()
+        dadosPreenchidos = (!txtNomeCliente.getText().trim().isEmpty()
                 && !txtBairro.getText().isEmpty()
                 && !txtCelular.getText().trim().isEmpty()
                 && !txtEmail.getText().trim().isEmpty()
@@ -501,11 +503,10 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
                 && !txtLogradouro.getText().trim().isEmpty()
                 && !txtCEP.getText().trim().isEmpty()
                 && !txtNumero.getText().trim().isEmpty()
-                && !GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero).isEmpty()),
-                dadosValidos = false;
+                && !GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero).isEmpty());
 
         if (dadosPreenchidos) {
-            boolean cpfValido = CpfCnpjUtil.isValid(txtCpf.getText());
+            cpfValido = CpfCnpjUtil.isValid(txtCpf.getText());
 
             if (!cpfValido) {
                 JOptionPane.showMessageDialog(null, "O CPF digitado não é válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
@@ -513,8 +514,8 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             }
 
             String nome = txtNomeCliente.getText();
-            String bairroCliente = txtBairro.getText();
-            String cidadeCliente = txtCidade.getText();
+            String bairroEndereco = txtBairro.getText();
+            String cidadeEndereco = txtCidade.getText();
             String complemento = txtComplemento.getText();
             String cpf = txtCpf.getText(); // cpf será varchar(14)
             String email = txtEmail.getText();
@@ -523,18 +524,19 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             String celular = txtCelular.getText();
             String estadoCivil = String.valueOf(cbEstadoCivil.getSelectedItem());
             int cep = Integer.parseInt(txtCEP.getText().replace("-", ""));
-            char genero = GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero)
+            char sexo = GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero)
                     .replace("Masculino", "M").replace("Feminino", "F").charAt(0); // M ou F
             int numeroEndereco = Integer.parseInt(txtNumero.getText());
 
-            dadosValidos = true;
+            cadastrou = ClienteController.cadastrar(nome, cpf, sexo, rua, cidadeEndereco, estado, bairroEndereco, complemento, email, celular, estadoCivil, cep, numeroEndereco);
+
         } else {
             JOptionPane.showMessageDialog(null, "Falta preenchimento!", "Alguns dados obrigatórios não foram preenchidos.", JOptionPane.WARNING_MESSAGE);
         }
 
-        String mensagem = dadosValidos ? "Dados validados!" : "Você não preencheu campos obrigatórios.";
+        String mensagem = cadastrou ? "Cliente cadastrado com sucesso!" : "Não foi possível cadastrar o cliente.";
 
-        JOptionPane.showMessageDialog(null, mensagem); // Será codificado o método de cadastro ao Controller.
+        JOptionPane.showMessageDialog(null, mensagem);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyPressed
