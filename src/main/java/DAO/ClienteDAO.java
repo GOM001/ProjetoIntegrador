@@ -58,4 +58,26 @@ public class ClienteDAO {
         return cadastrou;
     }
 
+    public static boolean excluir(int cliente) {
+        boolean exclusao = false;
+
+        String SQL_DELETE = "DELETE FROM clientes WHERE id_cliente = ?";
+
+        try (Connection conexao = GerenciadorConexao.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE);) {
+
+            SQL.setInt(1, cliente);
+
+            int linhasAfetadas = SQL.executeUpdate();
+
+            exclusao = linhasAfetadas > 0;
+            GerenciadorConexao.closeConnection(conexao, SQL);
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao deletar no Banco de Dados: " + e.getMessage());
+        }
+
+        return exclusao;
+    }
+
 }

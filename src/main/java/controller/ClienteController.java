@@ -29,5 +29,10 @@ public class ClienteController {
 
         return ClienteDAO.cadastrar(cliente);
     }
+    
+    public static boolean deletar(int idCliente) {
+        
+        return ClienteDAO.excluir(idCliente);
+    }
 
 }
