@@ -17,7 +17,7 @@ public class GerenciadorConexao {
 
     private static final String DATABASE = "floricultura";
     private static final String LOGIN = "root";
-    private static final String SENHA = ""; // preencha a senha do seu BD
+    private static final String SENHA = "1729545"; // preencha a senha do seu BD
 
     private static final String URL = "jdbc:mysql://" + SERVER + "/" + DATABASE + "?useTimezone=true&serverTimezone=UTC&useSSL=false";
     private static String STATUS;
@@ -26,18 +26,16 @@ public class GerenciadorConexao {
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER);
-
             CONEXAO = DriverManager.getConnection(URL, LOGIN, SENHA);
 
             STATUS = CONEXAO != null ? "Conectado com sucesso!" : "Não foi possível conectar.";
 
-            return CONEXAO;
-
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException("Driver especificado não encontrado!", ex);
+            System.err.println("Driver especificado não encontrado!" + ex.getMessage());
         } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao estabelecer conexão com o Banco de Dados.", ex);
+            System.err.println("Erro ao estabelecer conexão com o Banco de Dados: " + ex.getMessage());
         }
+        return CONEXAO;
     }
 
     public static String getStatusConexao() {

@@ -3,6 +3,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Produto;
 import util.GerenciadorConexao;
 
@@ -43,7 +44,11 @@ public class ProdutoDAO {
             GerenciadorConexao.closeConnection(conexao, SQL);
 
         } catch (SQLException ex) {
-            System.out.println("Erro de banco: " + ex.getMessage());
+            String errorMessage = ex.getMessage();
+            if (errorMessage.contains("Duplicate entry")) {
+                JOptionPane.showMessageDialog(null, "Valor preenchido duplicado ou já existente.");
+            }
+            System.out.println("Erro de banco: " + errorMessage);
         }
         return cadastrou;
     }
