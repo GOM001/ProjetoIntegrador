@@ -30,8 +30,13 @@ public class ClienteDAO {
                 + "email, "
                 + "celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+        /*
+         * O processo abaixo é chamado de try-with-resources (pós Java-7), 
+         * deste modo não é necessário encerrar a Connection e o PreparedStatement por código, 
+         * ela encerra os recursos automaticamente independente de sucesso ou falha na Connection.
+         */
         try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT);) {
+                PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT)) {
 
             SQL.setString(1, cliente.getNome());
             SQL.setString(2, cliente.getCpf());
@@ -50,8 +55,6 @@ public class ClienteDAO {
             int linhasAfetadas = SQL.executeUpdate();
             cadastrou = linhasAfetadas > 0;
 
-            GerenciadorConexao.closeConnection(conexao, SQL);
-
         } catch (SQLException ex) {
             String errorMessage = ex.getMessage();
             if (errorMessage.contains("Duplicate entry")) {
@@ -59,30 +62,25 @@ public class ClienteDAO {
             }
             System.out.println("Erro de banco: " + errorMessage);
         }
-
         return cadastrou;
     }
 
-    public static boolean excluir(int cliente) {
+    public static boolean excluir(int idCliente) {
         boolean exclusao = false;
 
         String SQL_DELETE = "DELETE FROM clientes WHERE id_cliente = ?";
 
         try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE);) {
+                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE)) {
 
-            SQL.setInt(1, cliente);
+            SQL.setInt(1, idCliente);
 
             int linhasAfetadas = SQL.executeUpdate();
-
             exclusao = linhasAfetadas > 0;
-            GerenciadorConexao.closeConnection(conexao, SQL);
 
         } catch (SQLException e) {
             System.out.println("Erro ao deletar no Banco de Dados: " + e.getMessage());
         }
-
         return exclusao;
     }
-
 }

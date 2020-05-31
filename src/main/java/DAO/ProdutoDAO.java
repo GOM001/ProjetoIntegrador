@@ -28,7 +28,7 @@ public class ProdutoDAO {
                 + "values (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT);) {
+                PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT)) {
 
             SQL.setString(1, produto.getNome());
             SQL.setString(2, produto.getTipo());
@@ -39,17 +39,35 @@ public class ProdutoDAO {
             SQL.setDouble(7, produto.getPrecoVenda());
 
             int linhasAfetadas = SQL.executeUpdate();
-
             cadastrou = linhasAfetadas > 0;
-            GerenciadorConexao.closeConnection(conexao, SQL);
 
         } catch (SQLException ex) {
             String errorMessage = ex.getMessage();
             if (errorMessage.contains("Duplicate entry")) {
-                JOptionPane.showMessageDialog(null, "Valor preenchido duplicado ou já existente.");
+                JOptionPane.showMessageDialog(null, "Valor preenchido é duplicado ou existente.");
             }
             System.out.println("Erro de banco: " + errorMessage);
         }
         return cadastrou;
+    }
+
+    public static boolean excluir(int idProduto) {
+        boolean exclusao = false;
+
+        // Essa tabela ainda será renomeada.
+        String SQL_DELETE = "DELETE FROM Produto where id = ?";
+
+        try (Connection conexao = GerenciadorConexao.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE)) {
+
+            SQL.setInt(1, idProduto);
+
+            int linhasAfetadas = SQL.executeUpdate();
+            exclusao = linhasAfetadas > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir dados no Banco: " + e.getMessage());
+        }
+        return exclusao;
     }
 }

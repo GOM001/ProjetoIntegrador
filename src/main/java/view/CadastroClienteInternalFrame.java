@@ -71,7 +71,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
         }
     }
 
-    public boolean validarCampos() {
+    public boolean validarCamposCliente() {
         return (!txtNumero.getText().trim().isEmpty()
                 && !txtNomeCliente.getText().trim().isEmpty()
                 && !txtBairro.getText().isEmpty()
@@ -505,8 +505,8 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         boolean dadosPreenchidos, cadastrou, cpfValido;
-
-        dadosPreenchidos = validarCampos();
+  
+        dadosPreenchidos = validarCamposCliente();
 
         if (dadosPreenchidos) {
             String campoCPF = txtCpf.getText();
@@ -533,7 +533,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             int numeroEndereco = Integer.parseInt(txtNumero.getText());
 
             cadastrou = ClienteController.cadastrar(nome, cpf, sexo, rua, cidadeEndereco, estado, bairroEndereco, complemento, email, celular, estadoCivil, cep, numeroEndereco);
-
+            
             String mensagem = cadastrou ? "Cliente cadastrado com sucesso!" : "Não foi possível cadastrar o cliente.";
             JOptionPane.showMessageDialog(null, mensagem);
         } else {
