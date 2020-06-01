@@ -17,7 +17,7 @@ public class GerenciadorConexao {
 
     private static final String DATABASE = "floricultura";
     private static final String LOGIN = "root";
-    private static final String SENHA = ""; // preencha a senha do seu BD
+    private static final String SENHA = "Theblunt15.02"; // preencha a senha do seu BD
 
     private static final String URL = "jdbc:mysql://" + SERVER + "/" + DATABASE + "?useTimezone=true&serverTimezone=UTC&useSSL=false";
     private static String STATUS;

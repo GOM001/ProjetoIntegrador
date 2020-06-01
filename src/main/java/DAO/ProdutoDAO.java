@@ -18,6 +18,7 @@ public class ProdutoDAO {
     private static final String SQL_INSERT_PRODUTO = "INSERT INTO produto (nome, tipo, codigo, preco_compra, preco_venda) VALUES (?, ?, ?, ?, ?)";
     private static final String SQL_INSERT_ESTOQUE = "INSERT INTO estoque (quantidade, fornecedor, id_produto_fk) VALUES (?, ?, LAST_INSERT_ID())";
     private static final String SQL_DELETE = "DELETE FROM produto WHERE id_produto = ?";
+    private static final String SQL_DELETE_ESTOQUE = "DELETE FROM estoque WHERE id_produto_fk = ?";
 
     public static boolean cadastrar(Produto produto) {
         boolean cadastrou = false;
@@ -55,12 +56,15 @@ public class ProdutoDAO {
         boolean exclusao = false;
 
         try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE)) {
+                PreparedStatement SQL_PRODUTO = conexao.prepareStatement(SQL_DELETE);
+                 PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_DELETE_ESTOQUE)) {
 
-            SQL.setInt(1, idProduto);
-
-            int linhasAfetadas = SQL.executeUpdate();
-            exclusao = linhasAfetadas > 0;
+            SQL_PRODUTO.setInt(1, idProduto);
+            SQL_ESTOQUE.setInt(1, idProduto);
+int linhasAfetadas1 = SQL_ESTOQUE.executeUpdate();
+            int linhasAfetadas = SQL_PRODUTO.executeUpdate();
+            
+            exclusao = linhasAfetadas > 0 && linhasAfetadas1 > 0;
 
         } catch (SQLException e) {
             System.out.println("Erro ao excluir dados no Banco: " + e.getMessage());

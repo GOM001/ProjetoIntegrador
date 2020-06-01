@@ -268,7 +268,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
        tmProdutos.addColumn("fornecedor");
        
        tblProduto.setModel(tmProdutos);
-       tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
+      // tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
        tmProdutos.setRowCount(0);
        
        
@@ -287,13 +287,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
            
        }
        
-       tblProduto.getColumnModel().getColumn(0).setPreferredWidth(150); 
-       tblProduto.getColumnModel().getColumn(1).setPreferredWidth(150); 
-       tblProduto.getColumnModel().getColumn(3).setPreferredWidth(150);
-       tblProduto.getColumnModel().getColumn(4).setPreferredWidth(150);
-       tblProduto.getColumnModel().getColumn(5).setPreferredWidth(150);
-       tblProduto.getColumnModel().getColumn(6).setPreferredWidth(150);
-       tblProduto.getColumnModel().getColumn(7).setPreferredWidth(150);
+      
        
        
        
@@ -314,6 +308,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         int linha = tblProduto.getSelectedRow();
         int ProdutoID = (Integer) tblProduto.getValueAt(linha, 0); //Necessário posicionar o ID na primeira coluna da tabela.
+       // int ProdutoID = (Integer) tblProduto.getValueAt(linha, 0);
 
         if (ProdutoID > 0 && linha >= 0) {
             excluiuProduto = ProdutoController.excluir(ProdutoID);
