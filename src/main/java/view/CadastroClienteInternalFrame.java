@@ -71,6 +71,20 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
         }
     }
 
+    public boolean validarCamposCliente() {
+        return (!txtNumero.getText().trim().isEmpty()
+                && !txtNomeCliente.getText().trim().isEmpty()
+                && !txtBairro.getText().isEmpty()
+                && !txtCelular.getText().trim().isEmpty()
+                && !txtEmail.getText().trim().isEmpty()
+                && !txtCidade.getText().trim().isEmpty()
+                && !txtCpf.getText().trim().replace(".", "").replace("-", "").isEmpty()
+                && !txtEstado.getText().trim().isEmpty()
+                && !txtLogradouro.getText().trim().isEmpty()
+                && !txtCEP.getText().trim().isEmpty()
+                && (grupoBotaoGenero.getSelection() != null));
+    }
+
     public CadastroClienteInternalFrame() {
         initComponents();
     }
@@ -490,26 +504,16 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNomeClienteActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        boolean dadosPreenchidos, cadastrou = false, cpfValido;
-
-        //complemento e celular podem ser vazios
-        dadosPreenchidos = (!txtNomeCliente.getText().trim().isEmpty()
-                && !txtBairro.getText().isEmpty()
-                && !txtCelular.getText().trim().isEmpty()
-                && !txtEmail.getText().trim().isEmpty()
-                && !txtCidade.getText().trim().isEmpty()
-                && !txtCpf.getText().trim().replace(".", "").replace("-", "").isEmpty()
-                && !txtEstado.getText().trim().isEmpty()
-                && !txtLogradouro.getText().trim().isEmpty()
-                && !txtCEP.getText().trim().isEmpty()
-                && !txtNumero.getText().trim().isEmpty()
-                && !GrupoBotaoUtil.getSelectedButtonText(grupoBotaoGenero).isEmpty());
+        boolean dadosPreenchidos, cadastrou, cpfValido;
+  
+        dadosPreenchidos = validarCamposCliente();
 
         if (dadosPreenchidos) {
-            cpfValido = CpfCnpjUtil.isValid(txtCpf.getText());
+            String campoCPF = txtCpf.getText();
+            cpfValido = CpfCnpjUtil.isValid(campoCPF);
 
             if (!cpfValido) {
-                JOptionPane.showMessageDialog(null, "O CPF digitado não é válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Digite um CPF válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -529,14 +533,12 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             int numeroEndereco = Integer.parseInt(txtNumero.getText());
 
             cadastrou = ClienteController.cadastrar(nome, cpf, sexo, rua, cidadeEndereco, estado, bairroEndereco, complemento, email, celular, estadoCivil, cep, numeroEndereco);
-
+            
+            String mensagem = cadastrou ? "Cliente cadastrado com sucesso!" : "Não foi possível cadastrar o cliente.";
+            JOptionPane.showMessageDialog(null, mensagem);
         } else {
             JOptionPane.showMessageDialog(null, "Falta preenchimento!", "Alguns dados obrigatórios não foram preenchidos.", JOptionPane.WARNING_MESSAGE);
         }
-
-        String mensagem = cadastrou ? "Cliente cadastrado com sucesso!" : "Não foi possível cadastrar o cliente.";
-
-        JOptionPane.showMessageDialog(null, mensagem);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyPressed

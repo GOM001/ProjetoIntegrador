@@ -22,11 +22,10 @@ public class ProdutoController {
 
         return ProdutoDAO.cadastrar(produto);
     }
-    
-    public static boolean consultar()
-    {
-        return true;
+
+    public static boolean excluir(int idProduto) {
+
+        return ProdutoDAO.excluir(idProduto);
+
     }
-    
-    
 }

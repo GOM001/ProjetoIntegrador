@@ -26,18 +26,16 @@ public class GerenciadorConexao {
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER);
-
             CONEXAO = DriverManager.getConnection(URL, LOGIN, SENHA);
 
-            STATUS = CONEXAO != null ? "Conectado com sucesso!" : "Não foi possível conectar.";
-
-            return CONEXAO;
+            STATUS = CONEXAO != null ? "Conectou." : "Não conectou ao servidor.";
 
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException("Driver especificado não encontrado!", ex);
+            System.err.println("Driver especificado não encontrado!" + ex.getMessage());
         } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao estabelecer conexão com o Banco de Dados.", ex);
+            System.err.println("Erro ao estabelecer conexão com o Banco de Dados: " + ex.getMessage());
         }
+        return CONEXAO;
     }
 
     public static String getStatusConexao() {

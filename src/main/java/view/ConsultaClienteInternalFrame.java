@@ -222,20 +222,20 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        DefaultTableModel tblModelo = (DefaultTableModel) tblClientes.getModel();
         String mensagem;
-        DefaultTableModel tblModel = (DefaultTableModel) tblClientes.getModel();
+        boolean excluiuCliente = false;
 
         int linha = tblClientes.getSelectedRow();
         int ClienteID = (Integer) tblClientes.getValueAt(linha, 0);
 
-        boolean deletou = ClienteController.deletar(ClienteID);
-
-        if (deletou && linha >= 0) {
-            tblModel.removeRow(linha);
-            mensagem = "Cliente excluido.";
-        } else {
-            mensagem = "Erro ao deletar o cliente.";
+        if (ClienteID > 0 && linha >= 0) {
+            excluiuCliente = ClienteController.deletar(ClienteID);
+            if (excluiuCliente) {
+                tblModelo.removeRow(linha);
+            }
         }
+        mensagem = excluiuCliente ? "Cliente removido com sucesso." : "Não foi possível excluir o cliente.";
 
         JOptionPane.showMessageDialog(this, mensagem);
     }//GEN-LAST:event_btnExcluirActionPerformed
