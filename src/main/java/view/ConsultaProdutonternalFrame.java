@@ -25,7 +25,8 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         PanelMovimentacoes = new javax.swing.JPanel();
         LabelMovimentacoes = new javax.swing.JLabel();
@@ -37,7 +38,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         btnPesquisar = new javax.swing.JButton();
         txtPesquisaPlanta = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbTipoConsulta = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -106,8 +107,10 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPesquisarActionPerformed(evt);
             }
         });
@@ -116,8 +119,10 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
         txtPesquisaPlanta.setOpaque(false);
         txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
-        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtPesquisaPlantaActionPerformed(evt);
             }
         });
@@ -125,8 +130,8 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Consultar por:");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Produto", "Fornecedor" }));
+        cbTipoConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbTipoConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Produto", "Fornecedor" }));
 
         javax.swing.GroupLayout PainelAudaPesquisaLayout = new javax.swing.GroupLayout(PainelAudaPesquisa);
         PainelAudaPesquisa.setLayout(PainelAudaPesquisaLayout);
@@ -138,7 +143,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20)
-                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cbTipoConsulta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -156,25 +161,30 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAjuda)
                         .addComponent(btnPesquisar)
-                        .addComponent(jComboBox1)
+                        .addComponent(cbTipoConsulta)
                         .addComponent(jLabel1)))
                 .addGap(12, 12, 12))
         );
 
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Código", "Produto", "Fornecedor", "Quantidade"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Byte.class, java.lang.String.class, java.lang.String.class, java.lang.Byte.class
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
@@ -224,7 +234,11 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
+      String tipoConsulta =  cbTipoConsulta.getSelectedItem().toString();
+      String dadosPesquisados = txtPesquisaPlanta.getText();
+      
+      
+      
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
@@ -241,9 +255,9 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel PanelMovimentacoes;
     private javax.swing.JButton btnAjuda;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JComboBox<String> cbTipoConsulta;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
