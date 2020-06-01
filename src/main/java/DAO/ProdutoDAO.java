@@ -70,14 +70,11 @@ public class ProdutoDAO {
     
     public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados)
     {
-        boolean inteiro = false;
-        int dados = 0;
-        if(tipo.equals("codigo"))
-        {
-            dados = Integer.parseInt(dadosPesquisados);
-            inteiro = true;
-        }
-        String query = "SELECT id_produto,nome,tipo,preco_compra,codigo,preco_venda,quantidade,fornecedor FROM produto prod inner join estoque est on prod.id_produto = est.id_produto_fk where "+tipo+" = ?";
+     
+        
+       
+        String query = "SELECT id_produto,nome,tipo,preco_compra,codigo,preco_venda,quantidade,fornecedor FROM produto prod inner join estoque est on prod.id_produto = est.id_produto_fk where "+tipo+" like ?;";
+        //String query1 = "SELECT id_produto,nome,tipo,preco_compra,codigo,preco_venda,quantidade,fornecedor FROM produto prod inner join estoque est on prod.id_produto = est.id_produto_fk";
         
         ResultSet resultado = null;
         ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
@@ -85,26 +82,27 @@ public class ProdutoDAO {
         try (Connection conexao = GerenciadorConexao.getConnection();
                 PreparedStatement SQL = conexao.prepareStatement(query))
         {
-           if(inteiro)
-           {
-               SQL.setInt(1, dados);
+           
+               SQL.setString(1,dadosPesquisados+ "%");
               
-           }else
-           {
-            SQL.setString(1, dadosPesquisados);
-               
-           }
            
             
+           
+            System.out.println(SQL);
             resultado = SQL.executeQuery();
             
             if (!resultado.next()) {
             JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
             listaProdutos = null;
             return listaProdutos;
-            } 
+            }
+           
+          
+            
             while(resultado.next())
             {
+                System.out.println("entrei no while");
+                
                 Produto p = new Produto();
                 p.setId_produto(resultado.getInt("id_produto"));
                 p.setNome(resultado.getString("nome"));
