@@ -256,7 +256,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
        
-       try{ 
+      
        DefaultTableModel tmProdutos = new DefaultTableModel();
        tmProdutos.addColumn("id");
        tmProdutos.addColumn("nome");
@@ -282,7 +282,8 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
        for(Produto p : listaProdutos)
        {
            System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
-           tmProdutos.addColumn(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
+           tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
+           
        }
        
        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(150); 
@@ -294,10 +295,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
        tblProduto.getColumnModel().getColumn(7).setPreferredWidth(150);
        
        
-       }catch(Exception e)
-       {
-           System.out.println("ERROOO ----> " + e.getMessage() + "  ERRO COMPLETO-----> "+ e);
-       }
+       
             
     }//GEN-LAST:event_btnPesquisarActionPerformed
 

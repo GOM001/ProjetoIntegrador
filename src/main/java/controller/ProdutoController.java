@@ -52,7 +52,7 @@ public class ProdutoController {
             listaProdutos = null;
             return listaProdutos;
         }
-        System.out.println("indo chamar o DAO");
+        
         return ProdutoDAO.pesquisar(tipo, dadosPesquisados);
         
     }

@@ -88,15 +88,21 @@ public class ProdutoDAO {
            if(inteiro)
            {
                SQL.setInt(1, dados);
-               System.out.println("aqui");
+              
            }else
            {
             SQL.setString(1, dadosPesquisados);
-               System.out.println("aqui");
+               
            }
-            System.out.println(SQL);
+           
             
             resultado = SQL.executeQuery();
+            
+            if (!resultado.next()) {
+            JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
+            listaProdutos = null;
+            return listaProdutos;
+            } 
             while(resultado.next())
             {
                 Produto p = new Produto();
