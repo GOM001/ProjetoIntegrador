@@ -2,7 +2,9 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Produto;
 import util.GerenciadorConexao;
@@ -64,5 +66,57 @@ public class ProdutoDAO {
             System.out.println("Erro ao excluir dados no Banco: " + e.getMessage());
         }
         return exclusao;
+    }
+    
+    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados)
+    {
+        boolean inteiro = false;
+        int dados = 0;
+        if(tipo.equals("codigo"))
+        {
+            dados = Integer.parseInt(dadosPesquisados);
+            inteiro = true;
+        }
+        String query = "SELECT id_produto,nome,tipo,preco_compra,codigo,preco_venda,quantidade,fornecedor FROM produto prod inner join estoque est on prod.id_produto = est.id_produto_fk where "+tipo+" = ?";
+        
+        ResultSet resultado = null;
+        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+        
+        try (Connection conexao = GerenciadorConexao.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(query))
+        {
+           if(inteiro)
+           {
+               SQL.setInt(1, dados);
+               System.out.println("aqui");
+           }else
+           {
+            SQL.setString(1, dadosPesquisados);
+               System.out.println("aqui");
+           }
+            System.out.println(SQL);
+            
+            resultado = SQL.executeQuery();
+            while(resultado.next())
+            {
+                Produto p = new Produto();
+                p.setId_produto(resultado.getInt("id_produto"));
+                p.setNome(resultado.getString("nome"));
+                p.setTipo(resultado.getString("tipo"));
+                p.setCodigo(resultado.getInt("codigo"));
+                p.setPrecoCompra(resultado.getDouble("preco_compra"));
+                p.setPrecoVenda(resultado.getDouble("preco_venda"));
+                p.setQuantidade(resultado.getInt("quantidade"));
+                p.setFornecedor(resultado.getString("fornecedor"));
+                
+                listaProdutos.add(p);
+            }
+        }catch(SQLException e)
+        {
+            System.out.println("Erro na pesquisa: " + e.getMessage());
+        }
+        
+        
+        return listaProdutos;
     }
 }

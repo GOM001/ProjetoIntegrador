@@ -5,6 +5,8 @@ package controller;
  * @author Paulo Henrique
  */
 import DAO.ProdutoDAO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Produto;
 
 public class ProdutoController {
@@ -27,5 +29,31 @@ public class ProdutoController {
 
         return ProdutoDAO.excluir(idProduto);
 
+    }
+    
+    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados)
+    {
+        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+        
+        if(tipo.equals("Código"))
+        {
+            tipo = "codigo";
+        }else if(tipo.equals("Nome"))
+        {
+            tipo = "nome";
+        }else
+        {
+            tipo = "fornecedor";
+        }
+        
+        if(dadosPesquisados.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Por favor, digite os dados para consulta corretamente!");
+            listaProdutos = null;
+            return listaProdutos;
+        }
+        System.out.println("indo chamar o DAO");
+        return ProdutoDAO.pesquisar(tipo, dadosPesquisados);
+        
     }
 }

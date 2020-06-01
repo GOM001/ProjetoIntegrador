@@ -171,7 +171,7 @@
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="cbTipoConsulta" max="32767" attributes="0"/>
+                  <Component id="cboTipoConsulta" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtPesquisaPlanta" min="-2" pref="220" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -192,7 +192,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbTipoConsulta" alignment="3" max="32767" attributes="0"/>
+                          <Component id="cboTipoConsulta" alignment="3" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -252,7 +252,7 @@
             <Property name="text" type="java.lang.String" value="Consultar por:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbTipoConsulta">
+        <Component class="javax.swing.JComboBox" name="cboTipoConsulta">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -260,7 +260,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="C&#xf3;digo"/>
-                <StringItem index="1" value="Produto"/>
+                <StringItem index="1" value="Nome"/>
                 <StringItem index="2" value="Fornecedor"/>
               </StringArray>
             </Property>

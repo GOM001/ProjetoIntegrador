@@ -6,8 +6,10 @@
 package view;
 
 import controller.ProdutoController;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Produto;
 
 /**
  *
@@ -20,10 +22,25 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
      */
     public ConsultaProdutonternalFrame() {
         initComponents();
+        
+        DefaultTableModel tmProdutos = new DefaultTableModel();
+       tmProdutos.addColumn("id");
+       tmProdutos.addColumn("nome");
+       tmProdutos.addColumn("tipo");
+       tmProdutos.addColumn("codigo");
+       tmProdutos.addColumn("preco compra");
+       tmProdutos.addColumn("preco venda");
+       tmProdutos.addColumn("quantidade");
+       tmProdutos.addColumn("fornecedor");
+       
+       tblProduto.setModel(tmProdutos);
+       tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
+       tmProdutos.setRowCount(0);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         PanelMovimentacoes = new javax.swing.JPanel();
         LabelMovimentacoes = new javax.swing.JLabel();
@@ -35,7 +52,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         btnPesquisar = new javax.swing.JButton();
         txtPesquisaPlanta = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboTipoConsulta = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProduto = new javax.swing.JTable();
         btnAlterar = new javax.swing.JButton();
@@ -104,8 +121,10 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPesquisarActionPerformed(evt);
             }
         });
@@ -114,8 +133,10 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
         txtPesquisaPlanta.setOpaque(false);
         txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
-        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtPesquisaPlantaActionPerformed(evt);
             }
         });
@@ -123,8 +144,8 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Consultar por:");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Produto", "Fornecedor" }));
+        cboTipoConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cboTipoConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Nome", "Fornecedor" }));
 
         javax.swing.GroupLayout PainelAudaPesquisaLayout = new javax.swing.GroupLayout(PainelAudaPesquisa);
         PainelAudaPesquisa.setLayout(PainelAudaPesquisaLayout);
@@ -136,7 +157,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20)
-                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cboTipoConsulta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -154,25 +175,30 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAjuda)
                         .addComponent(btnPesquisar)
-                        .addComponent(jComboBox1)
+                        .addComponent(cboTipoConsulta)
                         .addComponent(jLabel1)))
                 .addGap(12, 12, 12))
         );
 
         tblProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblProduto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Código", "Produto", "Fornecedor", "Quantidade"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Byte.class, java.lang.String.class, java.lang.String.class, java.lang.Byte.class
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
@@ -185,8 +211,10 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icone-excluir.png"))); // NOI18N
         btnExcluir.setText("Excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExcluir.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExcluirActionPerformed(evt);
             }
         });
@@ -227,7 +255,50 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
+       
+       try{ 
+       DefaultTableModel tmProdutos = new DefaultTableModel();
+       tmProdutos.addColumn("id");
+       tmProdutos.addColumn("nome");
+       tmProdutos.addColumn("tipo");
+       tmProdutos.addColumn("codigo");
+       tmProdutos.addColumn("preco compra");
+       tmProdutos.addColumn("preco venda");
+       tmProdutos.addColumn("quantidade");
+       tmProdutos.addColumn("fornecedor");
+       
+       tblProduto.setModel(tmProdutos);
+       tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
+       tmProdutos.setRowCount(0);
+       
+       
+       
+       
+       String tipo = cboTipoConsulta.getSelectedItem().toString();
+       String dadosPesquisados = txtPesquisaPlanta.getText();
+       
+       ArrayList<Produto> listaProdutos = ProdutoController.pesquisar(tipo, dadosPesquisados);
+       
+       for(Produto p : listaProdutos)
+       {
+           System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
+           tmProdutos.addColumn(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
+       }
+       
+       tblProduto.getColumnModel().getColumn(0).setPreferredWidth(150); 
+       tblProduto.getColumnModel().getColumn(1).setPreferredWidth(150); 
+       tblProduto.getColumnModel().getColumn(3).setPreferredWidth(150);
+       tblProduto.getColumnModel().getColumn(4).setPreferredWidth(150);
+       tblProduto.getColumnModel().getColumn(5).setPreferredWidth(150);
+       tblProduto.getColumnModel().getColumn(6).setPreferredWidth(150);
+       tblProduto.getColumnModel().getColumn(7).setPreferredWidth(150);
+       
+       
+       }catch(Exception e)
+       {
+           System.out.println("ERROOO ----> " + e.getMessage() + "  ERRO COMPLETO-----> "+ e);
+       }
+            
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
@@ -265,7 +336,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cboTipoConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

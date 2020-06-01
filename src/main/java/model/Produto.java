@@ -8,9 +8,11 @@ import javax.swing.JOptionPane;
  */
 public class Produto {
 
-    public String nome = "", tipo, fornecedor;
-    public int quantidade, codigo;
-    public double precoCompra, precoVenda;
+    
+    private int id_produto;
+    private String nome = "", tipo, fornecedor;
+    private int quantidade, codigo;
+    private double precoCompra, precoVenda;
 
     public Produto() {
     }
@@ -24,7 +26,17 @@ public class Produto {
         this.precoCompra = precoCompra;
         this.precoVenda = PrecoVenda;
     }
+    
+    public int getId_produto()
+    {
+        return id_produto;
+    }
 
+    public void setId_produto(int id_produto)
+    {
+        this.id_produto = id_produto;
+    }
+    
     public String getNome() {
         return nome;
     }
