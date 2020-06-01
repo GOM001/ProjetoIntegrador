@@ -28,7 +28,7 @@ public class GerenciadorConexao {
             Class.forName(DRIVER);
             CONEXAO = DriverManager.getConnection(URL, LOGIN, SENHA);
 
-            STATUS = CONEXAO != null ? "Conectado." : "Desconectado do servidor.";
+            STATUS = CONEXAO != null ? "Conectou." : "Não conectou ao servidor.";
 
         } catch (ClassNotFoundException ex) {
             System.err.println("Driver especificado não encontrado!" + ex.getMessage());

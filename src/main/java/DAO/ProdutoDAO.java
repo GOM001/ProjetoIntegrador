@@ -8,38 +8,36 @@ import model.Produto;
 import util.GerenciadorConexao;
 
 /**
- *
  * @author Paulo Henrique
+ * @version 1.4
  */
 public class ProdutoDAO {
 
+    private static final String SQL_INSERT_PRODUTO = "INSERT INTO produto (nome, tipo, codigo, preco_compra, preco_venda) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT_ESTOQUE = "INSERT INTO estoque (quantidade, fornecedor, id_produto_fk) VALUES (?, ?, LAST_INSERT_ID())";
+    private static final String SQL_DELETE = "DELETE FROM produto WHERE id_produto = ?";
+
     public static boolean cadastrar(Produto produto) {
         boolean cadastrou = false;
-
-        // Valores da Tabela ainda a confirmar
-        String SQL_INSERT = "INSERT INTO Produto"
-                + "(nomeProduto, "
-                + "tipo, "
-                + "quantidade, "
-                + "fornecedor, "
-                + "codProduto, "
-                + "precoCompra, "
-                + "precoVenda) "
-                + "values (?, ?, ?, ?, ?, ?, ?)";
-
+        /*
+         * O processo abaixo é chamado de try-with-resources (pós Java-7), 
+         * deste modo não é necessário encerrar a Connection e o PreparedStatement por código, 
+         * ela encerra os recursos automaticamente independente de sucesso ou falha na Connection.
+         */
         try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_INSERT)) {
+                PreparedStatement SQL_PRODUTO = conexao.prepareStatement(SQL_INSERT_PRODUTO);
+                PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_INSERT_ESTOQUE)) {
 
-            SQL.setString(1, produto.getNome());
-            SQL.setString(2, produto.getTipo());
-            SQL.setInt(3, produto.getQuantidade());
-            SQL.setString(4, produto.getFornecedor());
-            SQL.setInt(5, produto.getCodigo());
-            SQL.setDouble(6, produto.getPrecoCompra());
-            SQL.setDouble(7, produto.getPrecoVenda());
+            SQL_PRODUTO.setString(1, produto.getNome());
+            SQL_PRODUTO.setString(2, produto.getTipo());
+            SQL_PRODUTO.setInt(3, produto.getCodigo());
+            SQL_PRODUTO.setDouble(4, produto.getPrecoCompra());
+            SQL_PRODUTO.setDouble(5, produto.getPrecoVenda());
 
-            int linhasAfetadas = SQL.executeUpdate();
-            cadastrou = linhasAfetadas > 0;
+            SQL_ESTOQUE.setInt(1, produto.getQuantidade());
+            SQL_ESTOQUE.setString(2, produto.getFornecedor());
+
+            cadastrou = SQL_PRODUTO.executeUpdate() > 0 && SQL_ESTOQUE.executeUpdate() > 0;
 
         } catch (SQLException ex) {
             String errorMessage = ex.getMessage();
@@ -53,9 +51,6 @@ public class ProdutoDAO {
 
     public static boolean excluir(int idProduto) {
         boolean exclusao = false;
-
-        // Essa tabela ainda será renomeada.
-        String SQL_DELETE = "DELETE FROM Produto where id = ?";
 
         try (Connection conexao = GerenciadorConexao.getConnection();
                 PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE)) {
