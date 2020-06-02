@@ -95,17 +95,16 @@ int linhasAfetadas1 = SQL_ESTOQUE.executeUpdate();
             System.out.println(SQL);
             resultado = SQL.executeQuery();
             
-            if (!resultado.next()) {
+           if (!resultado.next()) {
             JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
             listaProdutos = null;
             return listaProdutos;
             }
            
           
-            
-            while(resultado.next())
+            do
             {
-                System.out.println("entrei no while");
+                //System.out.println("entrei no while");
                 
                 Produto p = new Produto();
                 p.setId_produto(resultado.getInt("id_produto"));
@@ -116,9 +115,13 @@ int linhasAfetadas1 = SQL_ESTOQUE.executeUpdate();
                 p.setPrecoVenda(resultado.getDouble("preco_venda"));
                 p.setQuantidade(resultado.getInt("quantidade"));
                 p.setFornecedor(resultado.getString("fornecedor"));
-                
                 listaProdutos.add(p);
-            }
+            }while(resultado.next());
+            
+                
+            
+            
+               
         }catch(SQLException e)
         {
             System.out.println("Erro na pesquisa: " + e.getMessage());
