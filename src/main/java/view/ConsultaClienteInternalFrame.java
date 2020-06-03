@@ -2,7 +2,10 @@ package view;
 
 import controller.ClienteController;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -29,10 +32,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         PainelAudaPesquisa = new javax.swing.JPanel();
         btnAjuda = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        txtPesquisaPlanta = new javax.swing.JTextField();
+        txtFiltro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbFiltroConsulta = new javax.swing.JComboBox<>();
         btnExcluir = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -86,31 +88,37 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         btnAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ajuda.png"))); // NOI18N
         btnAjuda.setText("Ajuda");
-
-        btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnAjudaActionPerformed(evt);
             }
         });
 
-        txtPesquisaPlanta.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
-        txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
-        txtPesquisaPlanta.setOpaque(false);
-        txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
-        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener() {
+        txtFiltro.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        txtFiltro.setMinimumSize(new java.awt.Dimension(23, 24));
+        txtFiltro.setOpaque(false);
+        txtFiltro.setPreferredSize(new java.awt.Dimension(100, 24));
+        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaPlantaActionPerformed(evt);
+                txtFiltroActionPerformed(evt);
+            }
+        });
+        txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFiltroKeyTyped(evt);
             }
         });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Consultar por:");
+        jLabel2.setText("Digitar pesquisa por:");
 
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF" }));
+        cbFiltroConsulta.setForeground(new java.awt.Color(0, 0, 0));
+        cbFiltroConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF" }));
+        cbFiltroConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFiltroConsultaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelAudaPesquisaLayout = new javax.swing.GroupLayout(PainelAudaPesquisa);
         PainelAudaPesquisa.setLayout(PainelAudaPesquisaLayout);
@@ -119,15 +127,13 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(PainelAudaPesquisaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAjuda)
-                .addGap(66, 66, 66)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPesquisar)
-                .addGap(28, 28, 28))
+                .addComponent(cbFiltroConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PainelAudaPesquisaLayout.setVerticalGroup(
             PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,10 +141,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(PainelAudaPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAjuda)
-                    .addComponent(btnPesquisar)
-                    .addComponent(txtPesquisaPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbFiltroConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
 
@@ -209,13 +214,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
 
-    }//GEN-LAST:event_txtPesquisaPlantaActionPerformed
-
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    }//GEN-LAST:event_txtFiltroActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         DefaultTableModel tblModelo = (DefaultTableModel) tblClientes.getModel();
@@ -236,6 +237,29 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, mensagem);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyTyped
+        TableRowSorter<TableModel> selecao = new TableRowSorter<>(((DefaultTableModel) tblClientes.getModel()));
+        String campoSelecionado = cbFiltroConsulta.getSelectedItem().toString();
+
+        int pesquisarNaColuna = campoSelecionado.contains("CPF") ? 2 : 1;
+
+        selecao.setRowFilter(RowFilter.regexFilter(txtFiltro.getText().replace(".", ""), pesquisarNaColuna));
+
+        tblClientes.setRowSorter(selecao);
+    }//GEN-LAST:event_txtFiltroKeyTyped
+
+    private void cbFiltroConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFiltroConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFiltroConsultaActionPerformed
+
+    private void btnAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjudaActionPerformed
+        JOptionPane.showMessageDialog(null, "Os dados dos clientes cadastrados aparecem aqui!\n"
+                + "Digite no campo de filtro para pesquisar automaticamente na tabela.\n\n"
+                + "- Atualize dados dos clientes.\n"
+                + "- Selecione um dado e depois clique em Excluir para remover um cliente do sistema.",
+                "Sobre", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnAjudaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelMovimentacoes;
@@ -244,13 +268,12 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAjuda;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnPesquisar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbFiltroConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblClientes;
-    private javax.swing.JTextField txtPesquisaPlanta;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }
