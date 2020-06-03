@@ -7,18 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Produto;
-import util.GerenciadorConexao;
+import util.ConexaoDB;
 
 /**
  * @author Paulo Henrique
- * @version 1.4
  */
 public class ProdutoDAO {
 
     private static final String SQL_INSERT_PRODUTO = "INSERT INTO produto (nome, tipo, codigo, preco_compra, preco_venda) VALUES (?, ?, ?, ?, ?)";
     private static final String SQL_INSERT_ESTOQUE = "INSERT INTO estoque (quantidade, fornecedor, id_produto_fk) VALUES (?, ?, LAST_INSERT_ID())";
-    private static final String SQL_DELETE = "DELETE FROM produto WHERE id_produto = ?";
-    private static final String SQL_DELETE_ESTOQUE = "DELETE FROM estoque WHERE id_produto_fk = ?";
+    private static final String SQL_DELETE = "DELETE FROM produto WHERE id_produto = ?"; // Delete agora em Cascata no DDL
 
     public static boolean cadastrar(Produto produto) {
         boolean cadastrou = false;
@@ -27,7 +25,7 @@ public class ProdutoDAO {
          * deste modo não é necessário encerrar a Connection e o PreparedStatement por código, 
          * ela encerra os recursos automaticamente independente de sucesso ou falha na Connection.
          */
-        try (Connection conexao = GerenciadorConexao.getConnection();
+        try (Connection conexao = ConexaoDB.getConnection();
                 PreparedStatement SQL_PRODUTO = conexao.prepareStatement(SQL_INSERT_PRODUTO);
                 PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_INSERT_ESTOQUE)) {
 
@@ -55,58 +53,42 @@ public class ProdutoDAO {
     public static boolean excluir(int idProduto) {
         boolean exclusao = false;
 
-        try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL_PRODUTO = conexao.prepareStatement(SQL_DELETE);
-                 PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_DELETE_ESTOQUE)) {
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE)) {
 
-            SQL_PRODUTO.setInt(1, idProduto);
-            SQL_ESTOQUE.setInt(1, idProduto);
-int linhasAfetadas1 = SQL_ESTOQUE.executeUpdate();
-            int linhasAfetadas = SQL_PRODUTO.executeUpdate();
-            
-            exclusao = linhasAfetadas > 0 && linhasAfetadas1 > 0;
+            SQL.setInt(1, idProduto);
+
+            int linhasAfetadas = SQL.executeUpdate();
+
+            exclusao = linhasAfetadas > 0;
 
         } catch (SQLException e) {
             System.out.println("Erro ao excluir dados no Banco: " + e.getMessage());
         }
         return exclusao;
     }
-    
-    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados)
-    {
-     
-        
-       
-        String query = "SELECT id_produto,nome,tipo,preco_compra,codigo,preco_venda,quantidade,fornecedor FROM produto prod inner join estoque est on prod.id_produto = est.id_produto_fk where "+tipo+" like ?;";
-        //String query1 = "SELECT id_produto,nome,tipo,preco_compra,codigo,preco_venda,quantidade,fornecedor FROM produto prod inner join estoque est on prod.id_produto = est.id_produto_fk";
-        
-        ResultSet resultado = null;
-        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
-        
-        try (Connection conexao = GerenciadorConexao.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(query))
-        {
-           
-               SQL.setString(1,dadosPesquisados+ "%");
-              
-           
-            
-           
-            System.out.println(SQL);
-            resultado = SQL.executeQuery();
-            
-           if (!resultado.next()) {
-            JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
-            listaProdutos = null;
-            return listaProdutos;
+
+    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados) {
+
+        String query = "SELECT id_produto, nome, tipo, preco_compra, codigo, preco_venda, quantidade, fornecedor FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk WHERE " + tipo + " LIKE ?";
+
+        ArrayList<Produto> listaProdutos = new ArrayList<>();
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(query);
+                ResultSet resultado = SQL.executeQuery();) {
+
+            SQL.setString(1, dadosPesquisados + "%");
+
+            if (!resultado.next()) {
+                JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
+                listaProdutos = null;
+                return listaProdutos;
             }
-           
-          
-            do
-            {
-                //System.out.println("entrei no while");
-                
+
+            do {
                 Produto p = new Produto();
+
                 p.setId_produto(resultado.getInt("id_produto"));
                 p.setNome(resultado.getString("nome"));
                 p.setTipo(resultado.getString("tipo"));
@@ -116,18 +98,13 @@ int linhasAfetadas1 = SQL_ESTOQUE.executeUpdate();
                 p.setQuantidade(resultado.getInt("quantidade"));
                 p.setFornecedor(resultado.getString("fornecedor"));
                 listaProdutos.add(p);
-            }while(resultado.next());
-            
-                
-            
-            
-               
-        }catch(SQLException e)
-        {
+
+            } while (resultado.next());
+
+        } catch (SQLException e) {
             System.out.println("Erro na pesquisa: " + e.getMessage());
         }
-        
-        
+
         return listaProdutos;
     }
 }
