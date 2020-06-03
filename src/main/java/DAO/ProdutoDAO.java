@@ -76,9 +76,12 @@ public class ProdutoDAO {
 
         try (Connection conexao = ConexaoDB.getConnection();
                 PreparedStatement SQL = conexao.prepareStatement(query);
-                ResultSet resultado = SQL.executeQuery();) {
-
+               ) {
+           // System.out.println("os dados pesquisados sao" + dadosPesquisados );
+            
             SQL.setString(1, dadosPesquisados + "%");
+            
+             ResultSet resultado = SQL.executeQuery();
 
             if (!resultado.next()) {
                 JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
