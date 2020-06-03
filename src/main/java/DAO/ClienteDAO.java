@@ -87,7 +87,7 @@ public class ClienteDAO {
                 Statement stmt = conexao.createStatement();
                 ResultSet result = stmt.executeQuery(SQL_SELECT)) {
 
-            // Deleta dados antigos da tabela
+            // Remove/reseta dados antigos da tabela
             while (tabela.getRowCount() > 0) {
                 tblModelo.removeRow(0);
             }
@@ -107,5 +107,27 @@ public class ClienteDAO {
         }
 
         return tabela;
+    }
+
+    public static boolean alterar(int id, String coluna, String novoValor) {
+        boolean alterou = false;
+
+        String SQL_UPDATE = String.format("UPDATE cliente set %s = ? WHERE id_cliente = ?", coluna);
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement instrucaoSQL = conexao.prepareStatement(SQL_UPDATE)) {
+
+            instrucaoSQL.setString(1, novoValor);
+            instrucaoSQL.setInt(2, id);
+
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            alterou = linhasAfetadas > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao gravar no banco de dados: " + e.getMessage());
+        }
+
+        return alterou;
     }
 }

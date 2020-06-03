@@ -31,8 +31,11 @@ public class ClienteController {
         return ClienteDAO.cadastrar(cliente);
     }
 
-    public static boolean deletar(int idCliente) {
+    public static boolean alterar(int id, String campo, String novoValor) {
+        return ClienteDAO.alterar(id, campo, novoValor);
+    }
 
+    public static boolean deletar(int idCliente) {
         return ClienteDAO.excluir(idCliente);
     }
 

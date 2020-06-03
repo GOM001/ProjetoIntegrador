@@ -2,7 +2,9 @@ package view;
 
 import controller.ClienteController;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -16,10 +18,45 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
     public ConsultaClienteInternalFrame() {
         initComponents();
         carregarTabela();
+
+        DefaultTableModel tblModelo = (DefaultTableModel) tblClientes.getModel();
+        tblModelo.addTableModelListener((TableModelEvent e) -> {
+            alterarTabela(e);
+        });
+
+        if (tblClientes.getCellEditor() != null) {
+            tblClientes.getCellEditor().stopCellEditing();
+        }
     }
 
     private void carregarTabela() {
         tblClientes = ClienteController.consultarTabela(tblClientes);
+    }
+
+    public JTable resetarTabela(DefaultTableModel modelo) {
+        JTable tabela = new JTable(modelo);
+        return tabela;
+    }
+
+    protected void alterarTabela(TableModelEvent e) {
+        int idCliente, linha, coluna;
+        String campoSelecionado = "", novoValor, mensagem;
+
+        linha = e.getFirstRow();
+        coluna = e.getColumn();
+        idCliente = (Integer) tblClientes.getValueAt(linha, 0);
+        novoValor = String.valueOf(tblClientes.getValueAt(linha, coluna));
+
+        String[] vetorNomeColunas = {"id_cliente", "nome", "cpf", "sexo", "est_civil", "email", "celular"};
+
+        campoSelecionado = vetorNomeColunas[coluna];
+
+        boolean alterou = ClienteController.alterar(idCliente, campoSelecionado, novoValor);
+
+        mensagem = alterou ? campoSelecionado.substring(0, 1).toUpperCase() + campoSelecionado.substring(1)
+                + " alterado para " + novoValor : "Não foi possível alterar o produto.";
+
+        JOptionPane.showMessageDialog(this, mensagem);
     }
 
     @SuppressWarnings("unchecked")
@@ -159,6 +196,11 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         btnAtualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-alterar-usuário-masculino-24.png"))); // NOI18N
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,7 +211,15 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
             new String [] {
                 "ID", "Nome", "CPF", "Sexo", "Estado Civil", "E-mail", "Celular"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblClientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,7 +254,7 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
                 .addComponent(PainelAudaPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,19 +269,19 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtFiltroActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        DefaultTableModel tblModelo = (DefaultTableModel) tblClientes.getModel();
+        // Ainda necessário implementar abstração de TableModel p/ atualizar automaticamente
         String mensagem;
         boolean excluiuCliente = false;
 
         int linha = tblClientes.getSelectedRow();
         int ClienteID = (Integer) tblClientes.getValueAt(linha, 0);
 
-        if (ClienteID > 0 && linha >= 0) {
+        try {
             excluiuCliente = ClienteController.deletar(ClienteID);
-            if (excluiuCliente) {
-                tblModelo.removeRow(linha);
-            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+
         mensagem = excluiuCliente ? "Cliente removido com sucesso." : "Não foi possível excluir o cliente.";
 
         JOptionPane.showMessageDialog(this, mensagem);
@@ -259,6 +309,11 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
                 + "- Selecione um dado e depois clique em Excluir para remover um cliente do sistema.",
                 "Sobre", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAjudaActionPerformed
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        ConsultaClienteInternalFrame TelaConsultaCliente = new ConsultaClienteInternalFrame();
+        TelaConsultaCliente.setVisible(true);
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
