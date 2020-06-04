@@ -5,6 +5,8 @@
  */
 package view;
 
+import br.com.parg.viacep.ViaCEP;
+import br.com.parg.viacep.ViaCEPException;
 import controller.ClienteController;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +14,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import util.CpfCnpjUtil;
@@ -42,12 +46,26 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             URLConnection urlConnection = url.openConnection();
             InputStream is = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            
+            
 
             StringBuilder jsonSb = new StringBuilder();
 
             br.lines().forEach(l -> jsonSb.append(l.trim()));
             json = jsonSb.toString();
+            
 
+            if(json == "{\n" +
+                       "  \"erro\": true\n" +
+                       "}"){
+                txtLogradouro.setText("");
+            txtBairro.setText("");
+            txtCidade.setText("");
+            txtEstado.setText("");
+            JOptionPane.showMessageDialog(null, "Digite um CPF válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
             // JOptionPane.showMessageDialog(null, json);
             json = json.replaceAll("[{},:]", "");
             json = json.replaceAll("\"", "\n");
@@ -490,13 +508,23 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        boolean campoValido = txtCEP.getText().trim().length() == 9;
-
-        if (campoValido) {
-            buscarCep(txtCEP.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Digite um CEP válido.", "CEP inválido!", ERROR_MESSAGE);
-        }
+       ViaCEP viaCep = new ViaCEP();
+       
+       try{
+           viaCep.buscar(txtCEP.getText());
+           txtBairro.setText(viaCep.getBairro());
+           txtLogradouro.setText(viaCep.getLogradouro());
+           txtEstado.setText(viaCep.getUf());
+           txtCidade.setText(viaCep.getLocalidade());
+       }catch(ViaCEPException ex){
+           Logger.getLogger(CadastroClienteInternalFrame.class.getName()).log(Level.SEVERE,null, ex);
+           JOptionPane.showMessageDialog(null, "Digite novamente.", "CEP Inválido!", JOptionPane.WARNING_MESSAGE);
+           txtCEP.setText("");
+           txtBairro.setText("");
+           txtCidade.setText("");
+           txtEstado.setText("");
+           txtLogradouro.setText("");
+       }
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void txtNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeClienteActionPerformed
