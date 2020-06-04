@@ -46,12 +46,6 @@ public class ProdutoController {
             tipo = "fornecedor";
         }
         
-        if(dadosPesquisados.trim().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Por favor, digite os dados para consulta corretamente!");
-            listaProdutos = null;
-            return listaProdutos;
-        }
         
         return ProdutoDAO.pesquisar(tipo, dadosPesquisados);
         

@@ -24,37 +24,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     public ConsultaProdutonternalFrame() {
         initComponents();
         
-        DefaultTableModel tmProdutos = new DefaultTableModel();
-       tmProdutos.addColumn("id");
-       tmProdutos.addColumn("nome");
-       tmProdutos.addColumn("tipo");
-       tmProdutos.addColumn("codigo");
-       tmProdutos.addColumn("preco compra");
-       tmProdutos.addColumn("preco venda");
-       tmProdutos.addColumn("quantidade");
-       tmProdutos.addColumn("fornecedor");
-       
-       tblProduto.setModel(tmProdutos);
-       //tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
-       tmProdutos.setRowCount(0);
-       
-       ArrayList<Produto> listaProdutos = ProdutoController.pesquisar_all();
-       
-       if(listaProdutos != null)
-       {
-       for(Produto p : listaProdutos)
-       {
-           System.out.println("1");
-           System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
-           tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
-           
-       }
-       }
-       
-       
-       int qtdLinhas = tblProduto.getRowCount();
-       String qtdLinha = qtdLinhas +""; //convertendo para string
-       txtqtdLinhas.setText(qtdLinha);
+        consultaTodos();
     }
     
     
@@ -308,42 +278,13 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
        
       
-       DefaultTableModel tmProdutos = new DefaultTableModel();
-       tmProdutos.addColumn("id");
-       tmProdutos.addColumn("nome");
-       tmProdutos.addColumn("tipo");
-       tmProdutos.addColumn("codigo");
-       tmProdutos.addColumn("preco compra");
-       tmProdutos.addColumn("preco venda");
-       tmProdutos.addColumn("quantidade");
-       tmProdutos.addColumn("fornecedor");
-       
-       tblProduto.setModel(tmProdutos);
-      // tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
-       tmProdutos.setRowCount(0);
-       
-       
-       
-       
-       String tipo = cboTipoConsulta.getSelectedItem().toString();
-       String dadosPesquisados = txtPesquisaPlanta.getText();
-       
-       ArrayList<Produto> listaProdutos = ProdutoController.pesquisar(tipo, dadosPesquisados);
-       
-       if(listaProdutos != null)
-       {
-       for(Produto p : listaProdutos)
-       {
-           System.out.println("1");
-           System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
-           tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
-           
-       }
-       }
-       
-       int qtdLinhas = tblProduto.getRowCount();
-      String qtdLinha = qtdLinhas +""; //convertendo para string
-      txtqtdLinhas.setText(qtdLinha);
+        if(txtPesquisaPlanta.getText().trim().equals(""))
+        {
+        consultaTodos();
+        }
+        else{
+        consultaTodosComFiltro(cboTipoConsulta.getSelectedItem().toString(), txtPesquisaPlanta.getText());
+        }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
@@ -388,6 +329,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
     {//GEN-HEADEREND:event_btnAlterarActionPerformed
         ArrayList<Produto> listaAtualizada = new ArrayList<Produto>();
         String dadosPesquisados = txtPesquisaPlanta.getText();
+        String tipoPesquisa = cboTipoConsulta.getSelectedItem().toString();
         boolean dadosPassados = true;
         boolean atualizou = false;
         
@@ -447,9 +389,15 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
          
         }
         
-        
-        
-        //JOptionPane.showMessageDialog(this, qtdLinhas + " ---- " + qtdColunas);
+       if(dadosPesquisados.trim().equals(""))
+       {
+           consultaTodos();
+       }
+       else
+       {
+           consultaTodosComFiltro(tipoPesquisa, dadosPesquisados);
+       }
+              
         
         
         
@@ -460,6 +408,76 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Para alterar dados de uma tabela voce devera mudar os valores na coluna e depois clicar em alterar");
     }//GEN-LAST:event_btnAjudaActionPerformed
 
+    public void consultaTodos()
+    {
+       DefaultTableModel tmProdutos = new DefaultTableModel();
+       tmProdutos.addColumn("id");
+       tmProdutos.addColumn("nome");
+       tmProdutos.addColumn("tipo");
+       tmProdutos.addColumn("codigo");
+       tmProdutos.addColumn("preco compra");
+       tmProdutos.addColumn("preco venda");
+       tmProdutos.addColumn("quantidade");
+       tmProdutos.addColumn("fornecedor");
+       
+       tblProduto.setModel(tmProdutos);
+       //tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
+       tmProdutos.setRowCount(0);
+       
+       ArrayList<Produto> listaProdutos = ProdutoController.pesquisar_all();
+       
+       if(listaProdutos != null)
+       {
+       for(Produto p : listaProdutos)
+       {
+           System.out.println("1");
+           System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
+           tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
+           
+       }
+       }
+       
+       
+       int qtdLinhas = tblProduto.getRowCount();
+       String qtdLinha = qtdLinhas +""; //convertendo para string
+       txtqtdLinhas.setText(qtdLinha);
+    }
+    
+    public void consultaTodosComFiltro(String tipo, String dadosPesquisados)
+    { 
+       DefaultTableModel tmProdutos = new DefaultTableModel();
+       tmProdutos.addColumn("id");
+       tmProdutos.addColumn("nome");
+       tmProdutos.addColumn("tipo");
+       tmProdutos.addColumn("codigo");
+       tmProdutos.addColumn("preco compra");
+       tmProdutos.addColumn("preco venda");
+       tmProdutos.addColumn("quantidade");
+       tmProdutos.addColumn("fornecedor");
+       
+       tblProduto.setModel(tmProdutos);
+       //tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
+       tmProdutos.setRowCount(0);
+        
+         ArrayList<Produto> listaProdutos = ProdutoController.pesquisar(tipo, dadosPesquisados);
+       
+       if(listaProdutos != null)
+       {
+       for(Produto p : listaProdutos)
+       {
+           System.out.println("1");
+           System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
+           tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
+           
+       }
+       
+       }
+       
+       int qtdLinhas = tblProduto.getRowCount();
+      String qtdLinha = qtdLinhas +""; //convertendo para string
+      txtqtdLinhas.setText(qtdLinha);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelMovimentacoes;
