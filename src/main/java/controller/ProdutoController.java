@@ -63,4 +63,16 @@ public class ProdutoController {
         return ProdutoDAO.pesquisar_all();
         
     }
+    
+    public static boolean atualizar(ArrayList<Produto> listaAtualizada)
+    {
+        if(listaAtualizada != null)
+        {
+        return ProdutoDAO.atualizar(listaAtualizada);
+        }
+        else
+        {
+        return false;
+        }
+    }
 }

@@ -386,20 +386,73 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAlterarActionPerformed
     {//GEN-HEADEREND:event_btnAlterarActionPerformed
-        /*
         ArrayList<Produto> listaAtualizada = new ArrayList<Produto>();
+        String dadosPesquisados = txtPesquisaPlanta.getText();
+        boolean dadosPassados = true;
+        boolean atualizou = false;
         
+        //JOptionPane.showMessageDialog(this, tblProduto.getValueAt(0, 3));
         int qtdLinhas = tblProduto.getRowCount();
         
-        for(int i = 1; i < qtdLinhas; i++)
+        if(qtdLinhas > 0)
         {
-            System.out.println("linha: "+ i);
+        
+         try
+         {
+           for(int i = 0; i < qtdLinhas; i++)
+           {
+            //como todas variavel abaixo retorna um objeto, preciso converter
             
-            int Produto
+            String ProdutoId = String.valueOf(tblProduto.getValueAt(i, 0));  
+            String nome = (String) tblProduto.getValueAt(i, 1);  
+            String tipo = (String) tblProduto.getValueAt(i, 2);    
+            String codigo = String.valueOf( tblProduto.getValueAt(i, 3));
+            String precoCompra = String.valueOf( tblProduto.getValueAt(i, 4));  
+            String precoVenda = String.valueOf(tblProduto.getValueAt(i, 5));
+            String quantidade = String.valueOf(tblProduto.getValueAt(i, 6));
+            String fornecedor = (String) tblProduto.getValueAt(i, 7);
             
-            Produto p = new Produto();
+             
+           
             
-        }*/
+            int codigoInt = Integer.parseInt(codigo);
+            double precoCompraDouble = Double.parseDouble(precoCompra);
+            double precoVendaDouble = Double.parseDouble(precoVenda);
+            int quantidadeInt = Integer.parseInt(quantidade);
+            int ProdutoIdInt = Integer.parseInt(ProdutoId);
+            
+            
+            Produto p = new Produto(ProdutoIdInt,nome,tipo,codigoInt,precoCompraDouble,precoVendaDouble,quantidadeInt,fornecedor);
+            
+            listaAtualizada.add(p); 
+           }
+           
+         } catch (Exception e)
+         {
+            JOptionPane.showMessageDialog(this, "ERRO ---->" + e.getMessage());
+             System.out.println(e.getMessage());
+            dadosPassados = false;
+         }
+        if(dadosPassados){
+         atualizou = ProdutoController.atualizar(listaAtualizada);
+        }
+         if(atualizou)
+         {
+             JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!");
+         }
+         else
+         {
+             JOptionPane.showMessageDialog(this, "Nenhum dado foi atualizado!");
+         }
+         
+        }
+        
+        
+        
+        //JOptionPane.showMessageDialog(this, qtdLinhas + " ---- " + qtdColunas);
+        
+        
+        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnAjudaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAjudaActionPerformed

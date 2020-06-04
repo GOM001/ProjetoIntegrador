@@ -18,6 +18,7 @@ public class ProdutoDAO {
     private static final String SQL_INSERT_ESTOQUE = "INSERT INTO estoque (quantidade, fornecedor, id_produto_fk) VALUES (?, ?, LAST_INSERT_ID())";
     private static final String SQL_DELETE = "DELETE FROM produto WHERE id_produto = ?"; // Delete agora em Cascata no DDL
     private static final String SQL_DELETE_ESTOQUE = "DELETE FROM estoque WHERE id_produto_fk = ?"; // Delete agora em Cascata no DDL
+    private static final String SQL_UPDATE = "UPDATE produto  p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk SET p.nome= ? , p.tipo = ? , p.preco_compra = ? , p.preco_venda = ? , e.quantidade = ? , e.fornecedor = ? , p.codigo = ? where p.id_produto = ? ";
 
     public static boolean cadastrar(Produto produto) {
         boolean cadastrou = false;
@@ -158,5 +159,54 @@ public class ProdutoDAO {
         }
 
         return listaProdutos;
+    }
+    
+    public static boolean atualizar(ArrayList<Produto> listaAtualizada)
+    {
+        boolean atualizou = false;
+        int linhas = 0;
+        
+        ArrayList<Integer> linhasAtualizadas = new ArrayList<Integer>();
+        
+        try(Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_UPDATE);)
+        {
+           
+            for(Produto p : listaAtualizada)
+            {
+                SQL.setString(1, p.getNome());
+                SQL.setString(2,p.getTipo());
+                SQL.setDouble(3, p.getPrecoCompra());
+                SQL.setDouble(4, p.getPrecoVenda());
+                SQL.setInt(5, p.getQuantidade());
+                SQL.setString(6, p.getFornecedor());
+                SQL.setInt(7, p.getCodigo());
+                SQL.setInt(8, p.getId_produto());
+                
+                
+                System.out.println(SQL);
+                
+                int linhasAfetadas = SQL.executeUpdate();
+                
+                linhasAtualizadas.add(linhasAfetadas);
+                
+            }
+            
+            for(int i : linhasAtualizadas)
+            {
+                if(i > 0)
+                {
+                    linhas++;
+                    atualizou = true;
+                }
+            }
+            
+            
+            
+        }catch(Exception e)
+        {
+            System.out.println("ERRO NO UPDATE --> " + e.getMessage());
+        }
+        return atualizou;
     }
 }
