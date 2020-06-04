@@ -1,6 +1,7 @@
 package controller;
 
 import DAO.ClienteDAO;
+import javax.swing.JTable;
 import model.Cliente;
 
 /**
@@ -29,10 +30,17 @@ public class ClienteController {
 
         return ClienteDAO.cadastrar(cliente);
     }
-    
+
+    public static boolean alterar(int id, String campo, String novoValor) {
+        return ClienteDAO.alterar(id, campo, novoValor);
+    }
+
     public static boolean deletar(int idCliente) {
-        
         return ClienteDAO.excluir(idCliente);
+    }
+
+    public static JTable consultarTabela(JTable tabela) {
+        return ClienteDAO.consultar(tabela);
     }
 
 }
