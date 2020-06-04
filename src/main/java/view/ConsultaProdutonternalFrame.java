@@ -7,6 +7,7 @@ package view;
 
 import controller.ProdutoController;
 import java.util.ArrayList;
+import javax.print.event.PrintJobEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Produto;
@@ -34,9 +35,29 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
        tmProdutos.addColumn("fornecedor");
        
        tblProduto.setModel(tmProdutos);
-       tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
+       //tblProduto.removeColumn(tblProduto.getColumnModel().getColumn(0));
        tmProdutos.setRowCount(0);
+       
+       ArrayList<Produto> listaProdutos = ProdutoController.pesquisar_all();
+       
+       if(listaProdutos != null)
+       {
+       for(Produto p : listaProdutos)
+       {
+           System.out.println("1");
+           System.out.println(p.getId_produto()+ " " +p.getNome()+ " " +p.getTipo()+ " " +p.getCodigo()+ " " +p.getPrecoCompra()+ " " +p.getPrecoVenda()+ " " +p.getQuantidade()+ " " +p.getFornecedor());
+           tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
+           
+       }
+       }
+       
+       
+       int qtdLinhas = tblProduto.getRowCount();
+       String qtdLinha = qtdLinhas +""; //convertendo para string
+       txtqtdLinhas.setText(qtdLinha);
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -119,6 +140,13 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         btnAjuda.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ajuda.png"))); // NOI18N
         btnAjuda.setText("Ajuda");
+        btnAjuda.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnAjudaActionPerformed(evt);
+            }
+        });
 
         btnPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisa.png"))); // NOI18N
@@ -302,6 +330,8 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
        
        ArrayList<Produto> listaProdutos = ProdutoController.pesquisar(tipo, dadosPesquisados);
        
+       if(listaProdutos != null)
+       {
        for(Produto p : listaProdutos)
        {
            System.out.println("1");
@@ -309,13 +339,11 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
            tmProdutos.addRow(new Object[]{p.getId_produto(),p.getNome(),p.getTipo(),p.getCodigo(),p.getPrecoCompra(),p.getPrecoVenda(),p.getQuantidade(),p.getFornecedor()});
            
        }
+       }
        
-      int qtdLinhas = tblProduto.getRowCount();
+       int qtdLinhas = tblProduto.getRowCount();
       String qtdLinha = qtdLinhas +""; //convertendo para string
       txtqtdLinhas.setText(qtdLinha);
-       
-       
-            
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
@@ -350,12 +378,34 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         JOptionPane.showMessageDialog(this, mensagem);
         }
+        
+      int qtdLinhas = tblProduto.getRowCount();
+      String qtdLinha = qtdLinhas +""; //convertendo para string
+      txtqtdLinhas.setText(qtdLinha);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAlterarActionPerformed
     {//GEN-HEADEREND:event_btnAlterarActionPerformed
+        /*
+        ArrayList<Produto> listaAtualizada = new ArrayList<Produto>();
         
+        int qtdLinhas = tblProduto.getRowCount();
+        
+        for(int i = 1; i < qtdLinhas; i++)
+        {
+            System.out.println("linha: "+ i);
+            
+            int Produto
+            
+            Produto p = new Produto();
+            
+        }*/
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnAjudaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAjudaActionPerformed
+    {//GEN-HEADEREND:event_btnAjudaActionPerformed
+        JOptionPane.showMessageDialog(this, "Para alterar dados de uma tabela voce devera mudar os valores na coluna e depois clicar em alterar");
+    }//GEN-LAST:event_btnAjudaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

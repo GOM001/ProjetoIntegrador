@@ -17,6 +17,7 @@ public class ProdutoDAO {
     private static final String SQL_INSERT_PRODUTO = "INSERT INTO produto (nome, tipo, codigo, preco_compra, preco_venda) VALUES (?, ?, ?, ?, ?)";
     private static final String SQL_INSERT_ESTOQUE = "INSERT INTO estoque (quantidade, fornecedor, id_produto_fk) VALUES (?, ?, LAST_INSERT_ID())";
     private static final String SQL_DELETE = "DELETE FROM produto WHERE id_produto = ?"; // Delete agora em Cascata no DDL
+    private static final String SQL_DELETE_ESTOQUE = "DELETE FROM estoque WHERE id_produto_fk = ?"; // Delete agora em Cascata no DDL
 
     public static boolean cadastrar(Produto produto) {
         boolean cadastrou = false;
@@ -52,15 +53,22 @@ public class ProdutoDAO {
 
     public static boolean excluir(int idProduto) {
         boolean exclusao = false;
+        int [] linhasAfetadas = new int [2];
 
         try (Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE)) {
-
+             PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE);
+             PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_DELETE_ESTOQUE)) {
+            
+            SQL_ESTOQUE.setInt(1, idProduto);
             SQL.setInt(1, idProduto);
+            
+            
+            linhasAfetadas[0] = SQL_ESTOQUE.executeUpdate();
+            linhasAfetadas[1] = SQL.executeUpdate();
+            
+            
 
-            int linhasAfetadas = SQL.executeUpdate();
-
-            exclusao = linhasAfetadas > 0;
+            exclusao = linhasAfetadas[0] > 0 && linhasAfetadas[1] > 0;
 
         } catch (SQLException e) {
             System.out.println("Erro ao excluir dados no Banco: " + e.getMessage());
@@ -80,6 +88,47 @@ public class ProdutoDAO {
            // System.out.println("os dados pesquisados sao" + dadosPesquisados );
             
             SQL.setString(1, dadosPesquisados + "%");
+            
+             ResultSet resultado = SQL.executeQuery();
+
+            if (!resultado.next()) {
+                JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
+                listaProdutos = null;
+                return listaProdutos;
+            }
+
+            do {
+                Produto p = new Produto();
+
+                p.setId_produto(resultado.getInt("id_produto"));
+                p.setNome(resultado.getString("nome"));
+                p.setTipo(resultado.getString("tipo"));
+                p.setCodigo(resultado.getInt("codigo"));
+                p.setPrecoCompra(resultado.getDouble("preco_compra"));
+                p.setPrecoVenda(resultado.getDouble("preco_venda"));
+                p.setQuantidade(resultado.getInt("quantidade"));
+                p.setFornecedor(resultado.getString("fornecedor"));
+                listaProdutos.add(p);
+
+            } while (resultado.next());
+
+        } catch (SQLException e) {
+            System.out.println("Erro na pesquisa: " + e.getMessage());
+        }
+
+        return listaProdutos;
+    }
+    
+    public static ArrayList<Produto> pesquisar_all() {
+
+        String query = "SELECT id_produto, nome, tipo, preco_compra, codigo, preco_venda, quantidade, fornecedor FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk";
+
+        ArrayList<Produto> listaProdutos = new ArrayList<>();
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(query);
+               ) {
+           
             
              ResultSet resultado = SQL.executeQuery();
 

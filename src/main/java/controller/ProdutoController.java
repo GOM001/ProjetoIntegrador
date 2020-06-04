@@ -56,4 +56,11 @@ public class ProdutoController {
         return ProdutoDAO.pesquisar(tipo, dadosPesquisados);
         
     }
+    
+    public static ArrayList<Produto> pesquisar_all()
+    {
+        
+        return ProdutoDAO.pesquisar_all();
+        
+    }
 }
