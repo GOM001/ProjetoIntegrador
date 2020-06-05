@@ -6,9 +6,9 @@ package model;
  */
 public class Cliente {
 
-    String nome, cpf, rua, cidade, estadoEndereco, bairro, complemento, email, celular, estadoCivil;
-    int cep, numeroEndereco;
-    char sexo;
+    private String nome, cpf, rua, cidade, estadoEndereco, bairro, complemento, email, celular, estadoCivil;
+    private int cep, numeroEndereco;
+    private char sexo;
 
     public Cliente() {
     }

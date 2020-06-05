@@ -1,16 +1,7 @@
-/*
- * PARG Desenvolvimento de Sistemas
- * Pablo Alexander - pablo@parg.com.br
- * 
- * Obtem um CEP no ViaCEP
- */
-package br.com.parg.viacep;
+package util;
 
-/**
- * Define um CEP
- * @author PABLO
- */
 public class CEP {
+
     // pripriedades do CEP
     public String CEP;
     public String Logradouro;
@@ -20,7 +11,7 @@ public class CEP {
     public String Uf;
     public String Ibge;
     public String Gia;
-    
+
     /**
      * Cria um novo CEP vazio
      */
@@ -36,6 +27,7 @@ public class CEP {
 
     /**
      * Cria um novo CEP completo
+     *
      * @param CEP
      * @param Logradouro
      * @param Complemento
@@ -43,7 +35,7 @@ public class CEP {
      * @param Localidade
      * @param Uf
      * @param Ibge
-     * @param Gia 
+     * @param Gia
      */
     public CEP(String CEP, String Logradouro, String Complemento, String Bairro, String Localidade, String Uf, String Ibge, String Gia) {
         this.CEP = CEP;
@@ -58,9 +50,10 @@ public class CEP {
 
     /**
      * Cria um novo CEP parcial
+     *
      * @param Logradouro
      * @param Localidade
-     * @param Uf 
+     * @param Uf
      */
     public CEP(String Logradouro, String Localidade, String Uf) {
         this.Logradouro = Logradouro;

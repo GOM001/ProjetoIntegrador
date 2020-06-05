@@ -76,6 +76,7 @@ public class ClienteDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao deletar no Banco de Dados: " + e.getMessage());
         }
+
         return exclusao;
     }
 

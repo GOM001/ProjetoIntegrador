@@ -54,20 +54,17 @@ public class ProdutoDAO {
 
     public static boolean excluir(int idProduto) {
         boolean exclusao = false;
-        int [] linhasAfetadas = new int [2];
+        int[] linhasAfetadas = new int[2];
 
         try (Connection conexao = ConexaoDB.getConnection();
-             PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE);
-             PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_DELETE_ESTOQUE)) {
-            
+                PreparedStatement SQL = conexao.prepareStatement(SQL_DELETE);
+                PreparedStatement SQL_ESTOQUE = conexao.prepareStatement(SQL_DELETE_ESTOQUE)) {
+
             SQL_ESTOQUE.setInt(1, idProduto);
             SQL.setInt(1, idProduto);
-            
-            
+
             linhasAfetadas[0] = SQL_ESTOQUE.executeUpdate();
             linhasAfetadas[1] = SQL.executeUpdate();
-            
-            
 
             exclusao = linhasAfetadas[0] > 0 && linhasAfetadas[1] > 0;
 
@@ -84,13 +81,12 @@ public class ProdutoDAO {
         ArrayList<Produto> listaProdutos = new ArrayList<>();
 
         try (Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(query);
-               ) {
-           // System.out.println("os dados pesquisados sao" + dadosPesquisados );
-            
+                PreparedStatement SQL = conexao.prepareStatement(query);) {
+            // System.out.println("os dados pesquisados sao" + dadosPesquisados );
+
             SQL.setString(1, dadosPesquisados + "%");
-            
-             ResultSet resultado = SQL.executeQuery();
+
+            ResultSet resultado = SQL.executeQuery();
 
             if (!resultado.next()) {
                 JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
@@ -119,7 +115,7 @@ public class ProdutoDAO {
 
         return listaProdutos;
     }
-    
+
     public static ArrayList<Produto> pesquisar_all() {
 
         String query = "SELECT id_produto, nome, tipo, preco_compra, codigo, preco_venda, quantidade, fornecedor FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk";
@@ -127,11 +123,9 @@ public class ProdutoDAO {
         ArrayList<Produto> listaProdutos = new ArrayList<>();
 
         try (Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(query);
-               ) {
-           
-            
-             ResultSet resultado = SQL.executeQuery();
+                PreparedStatement SQL = conexao.prepareStatement(query);) {
+
+            ResultSet resultado = SQL.executeQuery();
 
             if (!resultado.next()) {
                 JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
@@ -160,51 +154,42 @@ public class ProdutoDAO {
 
         return listaProdutos;
     }
-    
-    public static boolean atualizar(ArrayList<Produto> listaAtualizada)
-    {
+
+    public static boolean atualizar(ArrayList<Produto> listaAtualizada) {
         boolean atualizou = false;
         int linhas = 0;
-        
+
         ArrayList<Integer> linhasAtualizadas = new ArrayList<Integer>();
-        
-        try(Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_UPDATE);)
-        {
-           
-            for(Produto p : listaAtualizada)
-            {
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_UPDATE);) {
+
+            for (Produto p : listaAtualizada) {
                 SQL.setString(1, p.getNome());
-                SQL.setString(2,p.getTipo());
+                SQL.setString(2, p.getTipo());
                 SQL.setDouble(3, p.getPrecoCompra());
                 SQL.setDouble(4, p.getPrecoVenda());
                 SQL.setInt(5, p.getQuantidade());
                 SQL.setString(6, p.getFornecedor());
                 SQL.setInt(7, p.getCodigo());
                 SQL.setInt(8, p.getId_produto());
-                
-                
+
                 System.out.println(SQL);
-                
+
                 int linhasAfetadas = SQL.executeUpdate();
-                
+
                 linhasAtualizadas.add(linhasAfetadas);
-                
+
             }
-            
-            for(int i : linhasAtualizadas)
-            {
-                if(i > 0)
-                {
+
+            for (int i : linhasAtualizadas) {
+                if (i > 0) {
                     linhas++;
                     atualizou = true;
                 }
             }
-            
-            
-            
-        }catch(Exception e)
-        {
+
+        } catch (Exception e) {
             System.out.println("ERRO NO UPDATE --> " + e.getMessage());
         }
         return atualizou;
