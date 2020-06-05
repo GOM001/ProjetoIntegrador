@@ -6,9 +6,9 @@ package model;
  */
 public class Movimentacao {
 
-    String nomeItem, nomeCliente;
-    int codVenda, quantidade;
-    double valor, desconto, subTotal;
+    private String nomeItem, nomeCliente;
+    private int codVenda, quantidade;
+    private double valor, desconto, subTotal;
 
     public void setNomeItem(String nomeItem) {
         this.nomeItem = nomeItem;

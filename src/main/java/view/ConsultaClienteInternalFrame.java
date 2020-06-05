@@ -33,14 +33,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         tblClientes = ClienteController.consultarTabela(tblClientes);
     }
 
-    public JTable resetarTabela(DefaultTableModel modelo) {
-        JTable tabela = new JTable(modelo);
-        return tabela;
-    }
-
     protected void alterarTabela(TableModelEvent e) {
         int idCliente, linha, coluna;
-        String campoSelecionado = "", novoValor, mensagem;
+        String campoSelecionado = "", novoValor, msgAlterouDados;
 
         linha = e.getFirstRow();
         coluna = e.getColumn();
@@ -53,10 +48,10 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
 
         boolean alterou = ClienteController.alterar(idCliente, campoSelecionado, novoValor);
 
-        mensagem = alterou ? campoSelecionado.substring(0, 1).toUpperCase() + campoSelecionado.substring(1)
+        msgAlterouDados = alterou ? campoSelecionado.substring(0, 1).toUpperCase() + campoSelecionado.substring(1)
                 + " alterado para " + novoValor : "Não foi possível alterar o produto.";
 
-        JOptionPane.showMessageDialog(this, mensagem);
+        JOptionPane.showMessageDialog(this, msgAlterouDados);
     }
 
     @SuppressWarnings("unchecked")
@@ -291,9 +286,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         TableRowSorter<TableModel> selecao = new TableRowSorter<>(((DefaultTableModel) tblClientes.getModel()));
         String campoSelecionado = cbFiltroConsulta.getSelectedItem().toString();
 
-        int pesquisarNaColuna = campoSelecionado.contains("CPF") ? 2 : 1;
+        int pesquisarTipo = campoSelecionado.contains("CPF") ? 2 : 1;
 
-        selecao.setRowFilter(RowFilter.regexFilter(txtFiltro.getText().replace(".", ""), pesquisarNaColuna));
+        selecao.setRowFilter(RowFilter.regexFilter(txtFiltro.getText().replace(".", ""), pesquisarTipo));
 
         tblClientes.setRowSorter(selecao);
     }//GEN-LAST:event_txtFiltroKeyTyped

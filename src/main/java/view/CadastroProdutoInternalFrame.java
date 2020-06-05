@@ -15,9 +15,8 @@ import model.Produto;
  */
 public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form MovimentacoesInternalFrame
-     */
+    String intCaracteres = "0987654321";
+
     public CadastroProdutoInternalFrame() {
         initComponents();
     }
@@ -367,7 +366,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
-       
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
@@ -384,35 +383,26 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     private void txtQuantidadeKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtQuantidadeKeyTyped
     {//GEN-HEADEREND:event_txtQuantidadeKeyTyped
-        String caracteres = "0987654321";
-
-        if (txtQuantidade.getText().length() > 4 || !caracteres.contains(evt.getKeyChar() + "")) {
+        if (txtQuantidade.getText().length() > 4 || !intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtQuantidadeKeyTyped
 
     private void txtCodProdutoKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtCodProdutoKeyTyped
     {//GEN-HEADEREND:event_txtCodProdutoKeyTyped
-        String caracteres = "0987654321";
-
-        if (txtCodProduto.getText().length() > 4 || !caracteres.contains(evt.getKeyChar() + "")) {
+        if (txtCodProduto.getText().length() > 4 || !intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
 
     }//GEN-LAST:event_txtCodProdutoKeyTyped
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-         if (txtPrecoCompra.getText().trim().equals("")) {
-            txtPrecoCompra.setText("0");
-        }
-        if (txtPrecoVenda.getText().trim().equals("")) {
-            txtPrecoVenda.setText("0");
-        }
-        if (txtCodProduto.getText().trim().equals("")) {
-            txtCodProduto.setText("0");
-        }
-        if (txtQuantidade.getText().trim().equals("")) {
-            txtQuantidade.setText("0");
+        if (txtPrecoCompra.getText().trim().isEmpty()
+                || txtPrecoVenda.getText().trim().isEmpty()
+                || txtCodProduto.getText().trim().isEmpty()
+                || txtQuantidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Dados necessários estão vazios.");
+            return;
         }
 
         String nomeProduto = txtNomeProduto.getText().trim();
@@ -443,17 +433,13 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNomeProdutoKeyPressed
 
     private void txtPrecoCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoCompraKeyTyped
-    String caracteres = "0987654321.";
-
-        if (!caracteres.contains(evt.getKeyChar() + "")) {
+        if (!intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtPrecoCompraKeyTyped
 
     private void txtPrecoVendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoVendaKeyPressed
-        String caracteres = "0987654321.";
-
-        if (!caracteres.contains(evt.getKeyChar() + "")) {
+        if (!intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtPrecoVendaKeyPressed

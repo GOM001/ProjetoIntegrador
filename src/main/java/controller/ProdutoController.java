@@ -6,7 +6,6 @@ package controller;
  */
 import DAO.ProdutoDAO;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import model.Produto;
 
 public class ProdutoController {
@@ -28,51 +27,32 @@ public class ProdutoController {
     public static boolean excluir(int idProduto) {
 
         return ProdutoDAO.excluir(idProduto);
-
     }
-    
-    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados)
-    {
-        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
-        
-        if(tipo.equals("Código"))
-        {
+
+    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados) {
+        ArrayList<Produto> listaProdutos = new ArrayList<>();
+
+        if (tipo.equals("Código")) {
             tipo = "codigo";
-        }else if(tipo.equals("Nome"))
-        {
+        } else if (tipo.equals("Nome")) {
             tipo = "nome";
-        }else
-        {
+        } else {
             tipo = "fornecedor";
         }
-        
-        if(dadosPesquisados.trim().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Por favor, digite os dados para consulta corretamente!");
-            listaProdutos = null;
-            return listaProdutos;
-        }
-        
+
         return ProdutoDAO.pesquisar(tipo, dadosPesquisados);
-        
     }
-    
-    public static ArrayList<Produto> pesquisar_all()
-    {
-        
+
+    public static ArrayList<Produto> pesquisar_all() {
+
         return ProdutoDAO.pesquisar_all();
-        
     }
-    
-    public static boolean atualizar(ArrayList<Produto> listaAtualizada)
-    {
-        if(listaAtualizada != null)
-        {
-        return ProdutoDAO.atualizar(listaAtualizada);
-        }
-        else
-        {
-        return false;
+
+    public static boolean atualizar(ArrayList<Produto> listaAtualizada) {
+        if (listaAtualizada != null) {
+            return ProdutoDAO.atualizar(listaAtualizada);
+        } else {
+            return false;
         }
     }
 }

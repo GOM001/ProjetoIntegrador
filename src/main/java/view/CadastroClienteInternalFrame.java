@@ -5,8 +5,8 @@
  */
 package view;
 
-import br.com.parg.viacep.ViaCEP;
-import br.com.parg.viacep.ViaCEPException;
+import util.ViaCEP;
+import util.ViaCEPException;
 import controller.ClienteController;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +17,6 @@ import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import util.CpfCnpjUtil;
 import util.GrupoBotaoUtil;
 
@@ -27,17 +26,11 @@ import util.GrupoBotaoUtil;
  */
 public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
 
-    //((AbstractDocument)txtNomeCliente.getDocument()).setDocumentFilter(new CharFilterUtil());
     String logradouro;
     String bairro;
     String cidade;
     String uf;
 
-    /**
-     * Creates new form MovimentacoesInternalFrame
-     *
-     * @param cep
-     */
     public void buscarCep(String cep) {
         String json;
 
@@ -46,33 +39,28 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             URLConnection urlConnection = url.openConnection();
             InputStream is = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            
-            
 
             StringBuilder jsonSb = new StringBuilder();
 
             br.lines().forEach(l -> jsonSb.append(l.trim()));
             json = jsonSb.toString();
-            
 
-            if(json == "{\n" +
-                       "  \"erro\": true\n" +
-                       "}"){
+            if (json.equals("{\n"
+                    + "  \"erro\": true\n"
+                    + "}")) {
                 txtLogradouro.setText("");
-            txtBairro.setText("");
-            txtCidade.setText("");
-            txtEstado.setText("");
-            JOptionPane.showMessageDialog(null, "Digite um CPF válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
+                txtBairro.setText("");
+                txtCidade.setText("");
+                txtEstado.setText("");
+                JOptionPane.showMessageDialog(null, "Digite um CPF válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
-            // JOptionPane.showMessageDialog(null, json);
+
             json = json.replaceAll("[{},:]", "");
             json = json.replaceAll("\"", "\n");
             String array[] = new String[30];
             array = json.split("\n");
 
-            // JOptionPane.showMessageDialog(null, array);
             logradouro = array[7];
             bairro = array[15];
             cidade = array[19];
@@ -82,14 +70,21 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             txtBairro.setText(bairro);
             txtCidade.setText(cidade);
             txtEstado.setText(uf);
-            //JOptionPane.showMessageDialog(null, logradouro + " " + bairro + " " + cidade + " " + uf);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean validarCamposCliente() {
+    public void bloquearNumeroDigitado(java.awt.event.KeyEvent evt) {
+        char tecla = evt.getKeyChar();
+
+        boolean campoDigitavel = Character.isLetter(tecla) || Character.isWhitespace(tecla) || Character.isISOControl(tecla);
+
+        txtCidade.setEditable(campoDigitavel);
+    }
+
+    private boolean validarCamposCliente() {
         return (!txtNumero.getText().trim().isEmpty()
                 && !txtNomeCliente.getText().trim().isEmpty()
                 && !txtBairro.getText().isEmpty()
@@ -508,23 +503,23 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-       ViaCEP viaCep = new ViaCEP();
-       
-       try{
-           viaCep.buscar(txtCEP.getText());
-           txtBairro.setText(viaCep.getBairro());
-           txtLogradouro.setText(viaCep.getLogradouro());
-           txtEstado.setText(viaCep.getUf());
-           txtCidade.setText(viaCep.getLocalidade());
-       }catch(ViaCEPException ex){
-           Logger.getLogger(CadastroClienteInternalFrame.class.getName()).log(Level.SEVERE,null, ex);
-           JOptionPane.showMessageDialog(null, "Digite novamente.", "CEP Inválido!", JOptionPane.WARNING_MESSAGE);
-           txtCEP.setText("");
-           txtBairro.setText("");
-           txtCidade.setText("");
-           txtEstado.setText("");
-           txtLogradouro.setText("");
-       }
+        ViaCEP viaCep = new ViaCEP();
+
+        try {
+            viaCep.buscar(txtCEP.getText());
+            txtBairro.setText(viaCep.getBairro());
+            txtLogradouro.setText(viaCep.getLogradouro());
+            txtEstado.setText(viaCep.getUf());
+            txtCidade.setText(viaCep.getLocalidade());
+        } catch (ViaCEPException ex) {
+            Logger.getLogger(CadastroClienteInternalFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Digite novamente.", "CEP Inválido!", JOptionPane.WARNING_MESSAGE);
+            txtCEP.setText("");
+            txtBairro.setText("");
+            txtCidade.setText("");
+            txtEstado.setText("");
+            txtLogradouro.setText("");
+        }
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void txtNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeClienteActionPerformed
@@ -533,12 +528,12 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         boolean dadosPreenchidos, cadastrou, cpfValido;
-  
+
         dadosPreenchidos = validarCamposCliente();
 
         if (dadosPreenchidos) {
-            String campoCPF = txtCpf.getText();
-            cpfValido = CpfCnpjUtil.isValid(campoCPF);
+            String CPF = txtCpf.getText();
+            cpfValido = CpfCnpjUtil.isValid(CPF);
 
             if (!cpfValido) {
                 JOptionPane.showMessageDialog(null, "Digite um CPF válido.", "CPF inválido!", JOptionPane.WARNING_MESSAGE);
@@ -561,52 +556,33 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             int numeroEndereco = Integer.parseInt(txtNumero.getText());
 
             cadastrou = ClienteController.cadastrar(nome, cpf, sexo, rua, cidadeEndereco, estado, bairroEndereco, complemento, email, celular, estadoCivil, cep, numeroEndereco);
-            
+
             String mensagem = cadastrou ? "Cliente cadastrado com sucesso!" : "Não foi possível cadastrar o cliente.";
             JOptionPane.showMessageDialog(null, mensagem);
+
         } else {
             JOptionPane.showMessageDialog(null, "Falta preenchimento!", "Alguns dados obrigatórios não foram preenchidos.", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyPressed
-        char tecla = evt.getKeyChar();
-
-        boolean campoDigitavel = Character.isLetter(tecla) || Character.isWhitespace(tecla) || Character.isISOControl(tecla);
-
-        txtNomeCliente.setEditable(campoDigitavel);
+        bloquearNumeroDigitado(evt);
     }//GEN-LAST:event_txtNomeClienteKeyPressed
 
     private void txtLogradouroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogradouroKeyPressed
-        char tecla = evt.getKeyChar();
-
-        boolean campoDigitavel = Character.isLetter(tecla) || Character.isWhitespace(tecla) || Character.isISOControl(tecla);
-
-        txtLogradouro.setEditable(campoDigitavel);
+        bloquearNumeroDigitado(evt);
     }//GEN-LAST:event_txtLogradouroKeyPressed
 
     private void txtCidadeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeKeyPressed
-        char tecla = evt.getKeyChar();
-
-        boolean campoDigitavel = Character.isLetter(tecla) || Character.isWhitespace(tecla) || Character.isISOControl(tecla);
-
-        txtCidade.setEditable(campoDigitavel);
+        bloquearNumeroDigitado(evt);
     }//GEN-LAST:event_txtCidadeKeyPressed
 
     private void txtEstadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoKeyPressed
-        char tecla = evt.getKeyChar();
-
-        boolean campoDigitavel = Character.isLetter(tecla) || Character.isWhitespace(tecla) || Character.isISOControl(tecla);
-
-        txtEstado.setEditable(campoDigitavel);
+        bloquearNumeroDigitado(evt);
     }//GEN-LAST:event_txtEstadoKeyPressed
 
     private void txtBairroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyPressed
-        char tecla = evt.getKeyChar();
-
-        boolean campoDigitavel = Character.isLetter(tecla) || Character.isWhitespace(tecla) || Character.isISOControl(tecla);
-
-        txtBairro.setEditable(campoDigitavel);
+        bloquearNumeroDigitado(evt);
     }//GEN-LAST:event_txtBairroKeyPressed
 
     private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed

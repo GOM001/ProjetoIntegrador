@@ -1,10 +1,4 @@
-/*
- * PARG Desenvolvimento de Sistemas
- * Pablo Alexander - pablo@parg.com.br
- * 
- * Obtem um CEP no ViaCEP
- */
-package br.com.parg.viacep;
+package util;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,11 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Classe java para obter um CEP no ViaCEP
- *
- * @author Pablo Alexander da Rocha Gonçalves
- */
 public class ViaCEP extends ViaCEPBase {
 
     // constantes
@@ -44,7 +33,7 @@ public class ViaCEP extends ViaCEPBase {
      *
      * @param events eventos para a classe
      * @param cep
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws util.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep, ViaCEPEvents events) throws ViaCEPException {
         super();
@@ -56,7 +45,7 @@ public class ViaCEP extends ViaCEPBase {
      * Constrói uma nova classe e busca um CEP no ViaCEP
      *
      * @param cep
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws util.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep) throws ViaCEPException {
         super();
@@ -67,20 +56,20 @@ public class ViaCEP extends ViaCEPBase {
      * Busca um CEP no ViaCEP
      *
      * @param cep
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws util.ViaCEPException caso ocorra algum erro
      */
     @Override
     public final void buscar(String cep) throws ViaCEPException {
         try {
             // define o cep atual
             currentCEP = cep;
-            
+
             // define a url
             String url = "http://viacep.com.br/ws/" + cep + "/json/";
-            
+
             // define os dados
             JSONObject obj = new JSONObject(getHttpGET(url));
-            
+
             if (!obj.has("erro")) {
                 CEP novoCEP = new CEP(obj.getString("cep"),
                         obj.getString("logradouro"),
@@ -90,13 +79,13 @@ public class ViaCEP extends ViaCEPBase {
                         obj.getString("uf"),
                         obj.getString("ibge"),
                         obj.getString("gia"));
-                
+
                 // insere o novo CEP
                 CEPs.add(novoCEP);
-                
+
                 // atualiza o index
                 index = CEPs.size() - 1;
-                
+
                 // verifica os Eventos
                 if (Events instanceof ViaCEPEvents) {
                     Events.onCEPSuccess(this);
@@ -106,14 +95,14 @@ public class ViaCEP extends ViaCEPBase {
                 if (Events instanceof ViaCEPEvents) {
                     Events.onCEPError(currentCEP);
                 }
-                
+
                 throw new ViaCEPException("Não foi possível encontrar o CEP", cep, ViaCEPException.class.getName());
             }
         } catch (JSONException ex) {
             Logger.getLogger(ViaCEP.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Busca um CEP usando um endereço
      *
@@ -138,17 +127,17 @@ public class ViaCEP extends ViaCEPBase {
         try {
             // define o cep atual
             currentCEP = "?????-???";
-            
+
             // define a url
             String url = "http://viacep.com.br/ws/" + Uf.toUpperCase() + "/" + Localidade + "/" + Logradouro + "/json/";
-            
+
             // obtem a lista de CEP's
             JSONArray ceps = new JSONArray(getHttpGET(url));
-            
+
             if (ceps.length() > 0) {
                 for (int i = 0; i < ceps.length(); i++) {
                     JSONObject obj = ceps.getJSONObject(i);
-                    
+
                     if (!obj.has("erro")) {
                         CEP novoCEP = new CEP(obj.getString("cep"),
                                 obj.getString("logradouro"),
@@ -158,13 +147,13 @@ public class ViaCEP extends ViaCEPBase {
                                 obj.getString("uf"),
                                 obj.getString("ibge"),
                                 obj.getString("gia"));
-                        
+
                         // insere o novo CEP
                         CEPs.add(novoCEP);
-                        
+
                         // atualiza o index
                         index = CEPs.size() - 1;
-                        
+
                         // verifica os Eventos
                         if (Events instanceof ViaCEPEvents) {
                             Events.onCEPSuccess(this);
@@ -174,7 +163,7 @@ public class ViaCEP extends ViaCEPBase {
                         if (Events instanceof ViaCEPEvents) {
                             Events.onCEPError(currentCEP);
                         }
-                        
+
                         throw new ViaCEPException("Não foi possível validar o CEP", currentCEP, ViaCEPException.class.getName());
                     }
                 }

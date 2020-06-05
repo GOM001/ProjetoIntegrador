@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,18 +9,15 @@ import javax.swing.JOptionPane;
  */
 public class Produto {
 
-    
-    
     private int id_produto;
-    private String nome , tipo, fornecedor;
+    private String nome, tipo, fornecedor;
     private int quantidade, codigo;
     private double precoCompra, precoVenda;
 
     public Produto() {
     }
 
-    public Produto(int id_produto,String nome ,String tipo, int codigo,double precoCompra, double precoVenda, int quantidade,String fornecedor  )
-    {
+    public Produto(int id_produto, String nome, String tipo, int codigo, double precoCompra, double precoVenda, int quantidade, String fornecedor) {
         this.id_produto = id_produto;
         this.nome = nome;
         this.tipo = tipo;
@@ -30,17 +28,10 @@ public class Produto {
         this.precoVenda = precoVenda;
     }
 
-    
-    public int getId_produto()
-    {
+    public int getId_produto() {
         return id_produto;
     }
 
-    public void setId_produto(int id_produto)
-    {
-        this.id_produto = id_produto;
-    }
-    
     public String getNome() {
         return nome;
     }
@@ -67,6 +58,10 @@ public class Produto {
 
     public int getQuantidade() {
         return quantidade;
+    }
+
+    public void setId_produto(int id_produto) {
+        this.id_produto = id_produto;
     }
 
     public void setNome(String nomeProduto) {
@@ -97,9 +92,8 @@ public class Produto {
         this.tipo = tipo;
     }
 
-    //Codar Validação de dados
-    public  boolean validarDados(String nomeProduto, String tipo, String fornecedor, int quantidade, int codProduto, double precoCompra, double precoVenda) {
-        boolean dadosValidados = true;
+    public boolean validarDados(String nomeProduto, String tipo, String fornecedor, int quantidade, int codProduto, double precoCompra, double precoVenda) {
+        boolean valido = true;
 
         this.nome = nomeProduto;
         this.tipo = tipo;
@@ -112,43 +106,43 @@ public class Produto {
         try {
             if (this.nome.trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Preencha o nome do produto");
-                return !dadosValidados;
+                return !valido;
             }
             if (this.tipo.trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Preecha o tipo do produto");
-                return !dadosValidados;
+                return !valido;
             }
             if (this.fornecedor.trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Preencha o fornecedor");
-                return !dadosValidados;
+                return !valido;
             }
             if (this.quantidade <= 0) {
                 JOptionPane.showMessageDialog(null, "Insira uma quantidade de produtos valida!");
-                return !dadosValidados;
+                return !valido;
             }
 
             if (this.codigo <= 0) {
                 JOptionPane.showMessageDialog(null, "Insira um codigo valido!");
-                return !dadosValidados;
+                return !valido;
             }
 
             if (precoCompra <= 0) {
                 JOptionPane.showMessageDialog(null, "Insira um valor de compra valido!");
-                return !dadosValidados;
+                return !valido;
             }
 
             if (precoVenda <= 0) {
                 JOptionPane.showMessageDialog(null, "Insira um preco de venda valido!");
-                return !dadosValidados;
+                return !valido;
             }
 
-            return dadosValidados;
+            return valido;
 
-        } catch (Exception ex) {
+        } catch (HeadlessException ex) {
             JOptionPane.showMessageDialog(null, "Erro: " + ex);
         }
 
-        return dadosValidados;
+        return valido;
     }
 
 }
