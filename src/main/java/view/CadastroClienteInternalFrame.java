@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import util.ViaCEP;
@@ -45,9 +40,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             br.lines().forEach(l -> jsonSb.append(l.trim()));
             json = jsonSb.toString();
 
-            if (json.equals("{\n"
-                    + "  \"erro\": true\n"
-                    + "}")) {
+            if (json.equals("{\n  \"erro\": true\n}")) {
                 txtLogradouro.setText("");
                 txtBairro.setText("");
                 txtCidade.setText("");
@@ -561,7 +554,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, mensagem);
 
         } else {
-            JOptionPane.showMessageDialog(null, "Falta preenchimento!", "Alguns dados obrigatórios não foram preenchidos.", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios não foram preenchidos.", "Falta preenchimento!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

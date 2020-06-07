@@ -32,7 +32,7 @@ public class ClienteDAO {
          */
         try (Connection conexao = ConexaoDB.getConnection();
                 PreparedStatement SQL_CLIENTE = conexao.prepareStatement(SQL_INSERT_CLIENTE);
-                PreparedStatement SQL_ENDERECO = conexao.prepareStatement(SQL_INSERT_ENDERECO);) {
+                PreparedStatement SQL_ENDERECO = conexao.prepareStatement(SQL_INSERT_ENDERECO)) {
 
             SQL_CLIENTE.setString(1, cliente.getNome());
             SQL_CLIENTE.setString(2, cliente.getCpf());

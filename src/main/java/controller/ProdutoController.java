@@ -11,6 +11,7 @@ import model.Produto;
 public class ProdutoController {
 
     public static boolean cadastrar(String nome, String tipo, int qtd, String fornecedor, int codigo, double precoCompra, double precoVenda) {
+
         Produto produto = new Produto();
 
         produto.setNome(nome);
@@ -30,14 +31,16 @@ public class ProdutoController {
     }
 
     public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados) {
-        ArrayList<Produto> listaProdutos = new ArrayList<>();
-
-        if (tipo.equals("Código")) {
-            tipo = "codigo";
-        } else if (tipo.equals("Nome")) {
-            tipo = "nome";
-        } else {
-            tipo = "fornecedor";
+        switch (tipo) {
+            case "Código":
+                tipo = "codigo";
+                break;
+            case "Nome":
+                tipo = "nome";
+                break;
+            default:
+                tipo = "fornecedor";
+                break;
         }
 
         return ProdutoDAO.pesquisar(tipo, dadosPesquisados);

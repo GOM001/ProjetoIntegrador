@@ -2,7 +2,6 @@ package view;
 
 import controller.ClienteController;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +18,7 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         initComponents();
         carregarTabela();
 
+        //Event Listener da Tabela
         DefaultTableModel tblModelo = (DefaultTableModel) tblClientes.getModel();
         tblModelo.addTableModelListener((TableModelEvent e) -> {
             alterarTabela(e);
@@ -30,7 +30,7 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
     }
 
     private void carregarTabela() {
-        tblClientes = ClienteController.consultarTabela(tblClientes);
+        this.tblClientes = ClienteController.consultarTabela(tblClientes);
     }
 
     protected void alterarTabela(TableModelEvent e) {
@@ -42,9 +42,9 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         idCliente = (Integer) tblClientes.getValueAt(linha, 0);
         novoValor = String.valueOf(tblClientes.getValueAt(linha, coluna));
 
-        String[] vetorNomeColunas = {"id_cliente", "nome", "cpf", "sexo", "est_civil", "email", "celular"};
+        String[] vetorColunas = {"id_cliente", "nome", "cpf", "sexo", "est_civil", "email", "celular"};
 
-        campoSelecionado = vetorNomeColunas[coluna];
+        campoSelecionado = vetorColunas[coluna];
 
         boolean alterou = ClienteController.alterar(idCliente, campoSelecionado, novoValor);
 
@@ -283,12 +283,13 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyTyped
+
         TableRowSorter<TableModel> selecao = new TableRowSorter<>(((DefaultTableModel) tblClientes.getModel()));
         String campoSelecionado = cbFiltroConsulta.getSelectedItem().toString();
 
         int pesquisarTipo = campoSelecionado.contains("CPF") ? 2 : 1;
 
-        selecao.setRowFilter(RowFilter.regexFilter(txtFiltro.getText().replace(".", ""), pesquisarTipo));
+        selecao.setRowFilter(RowFilter.regexFilter("(?i)" + txtFiltro.getText().replace(".", ""), pesquisarTipo));
 
         tblClientes.setRowSorter(selecao);
     }//GEN-LAST:event_txtFiltroKeyTyped
