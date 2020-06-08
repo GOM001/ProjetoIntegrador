@@ -6,10 +6,18 @@ package model;
  */
 public class Movimentacao {
 
-    private String nomeItem, nomeCliente;
+    private String nomeItem, nomeCliente,cpf;
     private int codVenda, quantidade;
     private double valor, desconto, subTotal;
-
+    
+    public void SetCpf(String cpf)
+    {
+        this.cpf = cpf;
+    }
+    public String getCpf()
+    {
+        return this.cpf;
+    }
     public void setNomeItem(String nomeItem) {
         this.nomeItem = nomeItem;
     }
