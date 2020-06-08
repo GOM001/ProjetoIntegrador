@@ -542,7 +542,7 @@ public class CadastroClienteInternalFrame extends javax.swing.JInternalFrame {
             String bairroEndereco = txtBairro.getText();
             String cidadeEndereco = txtCidade.getText();
             String complemento = txtComplemento.getText();
-            String cpf = txtCpf.getText(); // cpf será varchar(14)
+            String cpf = txtCpf.getText().replace(".", "").replace("-", "").trim(); // cpf será varchar(14)
             String email = txtEmail.getText();
             String estado = txtEstado.getText();
             String rua = txtLogradouro.getText();

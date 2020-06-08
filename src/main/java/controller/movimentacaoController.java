@@ -7,6 +7,8 @@ package controller;
 
 import java.util.ArrayList;
 import DAO.movimentacaoDAO;
+import javax.swing.JOptionPane;
+import model.Movimentacao;
 
 /**
  *
@@ -17,6 +19,25 @@ public class movimentacaoController
     public static ArrayList<String> pesquisaPlantas()
     {
         return movimentacaoDAO.pesquisaPlanta();
+        
+    }
+    
+    public static String buscarCliente(Movimentacao movimentacao)
+    {
+        String cpf = movimentacao.getCpf().replace(".", "").replace("-", "").trim();
+        if(cpf.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Digite um cpf válido!");
+            return "";
+        }else{
+        
+        
+        
+        
+        return movimentacaoDAO.buscaCpf(cpf);
+        }
+        
+        
         
     }
     

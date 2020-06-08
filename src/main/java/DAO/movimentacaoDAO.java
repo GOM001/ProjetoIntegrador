@@ -19,6 +19,7 @@ import util.ConexaoDB;
 public class movimentacaoDAO
 {
     private static final String SELECT_PLANTAS = "SELECT nome FROM produto;";
+    private static final String SELECT_CLIENTE = "SELECT nome FROM cliente where cpf = ?";
     
     public static ArrayList<String> pesquisaPlanta()
     {
@@ -35,7 +36,6 @@ public class movimentacaoDAO
             }
             
             do {
-                System.out.println(resultado.getString("nome"));
                 listaPlantas.add(resultado.getString("nome"));
             } while (resultado.next());
         }catch(Exception e)
@@ -44,6 +44,36 @@ public class movimentacaoDAO
         }
         
         return listaPlantas;
+    }
+    
+    public static String buscaCpf(String cpf)
+    {
+        String nome ="";
         
+        try(Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SELECT_CLIENTE))
+        {
+            SQL.setString(1, cpf);
+            System.out.println(SQL);
+            ResultSet resultado = SQL.executeQuery();
+            
+            
+            if(!resultado.next())
+            {
+                JOptionPane.showMessageDialog(null, "Cliente nao cadastrado");
+                return "";
+            }else
+            {
+                System.out.println(resultado.getString("nome"));
+                return resultado.getString("nome");
+            }
+            
+            
+            
+        } catch (Exception e)
+        {
+            System.out.println("Erro ---->" + e.getMessage());
+        }
+        return "";
     }
 }
