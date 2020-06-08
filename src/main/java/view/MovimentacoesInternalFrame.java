@@ -45,8 +45,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        dataVenda = new com.toedter.calendar.JDateChooser();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -232,17 +232,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        dataVenda.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                dataVendaComponentAdded(evt);
-            }
-        });
-        dataVenda.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                dataVendaFocusLost(evt);
-            }
-        });
-
         jToggleButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
         jToggleButton1.setText("Buscar");
@@ -268,15 +257,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblNome)
                         .addGap(66, 66, 66)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(dataVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(69, 69, 69))))
+                    .addComponent(jLabel1)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,14 +273,14 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(dataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dataVenda, jFormattedTextField1, jTextField4, jToggleButton1});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jFormattedTextField1, jTextField4, jToggleButton1});
 
         jPanel3.setBackground(new java.awt.Color(187, 187, 187));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -491,46 +476,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void dataVendaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataVendaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataVendaFocusLost
-
-    private void dataVendaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_dataVendaComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataVendaComponentAdded
-
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelMovimentacoes;
-    private javax.swing.JLabel LabelMovimentacoes1;
-    private javax.swing.JLabel LabelMovimentacoes2;
-    private javax.swing.JLabel LabelMovimentacoes3;
-    private javax.swing.JLabel LabelMovimentacoes4;
-    private javax.swing.JLabel LabelMovimentacoes5;
-    private javax.swing.JLabel LabelMovimentacoes6;
-    private javax.swing.JLabel LabelMovimentacoes7;
-    private javax.swing.JLabel LabelMovimentacoes8;
-    private javax.swing.JLabel LabelMovimentacoes9;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas1;
     private javax.swing.JPanel PanelGerarRelatoriodeVendas10;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas2;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas3;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas4;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas5;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas6;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas7;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas8;
-    private javax.swing.JPanel PanelGerarRelatoriodeVendas9;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnExcluirProduto;
-    private com.toedter.calendar.JDateChooser dataVenda;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
