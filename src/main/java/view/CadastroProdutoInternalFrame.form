@@ -307,9 +307,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNomeProduto">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Margarida"/>
-                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeProdutoActionPerformed"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeProdutoKeyPressed"/>
@@ -356,18 +353,12 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCodProduto">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="4975"/>
-                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodProdutoActionPerformed"/>
                         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodProdutoKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtFornecedor">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Kazuo Flores"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbTipoPlanta">
                       <Properties>

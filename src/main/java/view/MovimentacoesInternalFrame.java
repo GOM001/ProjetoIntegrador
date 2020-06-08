@@ -553,9 +553,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         
         String nome = movimentacaoController.buscarCliente(movimentacao);
         
-        if(nome.equals(""))
+        if(nome.trim().equals(""))
         {
-           // JOptionPane.showMessageDialog(this, "Cliente nao cadastrado");
+           txtNomeCliente.setText("");
         }else
         {
             txtNomeCliente.setText(nome);

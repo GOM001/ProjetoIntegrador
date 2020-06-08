@@ -54,7 +54,7 @@ public class movimentacaoDAO
                 PreparedStatement SQL = conexao.prepareStatement(SELECT_CLIENTE))
         {
             SQL.setString(1, cpf);
-            System.out.println(SQL);
+           
             ResultSet resultado = SQL.executeQuery();
             
             
@@ -64,7 +64,7 @@ public class movimentacaoDAO
                 return "";
             }else
             {
-                System.out.println(resultado.getString("nome"));
+                
                 return resultado.getString("nome");
             }
             
