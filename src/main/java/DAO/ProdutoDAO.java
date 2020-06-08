@@ -120,7 +120,7 @@ public class ProdutoDAO {
             ResultSet resultado = SQL.executeQuery();
 
             if (!resultado.next()) {
-                JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
+               // JOptionPane.showMessageDialog(null, "Não há registros com os dados informados");
                 return listaProdutos;
             }
 

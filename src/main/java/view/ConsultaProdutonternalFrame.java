@@ -389,7 +389,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         if (listaProdutos != null) {
             listaProdutos.forEach((p) -> {
-                _loggerProduto(p);
+                //_loggerProduto(p);
                 tmProdutos.addRow(new Object[]{p.getId_produto(), p.getNome(), p.getTipo(), p.getCodigo(), p.getPrecoCompra(), p.getPrecoVenda(), p.getQuantidade(), p.getFornecedor()});
             });
         }

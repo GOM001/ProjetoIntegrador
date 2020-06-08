@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class ConexaoDB {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String SERVER = "localhost:3306";
+    private static final String SERVER = "10.211.55.16:3306";
 
     private static final String DATABASE = "floricultura";
     private static final String LOGIN = "root";

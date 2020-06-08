@@ -5,6 +5,12 @@
  */
 package view;
 
+import controller.movimentacaoController;
+import DAO.movimentacaoDAO;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author caiomoreno
@@ -16,6 +22,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
      */
     public MovimentacoesInternalFrame() {
         initComponents();
+        
+        
+        pesquisaPlanta();
+        
     }
 
     /**
@@ -25,7 +35,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,6 +64,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnAdicionarProduto = new javax.swing.JButton();
         btnExcluirProduto = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        cboPlanta = new javax.swing.JComboBox();
+        cboQtd = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -88,18 +103,22 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         jFormattedTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jFormattedTextField2.setForeground(new java.awt.Color(51, 51, 255));
-        try {
+        try
+        {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("R$ 0,00")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
         jFormattedTextField2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jFormattedTextField2.setSelectedTextColor(new java.awt.Color(255, 0, 0));
 
         jFormattedTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        try {
+        try
+        {
             jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("R$ 0,00")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
         jFormattedTextField3.setDisabledTextColor(new java.awt.Color(255, 0, 0));
@@ -107,9 +126,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         jFormattedTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jFormattedTextField4.setForeground(new java.awt.Color(255, 0, 0));
-        try {
+        try
+        {
             jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("R$ 0,00")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
         jFormattedTextField4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -210,8 +231,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jLabel2.setText("Digite o CPF do cliente");
 
         jTextField4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextField4ActionPerformed(evt);
             }
         });
@@ -221,13 +244,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-planejador-30.png"))); // NOI18N
         jLabel1.setText("Data da venda");
 
-        try {
+        try
+        {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jFormattedTextField1ActionPerformed(evt);
             }
         });
@@ -286,18 +313,23 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Cod. Prod", "Nome do produto", "Qtde.", "Desc. %", "Desc. R$", "Total Bruto", "Total Líquido"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 true, true, true, true, true, true, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -307,8 +339,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionarCesta.png"))); // NOI18N
         btnAdicionarProduto.setText("Adicionar");
         btnAdicionarProduto.setBorderPainted(false);
-        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAdicionarProdutoActionPerformed(evt);
             }
         });
@@ -317,8 +351,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluirCesta.png"))); // NOI18N
         btnExcluirProduto.setText("Excluir");
         btnExcluirProduto.setBorderPainted(false);
-        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExcluirProdutoActionPerformed(evt);
             }
         });
@@ -328,17 +364,35 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flowers.png"))); // NOI18N
         jLabel8.setText("Detalhes do Produto");
 
+        jLabel9.setText("Produto:");
+
+        jLabel10.setText("Qtd:");
+
+        cboQtd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(cboQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cboPlanta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(264, 264, 264)
@@ -349,10 +403,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(cboQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAdicionarProduto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExcluirProduto))
@@ -365,7 +427,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
-        jButton3.setText("Finalizar Compra");
+        jButton3.setText("Finalizar Transacao");
 
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icone-excluir.png"))); // NOI18N
@@ -376,7 +438,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(143, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(85, 85, 85)
                 .addComponent(jButton3)
@@ -480,11 +542,34 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
+    private void pesquisaPlanta()
+    {
+        try
+        {
+          ArrayList<String> listaPlanta = movimentacaoController.pesquisaPlantas();
+           // System.out.println("aqui");
+            for(String a : listaPlanta)
+            {
+                cboPlanta.addItem(a);
+            }
+         
+        
+        
+        } catch (Exception e)
+        {
+            System.out.println("ERRO ---> "+ e);
+        }
+        
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelGerarRelatoriodeVendas10;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnExcluirProduto;
+    private javax.swing.JComboBox cboPlanta;
+    private javax.swing.JComboBox cboQtd;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -495,6 +580,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField jFormattedTextField5;
     private javax.swing.JFormattedTextField jFormattedTextField6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -502,6 +588,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
