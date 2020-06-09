@@ -13,7 +13,8 @@ import model.Movimentacao;
  * @author caiomoreno
  */
 public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
-
+ boolean temDesconto = false;
+ 
     public MovimentacoesInternalFrame() {
         initComponents();
         pesquisaPlanta();
@@ -532,26 +533,103 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         nome = buscarCliente(movimentacao);
 
         if (nome.trim().equals("")) {
+            temDesconto = false;
             txtNomeCliente.setText("");
         } else {
+            temDesconto = true;
             txtNomeCliente.setText(nome);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
+       DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+       Movimentacao movimentacao;
+       
+       boolean jaTem = false;
+       String nomeProduto, Desconto= "10%";
        String nome = cboPlanta.getSelectedItem().toString();
        int qtd =Integer.parseInt(cboQtd.getSelectedItem().toString());
        int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
        boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
+       int qtdLinhas = tabela.getRowCount(); int linhaParada = 0;
+       double valorDesconto= 0.0,valorLiquido;
+       
+       if(!temDesconto)
+       {
+           Desconto = "Sem desconto";
+           valorDesconto = 0.0;
+       }
+       
        String mensagem = temEstoque ? "Produto adicionado" : "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")";
        
-        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
        
-        
-        tabela.addRow(new Object[]{"7777","Teste","12", "22%","10.00","30.00","20"});
-        
+       for(int i = 0; i < qtdLinhas; i++)
+       {
+          nomeProduto = String.valueOf(tabela.getValueAt(i, 1));
+          linhaParada = i;
+           System.out.println("nome do produto ---> " + nomeProduto);
+           
+           System.out.println("comparacao = "+ nomeProduto+ "=="+ nome);
+           
+          if(nomeProduto.equals(nome))
+          {
+              jaTem = true;
+          }
+       }
        
-       JOptionPane.showMessageDialog(this, mensagem);
+       movimentacao = movimentacaoController.adicionaProduto(nome);
+       
+        if(jaTem)
+        {
+            JOptionPane.showMessageDialog(this, "Produto já existe na tabela!");
+            String quantidade = String.valueOf(tabela.getValueAt(linhaParada, 2));
+            String totalBruto = String.valueOf(tabela.getValueAt(linhaParada, 5));
+            
+            double totalBrutoD = Double.parseDouble(totalBruto);
+            int qtdInt = Integer.parseInt(quantidade);
+            
+            double valorUnitario = valorUnitario(totalBrutoD, qtdInt);
+            int novaQuantidade = atualizarQtd(qtdInt, qtd);
+            double bruto = valorUnitario * qtd;
+            
+            double novoBruto = atualizaValorBruto(bruto, totalBrutoD);
+            
+            valorDesconto = calcularDesconto(novoBruto);
+            valorLiquido = calcularLiquido(valorDesconto, novoBruto);
+             //tblModelo.removeRow(tblVenda.getSelectedRow());
+            tabela.removeRow(linhaParada);
+            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido});
+            
+        }else{
+       
+       
+       if(temDesconto)
+       {
+           double valorProduto = movimentacao.getValor();
+           
+            valorDesconto =  calcularDesconto(valorProduto);
+            
+            
+           
+           valorLiquido = valorProduto - valorDesconto;
+         
+       }else
+       {
+          
+           
+           valorLiquido = movimentacao.getValor();
+       }
+       
+       
+            
+            
+        
+        tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido});
+        
+        JOptionPane.showMessageDialog(this, mensagem);
+    }
+       
+       
        
        
        
@@ -581,6 +659,31 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         txtDataVenda.setText(dataFormatada);
         txtDataVenda.setEditable(false);
 
+    }
+    
+    private double calcularDesconto(double valorProduto)
+    {
+        return valorProduto * 0.1;
+    }
+    
+    private double calcularLiquido(double valorDesconto,double valorBruto)
+    {
+        return valorBruto - valorDesconto;
+    }
+    
+    private int atualizarQtd(int a, int b)
+    {
+        return a + b;
+    }
+    
+    private double valorUnitario(double valor, int qtd)
+    {
+        return ((double) valor / qtd);
+    }
+    
+    private double atualizaValorBruto(Double a, Double b)
+    {
+        return (double) a + b;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

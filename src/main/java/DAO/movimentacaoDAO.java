@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Movimentacao;
 import util.ConexaoDB;
 
 /**
@@ -84,6 +85,40 @@ public class movimentacaoDAO {
         }
         
         return qtd;
+    }
+    
+    public static Movimentacao adicionaProduto(String nome)
+    {
+        Movimentacao movimentacao = new Movimentacao();
+        String query = "SELECT codigo, nome, preco_venda FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk where nome = ?;";
+        
+        try(Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(query))
+        {
+            SQL.setString(1, nome);
+            
+            System.out.println(SQL);
+            
+            ResultSet resultado = SQL.executeQuery();
+            
+            if(resultado.next())
+            {
+                movimentacao.setCodProd(resultado.getInt("codigo"));
+                movimentacao.setNomeItem(resultado.getString("nome"));
+               // movimentacao.setQuantidade(resultado.getInt("quantidade"));
+                movimentacao.setValor(resultado.getDouble("preco_venda"));
+            }
+            
+                
+            
+            
+        } catch (Exception e)
+        {
+            System.out.println("erro na consulta:(adicionar produto) ---> "+ e.getMessage());
+        }
+        
+        
+        return movimentacao;
     }
     
     
