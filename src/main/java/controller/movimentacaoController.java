@@ -6,7 +6,7 @@
 package controller;
 
 import java.util.ArrayList;
-import DAO.VendaDAO;
+import DAO.movimentacaoDAO;
 import javax.swing.JOptionPane;
 import model.Movimentacao;
 
@@ -14,13 +14,18 @@ import model.Movimentacao;
  *
  * @author caiomoreno
  */
-public class VendaController {
+public class movimentacaoController {
 
     public static ArrayList<String> pesquisaPlantas() {
-        return VendaDAO.pesquisaPlanta();
+        return movimentacaoDAO.pesquisaPlanta();
     }
 
     public static String buscarClientePeloCPF(String cpf) {
-        return VendaDAO.buscaCpf(cpf);
+        return movimentacaoDAO.buscaCpf(cpf);
+    }
+    
+    public static int ConsultaEstoque()
+    {
+        return 1;
     }
 }

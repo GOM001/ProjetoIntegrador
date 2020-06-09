@@ -11,13 +11,13 @@ import util.ConexaoDB;
  *
  * @author caiomoreno
  */
-public class VendaDAO {
+public class movimentacaoDAO {
 
     private static final String SQL_SELECT_PRODUTO = "SELECT nome FROM produto;";
     private static final String SQL_SELECT_CLIENTE = "SELECT nome FROM cliente where cpf = ?";
 
     public static ArrayList<String> pesquisaPlanta() {
-        ArrayList<String> listaPlantas = new ArrayList<>();
+        ArrayList<String> listaPlantas = new ArrayList<String>();
 
         try (Connection conexao = ConexaoDB.getConnection();
                 PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_PRODUTO)) {
@@ -28,6 +28,7 @@ public class VendaDAO {
             }
 
             do {
+                
                 listaPlantas.add(resultado.getString("nome"));
             } while (resultado.next());
         } catch (Exception e) {
@@ -58,4 +59,6 @@ public class VendaDAO {
         }
         return "";
     }
+    
+    
 }
