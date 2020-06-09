@@ -66,7 +66,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         cboPlanta = new javax.swing.JComboBox();
         cboQtd = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         PanelGerarRelatoriodeVendas10 = new javax.swing.JPanel();
         lblNome1 = new javax.swing.JLabel();
@@ -412,14 +412,14 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(187, 187, 187));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
-        jButton3.setText("Finalizar Transacao");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
+        btnFinalizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
+        btnFinalizar.setText("Finalizar Transacao");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton3ActionPerformed(evt);
+                btnFinalizarActionPerformed(evt);
             }
         });
 
@@ -435,7 +435,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(85, 85, 85)
-                .addComponent(jButton3)
+                .addComponent(btnFinalizar)
                 .addGap(160, 160, 160))
         );
         jPanel5Layout.setVerticalGroup(
@@ -444,7 +444,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(btnFinalizar))
                 .addGap(17, 17, 17))
         );
 
@@ -679,11 +679,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
-    {//GEN-HEADEREND:event_jButton3ActionPerformed
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFinalizarActionPerformed
+    {//GEN-HEADEREND:event_btnFinalizarActionPerformed
+        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
         Object[] options = { "Confirmar", "Cancelar" };
-        JOptionPane.showOptionDialog(null, "Clique Confirmar para continuar", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int dadosClicados = JOptionPane.showOptionDialog(null, "Clique Confirmar para confirmar a venda", "Confirmação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        
+        if(dadosClicados == 0)
+        {
+            JOptionPane.showMessageDialog(null, "Compra efetuada");
+            tabela.setRowCount(0);
+        }
+    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void pesquisaPlanta() {
         try {
@@ -742,9 +749,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnExcluirProduto;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JComboBox cboPlanta;
     private javax.swing.JComboBox cboQtd;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
