@@ -56,7 +56,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         txtDataVenda = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblVenda = new javax.swing.JTable();
         btnAdicionarProduto = new javax.swing.JButton();
         btnExcluirProduto = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -302,7 +302,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(187, 187, 187));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
 
@@ -323,7 +323,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblVenda);
 
         btnAdicionarProduto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionarCesta.png"))); // NOI18N
@@ -541,11 +541,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
        String nome = cboPlanta.getSelectedItem().toString();
        int qtd =Integer.parseInt(cboQtd.getSelectedItem().toString());
-        
-        Movimentacao movimentacao = new Movimentacao();
+       int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
+       boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
+       String mensagem = temEstoque ? "Produto adicionado" : "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")";
        
-       movimentacao.setNomeItem(nome);
-       movimentacao.setQuantidade(qtd);
+        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+        
+        tabela.addRow(new Object[]{"7777","Teste","12", "22%","10.00","30.00","20"});
+        
+       
+       JOptionPane.showMessageDialog(this, mensagem);
+       
        
        
        
@@ -606,9 +612,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome1;
+    private javax.swing.JTable tblVenda;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtDataVenda;
     private javax.swing.JTextField txtNomeCliente;

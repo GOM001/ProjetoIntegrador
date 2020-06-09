@@ -24,8 +24,20 @@ public class movimentacaoController {
         return movimentacaoDAO.buscaCpf(cpf);
     }
     
-    public static int ConsultaEstoque()
+    public static int ConsultaEstoque(String nome)
     {
-        return 1;
+        return movimentacaoDAO.ConsultaEstoque(nome);
+    }
+    
+    public static boolean verificaSeEMaiorQueOEstoque(int qtd, int qtdEstoque)
+    {
+        if(qtd > qtdEstoque)
+        {
+            
+            return false;
+        }else
+        {
+            return true;
+        }
     }
 }
