@@ -18,7 +18,6 @@ public class GrupoBotaoUtil {
                 return button.getText();
             }
         }
-
         return null;
     }
 }

@@ -6,7 +6,6 @@ package model;
  */
 public class Movimentacao {
 
-   
     private String nomeItem, nomeCliente, cpf;
     private int codVenda, quantidade, codProd;
     private double valor, desconto, subTotal;
@@ -18,14 +17,12 @@ public class Movimentacao {
     public String getCpf() {
         return this.cpf;
     }
-    
-     public int getCodProd()
-    {
+
+    public int getCodProd() {
         return codProd;
     }
 
-    public void setCodProd(int codProd)
-    {
+    public void setCodProd(int codProd) {
         this.codProd = codProd;
     }
 
