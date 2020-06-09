@@ -367,12 +367,15 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         tblProduto.setModel(tmProdutos);
         tmProdutos.setRowCount(0);
+        
+        tblProduto.getColumnModel().getColumn(0).setMinWidth(0);
+        tblProduto.getColumnModel().getColumn(0).setMaxWidth(0);
 
         ArrayList<Produto> listaProdutos = ProdutoController.pesquisar_all();
 
         if (listaProdutos != null) {
             listaProdutos.forEach((p) -> {
-                _loggerProduto(p);
+                
                 tmProdutos.addRow(new Object[]{p.getId_produto(), p.getNome(), p.getTipo(), p.getCodigo(), p.getPrecoCompra(), p.getPrecoVenda(), p.getQuantidade(), p.getFornecedor()});
             });
         }
@@ -396,6 +399,8 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         tblProduto.setModel(tmProdutos);
         tmProdutos.setRowCount(0);
+        tblProduto.getColumnModel().getColumn(0).setMinWidth(0);
+        tblProduto.getColumnModel().getColumn(0).setMaxWidth(0);
 
         ArrayList<Produto> listaProdutos = ProdutoController.pesquisar(tipo, dadosPesquisados);
 

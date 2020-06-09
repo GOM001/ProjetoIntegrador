@@ -46,4 +46,9 @@ public class movimentacaoController {
     {
         return movimentacaoDAO.adicionaProduto(nome);
     }
+    
+    public static int ConsultCodigoProduto(String nome)
+    {
+        return movimentacaoDAO.ConsultaCodigoProduto(nome);
+    }
 }

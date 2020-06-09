@@ -15,7 +15,7 @@ import util.ConexaoDB;
 public class movimentacaoDAO {
 
     private static final String SQL_SELECT_PRODUTO = "SELECT nome FROM produto;";
-    private static final String SQL_SELECT_CLIENTE = "SELECT nome FROM cliente where cpf = ?";
+    private static final String SQL_SELECT_CLIENTE = "SELECT nome,id_cliente FROM cliente where cpf = ?";
 
     public static ArrayList<String> pesquisaPlanta() {
         ArrayList<String> listaPlantas = new ArrayList<String>();
@@ -52,7 +52,7 @@ public class movimentacaoDAO {
                 return "";
             } else {
 
-                return resultado.getString("nome");
+                return resultado.getString("nome")+","+resultado.getInt("id_cliente");
             }
 
         } catch (Exception e) {
@@ -97,7 +97,7 @@ public class movimentacaoDAO {
         {
             SQL.setString(1, nome);
             
-            System.out.println(SQL);
+            
             
             ResultSet resultado = SQL.executeQuery();
             
@@ -119,6 +119,32 @@ public class movimentacaoDAO {
         
         
         return movimentacao;
+    }
+    
+    public static int ConsultaCodigoProduto(String nome)
+    {
+        int qtd = 0; 
+        String query = "SELECT id_produto FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk where nome= ?;";
+        
+        try(Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(query))
+        {
+            SQL.setString(1, nome);
+            
+            ResultSet resultado = SQL.executeQuery();
+            if(resultado.next()){
+            qtd = resultado.getInt("id_produto");
+            }
+            
+            
+            
+            
+        } catch (Exception e)
+        {
+            System.out.println("ERRO PARA CONSULTAR CODIGO --->" + e.getMessage());
+        }
+        
+        return qtd;
     }
     
     

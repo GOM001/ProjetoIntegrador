@@ -2,6 +2,7 @@ package view;
 
 import DAO.vendaDAO;
 import controller.movimentacaoController;
+import controller.vendaController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,7 +16,11 @@ import model.Venda;
  * @author caiomoreno
  */
 public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
- boolean temDesconto = false;
+    
+    boolean temDesconto = false;
+    int id_produto_fk = 0;
+    int id_cliente_fk = 0;
+ 
  
     public MovimentacoesInternalFrame() {
         initComponents();
@@ -35,7 +40,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -199,16 +205,20 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-planejador-30.png"))); // NOI18N
         jLabel1.setText("Data da venda");
 
-        try {
+        try
+        {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBuscar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBuscarActionPerformed(evt);
             }
         });
@@ -264,29 +274,43 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblVenda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
-                "Cod. Prod", "Nome do produto", "Qtde.", "Desc. %", "Desc. R$", "Total Bruto", "Total Líquido"
+            new String []
+            {
+                "Cod. Prod", "Nome do produto", "Qtde.", "Desc. %", "Desc. R$", "Total Bruto", "Total Líquido", "id_produto_fk", "id_cliente_fk"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, false
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblVenda);
+        if (tblVenda.getColumnModel().getColumnCount() > 0)
+        {
+            tblVenda.getColumnModel().getColumn(7).setMinWidth(0);
+            tblVenda.getColumnModel().getColumn(7).setMaxWidth(0);
+            tblVenda.getColumnModel().getColumn(8).setMinWidth(0);
+            tblVenda.getColumnModel().getColumn(8).setMaxWidth(0);
+        }
 
         btnAdicionarProduto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionarCesta.png"))); // NOI18N
         btnAdicionarProduto.setText("Adicionar");
         btnAdicionarProduto.setBorderPainted(false);
-        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAdicionarProdutoActionPerformed(evt);
             }
         });
@@ -295,8 +319,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluirCesta.png"))); // NOI18N
         btnExcluirProduto.setText("Excluir");
         btnExcluirProduto.setBorderPainted(false);
-        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExcluirProdutoActionPerformed(evt);
             }
         });
@@ -366,8 +392,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnFinalizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
         btnFinalizar.setText("Finalizar Transacao");
-        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnFinalizarActionPerformed(evt);
             }
         });
@@ -375,8 +403,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icone-excluir.png"))); // NOI18N
         jButton4.setText("Cancelar Compra");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton4ActionPerformed(evt);
             }
         });
@@ -495,18 +525,26 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         movimentacao.SetCpf(cpf);
         nome = buscarCliente(movimentacao);
+        String splitNome[] = nome.split(",");
+        
+        String nomeCliente = splitNome[0];
+        JOptionPane.showMessageDialog(this, nome);
+        
 
-        if (nome.trim().equals("")) {
+        if (nomeCliente.trim().equals("")) {
             temDesconto = false;
-            txtNomeCliente.setText("");
+            txtNomeCliente.setText(nome);
+            
         } else {
             temDesconto = true;
-            txtNomeCliente.setText(nome);
+            id_cliente_fk = Integer.parseInt(splitNome[1]);
+            txtNomeCliente.setText(nomeCliente);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
-       DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+      
+        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
        Movimentacao movimentacao;
        
        boolean jaTem = false;
@@ -514,10 +552,12 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        String nome = cboPlanta.getSelectedItem().toString();
        int qtd =Integer.parseInt(cboQtd.getSelectedItem().toString());
        int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
+       id_produto_fk = movimentacaoController.ConsultCodigoProduto(nome);
        boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
        int qtdLinhas = tabela.getRowCount(); int linhaParada = 0;
        double valorDesconto= 0.0,valorLiquido,novoBruto=0.0;
-       
+      
+      
        if(!temDesconto)
        {
            Desconto = "Sem desconto";
@@ -531,9 +571,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        {
           nomeProduto = String.valueOf(tabela.getValueAt(i, 1));
           
-           System.out.println("nome do produto ---> " + nomeProduto);
-           
-           System.out.println("comparacao = "+ nomeProduto+ "=="+ nome);
+          
            
           if(nomeProduto.equals(nome))
           {
@@ -589,7 +627,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             {
                tabela.removeRow(linhaParada);
                
-            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido});
+            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido,id_produto_fk,id_cliente_fk});
    
             txtTotalBruto.setText(TotalBruto());
             txtTotalDesconto.setText(TotalDesconto());
@@ -627,7 +665,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             
         }else{
            
-            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido});
+            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido,id_produto_fk,id_cliente_fk});
         
             txtTotalBruto.setText(TotalBruto());
             txtTotalDesconto.setText(TotalDesconto());
@@ -646,7 +684,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFinalizarActionPerformed
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
-        ArrayList<Venda> listaVenda = new ArrayList<Venda>();
+        boolean vendeu = false;
+        boolean retirouDoEstoque = false;
+        try
+        {
+            ArrayList<Venda> listaVenda = new ArrayList<Venda>();
         
         DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
         int qtdLinhas = tblVenda.getRowCount();
@@ -661,20 +703,38 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         for(int i = 0; i < qtdLinhas;i++)
         {
             Venda venda = new Venda();
-            venda.setQtd_vendido(2);
-            venda.setValor_desc(22.00);
-            venda.setValor_total(50.00);
+            String qtdVendido = String.valueOf(tabela.getValueAt(i, 2));
+            String valorDesc = String.valueOf(tabela.getValueAt(i, 4));
+            String valor = String.valueOf(tabela.getValueAt(i, 6));
+            String id_produto_fk = String.valueOf(tabela.getValueAt(i, 7));
+            String id_cliente_fk = String.valueOf(tabela.getValueAt(i, 8));
+            
+            double valorDescD = Double.parseDouble(valorDesc);
+            double valorD = Double.parseDouble(valor);
+            int id_produto_fkI = Integer.parseInt(id_produto_fk);
+            int id_cliente_fkI = Integer.parseInt(id_cliente_fk);
+            int qtdVendidoI = Integer.parseInt(qtdVendido);
+
+            
+            venda.setQtd_vendido(qtdVendidoI);
+            venda.setValor_desc(valorDescD);
+            venda.setValor_total(valorD);
             venda.setDataVenda(txtDataVenda.getText());
-            venda.setId_produto_fk(2);
-            venda.setId_cliente_fk(3);
+            venda.setId_produto_fk(id_produto_fkI);
+            venda.setId_cliente_fk(id_cliente_fkI);
             
             listaVenda.add(venda);
             
         }
+       
+       // retirouDoEstoque = vendaController.retirarEstoque(listaVenda);
+        vendeu =   vendaController.inserirVenda(listaVenda);
+      // if(retirouDoEstoque){
+        
+       //}
+       
             
-       boolean foi =   vendaDAO.inserirVenda(listaVenda);
-            
-            if(foi){
+            if(vendeu){
             
             JOptionPane.showMessageDialog(null, "Compra efetuada");
             tabela.setRowCount(0);
@@ -685,6 +745,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "ERRO");
             }
         }
+        } catch (Exception e)
+        {
+        }
+        
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -796,6 +860,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         
         return "R$ " + String.format("%.2f", soma);
     }
+    }
+    
+    private int id_produto_fk(String nomePlanta)
+    {
+        
+        return 1;
+    }
+    
+    private int id_cliente_fk(String cpf)
+    {
+        
+        return 1;
     }
     
     
