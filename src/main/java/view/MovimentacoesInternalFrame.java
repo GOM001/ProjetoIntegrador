@@ -539,6 +539,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        String mensagem = temEstoque ? "Produto adicionado" : "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")";
        
         DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+       
         
         tabela.addRow(new Object[]{"7777","Teste","12", "22%","10.00","30.00","20"});
         
