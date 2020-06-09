@@ -606,13 +606,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             if(temMais == false)
             {
                  JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")");
+                 JOptionPane.showMessageDialog(this, "To aqui no if");
                              
             }else
             {
                tabela.removeRow(linhaParada);
+               JOptionPane.showMessageDialog(this, "To aqui");
             tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido});
    
             }
+            
+            
+            
         }else{
        
        
@@ -634,12 +639,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        }
        
        
+            JOptionPane.showMessageDialog(this, "Valor do tem estoque"+temEstoque);
             
-            
-        
-        tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido});
+        if(temEstoque == false){
         
         JOptionPane.showMessageDialog(this, mensagem);
+            System.out.println("to aquiii");
+        }else{
+            System.out.println("to aqui no else");
+            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido});
+        JOptionPane.showMessageDialog(this, mensagem);
+        }
     }
        
        
