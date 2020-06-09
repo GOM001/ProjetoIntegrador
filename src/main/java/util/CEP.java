@@ -2,7 +2,6 @@ package util;
 
 public class CEP {
 
-    // pripriedades do CEP
     public String CEP;
     public String Logradouro;
     public String Complemento;

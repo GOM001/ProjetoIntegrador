@@ -348,11 +348,10 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Ocorreu um erro ao converter dados:" + e.getMessage());
                 System.out.println(e.getMessage());
                 passouDados = false;
-            }catch(Exception e)
-            {
-             System.out.println(e.getMessage());   
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             };
-            
+
             if (passouDados) {
                 atualizou = ProdutoController.atualizar(listaAtualizada);
             }
