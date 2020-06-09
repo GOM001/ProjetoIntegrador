@@ -582,6 +582,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         if(jaTem)
         {
             JOptionPane.showMessageDialog(this, "Produto já existe na tabela!");
+            JOptionPane.showMessageDialog(this,"Removendo linha: " +linhaParada);
             String quantidade = String.valueOf(tabela.getValueAt(linhaParada, 2));
             String totalBruto = String.valueOf(tabela.getValueAt(linhaParada, 5));
             
@@ -597,7 +598,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             valorDesconto = calcularDesconto(novoBruto);
             valorLiquido = calcularLiquido(valorDesconto, novoBruto);
              //tblModelo.removeRow(tblVenda.getSelectedRow());
-            tabela.removeRow(linhaParada);
+            
+            tabela.removeRow(linhaParada - 1);
             tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido});
             
         }else{
