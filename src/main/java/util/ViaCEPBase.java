@@ -37,10 +37,6 @@ public abstract class ViaCEPBase {
     /**
      * Busca um CEP usando um endereço
      *
-     * @param Uf estado
-     * @param Localidade cidade
-     * @param Logradouro nome ou parte do nome da rua, av, viela...
-     * @throws util.ViaCEPException
      */
     public void buscarCEP(String Uf, String Localidade, String Logradouro) throws ViaCEPException {
         buscarCEP(new CEP(Logradouro, Localidade, Uf));
@@ -48,8 +44,6 @@ public abstract class ViaCEPBase {
 
     /**
      * Retona o index atual;
-     *
-     * @return
      */
     public int getIndex() {
         return index;
@@ -57,8 +51,6 @@ public abstract class ViaCEPBase {
 
     /**
      * Retorna o total de CEP's
-     *
-     * @return
      */
     public int getSize() {
         return CEPs.size();
@@ -67,7 +59,6 @@ public abstract class ViaCEPBase {
     /**
      * Retonar o CEP
      *
-     * @return
      */
     public String getCep() {
         return CEPs.get(index).CEP;
@@ -76,7 +67,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna o nome da rua, avenida, travessa, ...
      *
-     * @return
      */
     public String getLogradouro() {
         return CEPs.get(index).Logradouro;
@@ -85,7 +75,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna se tem algum complemento Ex: lado impar
      *
-     * @return
      */
     public String getComplemento() {
         return CEPs.get(index).Complemento;
@@ -94,7 +83,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna o Bairro
      *
-     * @return
      */
     public String getBairro() {
         return CEPs.get(index).Bairro;
@@ -103,7 +91,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna a Cidade
      *
-     * @return
      */
     public String getLocalidade() {
         return CEPs.get(index).Localidade;
@@ -112,7 +99,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna o UF
      *
-     * @return
      */
     public String getUf() {
         return CEPs.get(index).Uf;
@@ -121,7 +107,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna o Ibge
      *
-     * @return
      */
     public String getIbge() {
         return CEPs.get(index).Ibge;
@@ -130,7 +115,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna a Gia
      *
-     * @return
      */
     public String getGia() {
         return CEPs.get(index).Gia;
@@ -139,9 +123,6 @@ public abstract class ViaCEPBase {
     /**
      * Procedimento para obtem dados via GET
      *
-     * @param urlToRead endereço
-     * @return conteúdo remoto
-     * @throws util.ViaCEPException caso ocorra algum erro
      */
     public final String getHttpGET(String urlToRead) throws ViaCEPException {
         StringBuilder result = new StringBuilder();
@@ -179,8 +160,6 @@ public abstract class ViaCEPBase {
     /**
      * Move para um registro específico
      *
-     * @param index
-     * @return
      */
     public boolean move(int index) {
         if (CEPs.size() > 0 && index >= 0 && index < CEPs.size()) {
@@ -195,7 +174,6 @@ public abstract class ViaCEPBase {
     /**
      * Move para o primeiro registro
      *
-     * @return
      */
     public boolean moveFirst() {
         if (CEPs.size() > 0) {
@@ -210,7 +188,6 @@ public abstract class ViaCEPBase {
     /**
      * Move para o próximo registro
      *
-     * @return
      */
     public boolean moveNext() {
         if (CEPs.size() > 0 && (index + 1) < CEPs.size()) {
@@ -225,7 +202,6 @@ public abstract class ViaCEPBase {
     /**
      * Move para o registro anterior
      *
-     * @return
      */
     public boolean movePrevious() {
         if (CEPs.size() > 0 && (index - 1) >= 0) {
@@ -240,7 +216,6 @@ public abstract class ViaCEPBase {
     /**
      * Move para o último registro
      *
-     * @return
      */
     public boolean moveLast() {
         if (CEPs.size() > 0) {
@@ -255,7 +230,6 @@ public abstract class ViaCEPBase {
     /**
      * Retorna a lista de CEP's
      *
-     * @return
      */
     public List<CEP> getList() {
         return CEPs;
@@ -264,9 +238,6 @@ public abstract class ViaCEPBase {
     /**
      * Procedimento para formatar uma string para usar em urls
      *
-     * @param string texto que vai ser formatado
-     * @return texto formatado
-     * @throws ViaCEPException em caso de erro
      */
     protected String formatStringToUri(String string) throws ViaCEPException {
         String out = null;

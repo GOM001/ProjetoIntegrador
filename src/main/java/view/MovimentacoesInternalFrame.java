@@ -695,8 +695,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                     txtTotalDesconto.setText("R$ 0.00");
                     txtNomeCliente.setText("");
                     txtCpf.setText("");
-                    id_produto_fk = 0;
-                    id_cliente_fk = 0;
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "ERRO");
                 }

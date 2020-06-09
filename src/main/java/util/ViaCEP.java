@@ -21,7 +21,7 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Constrói uma nova classe
      *
-     * @param events eventos para a classe
+     * 
      */
     public ViaCEP(ViaCEPEvents events) {
         super();
@@ -31,9 +31,6 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Constrói uma nova classe e busca um CEP no ViaCEP
      *
-     * @param events eventos para a classe
-     * @param cep
-     * @throws util.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep, ViaCEPEvents events) throws ViaCEPException {
         super();
@@ -44,8 +41,6 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Constrói uma nova classe e busca um CEP no ViaCEP
      *
-     * @param cep
-     * @throws util.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep) throws ViaCEPException {
         super();
@@ -55,10 +50,8 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Busca um CEP no ViaCEP
      *
-     * @param cep
-     * @throws util.ViaCEPException caso ocorra algum erro
      */
-    @Override
+    
     public final void buscar(String cep) throws ViaCEPException {
         try {
             // define o cep atual
@@ -106,8 +99,6 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Busca um CEP usando um endereço
      *
-     * @param cep classe CEP com uf, localidade, logradouro
-     * @throws ViaCEPException
      */
     @Override
     public void buscarCEP(CEP cep) throws ViaCEPException {
@@ -117,10 +108,6 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Busca um CEP usando um endereço
      *
-     * @param Uf Estado
-     * @param Localidade Municipio
-     * @param Logradouro Rua, Avenidade, Viela...
-     * @throws ViaCEPException
      */
     @Override
     public void buscarCEP(String Uf, String Localidade, String Logradouro) throws ViaCEPException {
