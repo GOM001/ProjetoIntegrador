@@ -4,20 +4,17 @@ package model;
  *
  * @author caiomoreno
  */
-public class Produto
-{
+public class Produto {
 
     private int id_produto;
     private String nome, tipo, fornecedor;
     private int quantidade, codigo;
     private double precoCompra, precoVenda;
 
-    public Produto()
-    {
+    public Produto() {
     }
 
-    public Produto(int id_produto, String nome, String tipo, int codigo, double precoCompra, double precoVenda, int quantidade, String fornecedor)
-    {
+    public Produto(int id_produto, String nome, String tipo, int codigo, double precoCompra, double precoVenda, int quantidade, String fornecedor) {
         this.id_produto = id_produto;
         this.nome = nome;
         this.tipo = tipo;
@@ -28,83 +25,67 @@ public class Produto
         this.precoVenda = precoVenda;
     }
 
-    public int getId_produto()
-    {
+    public int getId_produto() {
         return id_produto;
     }
 
-    public String getNome()
-    {
+    public String getNome() {
         return nome;
     }
 
-    public String getFornecedor()
-    {
+    public String getFornecedor() {
         return fornecedor;
     }
 
-    public int getCodigo()
-    {
+    public int getCodigo() {
         return codigo;
     }
 
-    public double getPrecoCompra()
-    {
+    public double getPrecoCompra() {
         return precoCompra;
     }
 
-    public double getPrecoVenda()
-    {
+    public double getPrecoVenda() {
         return precoVenda;
     }
 
-    public String getTipo()
-    {
+    public String getTipo() {
         return tipo;
     }
 
-    public int getQuantidade()
-    {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setId_produto(int id_produto)
-    {
+    public void setId_produto(int id_produto) {
         this.id_produto = id_produto;
     }
 
-    public void setNome(String nomeProduto)
-    {
+    public void setNome(String nomeProduto) {
         this.nome = nomeProduto;
     }
 
-    public void setFornecedor(String fornecedor)
-    {
+    public void setFornecedor(String fornecedor) {
         this.fornecedor = fornecedor;
     }
 
-    public void setCodigo(int codProduto)
-    {
+    public void setCodigo(int codProduto) {
         this.codigo = codProduto;
     }
 
-    public void setPrecoCompra(double precoCompra)
-    {
+    public void setPrecoCompra(double precoCompra) {
         this.precoCompra = precoCompra;
     }
 
-    public void setPrecoVenda(double precoVenda)
-    {
+    public void setPrecoVenda(double precoVenda) {
         this.precoVenda = precoVenda;
     }
 
-    public void setQuantidade(int quantidade)
-    {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
-    public void setTipo(String tipo)
-    {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }
