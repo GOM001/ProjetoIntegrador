@@ -12,26 +12,29 @@ import util.ConexaoDB;
  *
  * @author caiomoreno
  */
-public class movimentacaoDAO {
+public class MovimentacaoDAO {
 
     private static final String SQL_SELECT_PRODUTO = "SELECT nome FROM produto;";
-    private static final String SQL_SELECT_CLIENTE = "SELECT nome,id_cliente FROM cliente where cpf = ?";
+    private static final String SQL_SELECT_CLIENTE = "SELECT nome, id_cliente FROM cliente WHERE cpf = ?";
+    private static final String SQL_SELECT_QTD_ESTOQUE = "SELECT quantidade FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk WHERE nome = ?";
+    private static final String SQL_SELECT_ADD_PRODUTO = "SELECT codigo, nome, preco_venda FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk WHERE nome = ?";
+    private static final String SQL_SELECT_COD_PRODUTO = "SELECT id_produto FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk WHERE nome = ?";
 
-    public static ArrayList<String> pesquisaPlanta() {
-        ArrayList<String> listaPlantas = new ArrayList<String>();
+    public static ArrayList<String> pesquisaProduto() {
+        ArrayList<String> listaPlantas = new ArrayList<>();
 
         try (Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_PRODUTO)) {
-            ResultSet resultado = SQL.executeQuery();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_PRODUTO);
+                ResultSet resultado = SQL.executeQuery()) {
 
             if (!resultado.next()) {
                 return listaPlantas;
             }
 
             do {
-                
                 listaPlantas.add(resultado.getString("nome"));
             } while (resultado.next());
+
         } catch (Exception e) {
             System.out.println("erro na pesquisa" + e.getMessage());
         }
@@ -45,14 +48,13 @@ public class movimentacaoDAO {
                 PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_CLIENTE)) {
             SQL.setString(1, cpf);
 
-            ResultSet resultado = SQL.executeQuery();
-
-            if (!resultado.next()) {
-                JOptionPane.showMessageDialog(null, "Cliente nao cadastrado");
-                return "";
-            } else {
-
-                return resultado.getString("nome")+","+resultado.getInt("id_cliente");
+            try (ResultSet resultado = SQL.executeQuery()) {
+                if (!resultado.next()) {
+                    JOptionPane.showMessageDialog(null, "Cliente nao cadastrado");
+                    return "";
+                } else {
+                    return resultado.getString("nome") + "," + resultado.getInt("id_cliente");
+                }
             }
 
         } catch (Exception e) {
@@ -60,92 +62,64 @@ public class movimentacaoDAO {
         }
         return "";
     }
-    
-    public static int ConsultaEstoque(String nome)
-    {
-        int qtd = 0; 
-        String query = "SELECT quantidade FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk where nome= ?;";
-        
-        try(Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(query))
-        {
+
+    public static int consultaEstoque(String nome) {
+        int qtd = 0;
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_QTD_ESTOQUE)) {
             SQL.setString(1, nome);
-            
-            ResultSet resultado = SQL.executeQuery();
-            if(resultado.next()){
-            qtd = resultado.getInt("quantidade");
+
+            try (ResultSet resultado = SQL.executeQuery()) {
+                if (resultado.next()) {
+                    qtd = resultado.getInt("quantidade");
+                }
             }
-            
-            
-            
-            
-        } catch (Exception e)
-        {
-            System.out.println("ERRO PARA CONSULTAR ESTOQUE --->" + e.getMessage());
+
+        } catch (Exception e) {
+            System.out.println("Erro ao Consultar Estoque: " + e.getMessage());
         }
-        
+
         return qtd;
     }
-    
-    public static Movimentacao adicionaProduto(String nome)
-    {
+
+    public static Movimentacao adicionaProduto(String nome) {
         Movimentacao movimentacao = new Movimentacao();
-        String query = "SELECT codigo, nome, preco_venda FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk where nome = ?;";
-        
-        try(Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(query))
-        {
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_ADD_PRODUTO)) {
             SQL.setString(1, nome);
-            
-            
-            
-            ResultSet resultado = SQL.executeQuery();
-            
-            if(resultado.next())
-            {
-                movimentacao.setCodProd(resultado.getInt("codigo"));
-                movimentacao.setNomeItem(resultado.getString("nome"));
-               // movimentacao.setQuantidade(resultado.getInt("quantidade"));
-                movimentacao.setValor(resultado.getDouble("preco_venda"));
+
+            try (ResultSet resultado = SQL.executeQuery()) {
+                if (resultado.next()) {
+                    movimentacao.setCodProd(resultado.getInt("codigo"));
+                    movimentacao.setNomeItem(resultado.getString("nome"));
+                    movimentacao.setValor(resultado.getDouble("preco_venda"));
+                }
             }
-            
-                
-            
-            
-        } catch (Exception e)
-        {
-            System.out.println("erro na consulta:(adicionar produto) ---> "+ e.getMessage());
+        } catch (Exception e) {
+            System.out.println("erro na consulta:(adicionar produto) ---> " + e.getMessage());
         }
-        
-        
+
         return movimentacao;
     }
-    
-    public static int ConsultaCodigoProduto(String nome)
-    {
-        int qtd = 0; 
-        String query = "SELECT id_produto FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk where nome= ?;";
-        
-        try(Connection conexao = ConexaoDB.getConnection();
-                PreparedStatement SQL = conexao.prepareStatement(query))
-        {
+
+    public static int consultaCodigoProduto(String nome) {
+        int qtd = 0;
+
+        try (Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(SQL_SELECT_COD_PRODUTO)) {
             SQL.setString(1, nome);
-            
-            ResultSet resultado = SQL.executeQuery();
-            if(resultado.next()){
-            qtd = resultado.getInt("id_produto");
+
+            try (ResultSet resultado = SQL.executeQuery()) {
+                if (resultado.next()) {
+                    qtd = resultado.getInt("id_produto");
+                }
             }
-            
-            
-            
-            
-        } catch (Exception e)
-        {
-            System.out.println("ERRO PARA CONSULTAR CODIGO --->" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro ao Consultar Código do Produto" + e.getMessage());
         }
-        
+
         return qtd;
     }
-    
-    
 }

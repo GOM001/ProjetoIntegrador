@@ -17,7 +17,7 @@ public class ConexaoDB {
 
     private static final String DATABASE = "floricultura";
     private static final String LOGIN = "root";
-    private static final String SENHA = ""; // preencha a senha do seu BD
+    private static final String SENHA = "172954"; // preencha a senha do seu BD
 
     private static final String URL = "jdbc:mysql://" + SERVER + "/" + DATABASE + "?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
     private static String STATUS;

@@ -1,7 +1,7 @@
 package view;
 
-import controller.movimentacaoController;
-import controller.vendaController;
+import controller.MovimentacaoController;
+import controller.VendaController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -16,9 +16,8 @@ import model.Venda;
  */
 public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
-    boolean temDesconto = false;
-    int id_produto_fk = 0;
-    int id_cliente_fk = 0;
+    boolean possuiDesconto = false;
+    int id_produto_fk = 0, id_cliente_fk = 0;
 
     public MovimentacoesInternalFrame() {
         initComponents();
@@ -33,7 +32,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Digite um cpf válido!");
             return "";
         }
-        return movimentacaoController.buscarClientePeloCPF(cpf);
+        return MovimentacaoController.buscarClientePeloCPF(cpf);
+    }
+
+    private static boolean verificaSeEMaiorQueOEstoque(int qtd, int qtdEstoque) {
+        return qtd <= qtdEstoque;
     }
 
     @SuppressWarnings("unchecked")
@@ -524,11 +527,11 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, nome);
 
         if (nomeCliente.trim().equals("")) {
-            temDesconto = false;
+            possuiDesconto = false;
             txtNomeCliente.setText(nome);
 
         } else {
-            temDesconto = true;
+            possuiDesconto = true;
             id_cliente_fk = Integer.parseInt(splitNome[1]);
             txtNomeCliente.setText(nomeCliente);
         }
@@ -539,18 +542,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
         Movimentacao movimentacao;
 
-        boolean jaTem = false;
+        boolean possuiProduto = false;
         String nomeProduto, Desconto = "10%";
         String nome = cboPlanta.getSelectedItem().toString();
         int qtd = Integer.parseInt(cboQtd.getSelectedItem().toString());
-        int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
-        id_produto_fk = movimentacaoController.ConsultCodigoProduto(nome);
-        boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
+        int qtdEstoque = MovimentacaoController.consultaEstoque(nome);
+        id_produto_fk = MovimentacaoController.consultarCodigoProduto(nome);
+        boolean temEstoque = verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
         int qtdLinhas = tabela.getRowCount();
         int linhaParada = 0;
         double valorDesconto = 0.0, valorLiquido, novoBruto = 0.0;
 
-        if (!temDesconto) {
+        if (!possuiDesconto) {
             Desconto = "Sem desconto";
             valorDesconto = 0.0;
         }
@@ -561,31 +564,28 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             nomeProduto = String.valueOf(tabela.getValueAt(i, 1));
 
             if (nomeProduto.equals(nome)) {
-                jaTem = true;
+                possuiProduto = true;
                 linhaParada = i;
                 break;
             }
         }
 
-        movimentacao = movimentacaoController.adicionaProduto(nome);
+        movimentacao = MovimentacaoController.adicionaProduto(nome);
 
-        if (jaTem) {
-
+        if (possuiProduto) {
             String quantidade = String.valueOf(tabela.getValueAt(linhaParada, 2));
             String totalBruto = String.valueOf(tabela.getValueAt(linhaParada, 5));
 
             double totalBrutoD = Double.parseDouble(totalBruto);
             int qtdInt = Integer.parseInt(quantidade);
-
             double valorUnitario = valorUnitario(totalBrutoD, qtdInt);
             int novaQuantidade = atualizarQtd(qtdInt, qtd);
             double bruto = valorUnitario * qtd;
 
-            if (temDesconto) {
+            if (possuiDesconto) {
                 novoBruto = atualizaValorBruto(bruto, totalBrutoD);
 
                 valorDesconto = calcularDesconto(novoBruto);
-
                 valorLiquido = calcularLiquido(valorDesconto, novoBruto);
 
             } else {
@@ -593,39 +593,34 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 valorLiquido = novoBruto;
             }
 
-            boolean temMais = movimentacaoController.verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
+            boolean temMais = verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
             if (temMais == false) {
                 JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque(" + qtdEstoque + ")");
 
             } else {
                 tabela.removeRow(linhaParada);
-
                 tabela.addRow(new Object[]{movimentacao.getCodProd(), movimentacao.getNomeItem(), novaQuantidade, Desconto, valorDesconto, novoBruto, valorLiquido, id_produto_fk, id_cliente_fk});
 
                 txtTotalBruto.setText(TotalBruto());
                 txtTotalDesconto.setText(TotalDesconto());
                 txtLiquido.setText(TotalLiquido());
-               
+
             }
 
         } else {
 
-            if (temDesconto) {
+            if (possuiDesconto) {
                 double valorProduto = movimentacao.getValor();
 
                 valorDesconto = calcularDesconto(valorProduto);
-
                 valorLiquido = valorProduto - valorDesconto;
 
             } else {
-
                 valorLiquido = movimentacao.getValor();
             }
 
             if (temEstoque == false) {
-
                 JOptionPane.showMessageDialog(this, mensagem);
-
             } else {
 
                 tabela.addRow(new Object[]{movimentacao.getCodProd(), movimentacao.getNomeItem(), qtd, Desconto, valorDesconto, movimentacao.getValor(), valorLiquido, id_produto_fk, id_cliente_fk});
@@ -644,7 +639,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFinalizarActionPerformed
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
         boolean vendeu = false;
-        boolean retirouDoEstoque = false;
         try {
             ArrayList<Venda> listaVenda = new ArrayList<Venda>();
 
@@ -681,13 +675,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
                 }
 
-                // retirouDoEstoque = vendaController.retirarEstoque(listaVenda);
-                vendeu = vendaController.inserirVenda(listaVenda);
-                // if(retirouDoEstoque){
+                vendeu = VendaController.inserirVenda(listaVenda);
 
-                //}
                 if (vendeu) {
-
                     JOptionPane.showMessageDialog(null, "Compra efetuada");
                     tabela.setRowCount(0);
                     txtLiquido.setText("R$ 0.00");
@@ -717,7 +707,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTrocoActionPerformed
 
     private void txtTotalPagoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTotalPagoFocusLost
-           try {
+        try {
             // obtêm a entrada de usuário a partir da JTextField
             String TotalPago = txtTotalPago.getText();
             String TotalLiquido = txtLiquido.getText();
@@ -728,8 +718,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             // converte os valores recebido em string para double
             double num1 = (double) Double.parseDouble(replaceTotalPago);
             double num2 = (double) Double.parseDouble(replaceTotalLiquido);
-            //fas um cast para para um tipo primitivo
-
             double sum = num1 - num2;
 
             //setar o resultado na JLabel
@@ -737,16 +725,15 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             txtTroco.setText("R$ " + String.format("%.2f", sum));
             txtTroco.setEditable(false);
             String a = String.format("%.2f", num1);
-            txtTotalPago.setText("R$ " +  a );
-        } catch (Exception ex) {
+            txtTotalPago.setText("R$ " + a);
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Caracteres Inválidos no Campo JTextField");
-            //Caso não for possivel converter o valor digirto, ele envia esta mensagem na tela
         }
     }//GEN-LAST:event_txtTotalPagoFocusLost
 
     private void pesquisaPlanta() {
         try {
-            ArrayList<String> listaPlanta = movimentacaoController.pesquisaPlantas();
+            ArrayList<String> listaPlanta = MovimentacaoController.pesquisarProdutos();
 
             for (String planta : listaPlanta) {
                 cboPlanta.addItem(planta);

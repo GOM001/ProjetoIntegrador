@@ -8,11 +8,9 @@ import DAO.ProdutoDAO;
 import java.util.ArrayList;
 import model.Produto;
 
-public class ProdutoController
-{
+public class ProdutoController {
 
-    public static boolean cadastrar(String nome, String tipo, int qtd, String fornecedor, int codigo, double precoCompra, double precoVenda)
-    {
+    public static boolean cadastrar(String nome, String tipo, int qtd, String fornecedor, int codigo, double precoCompra, double precoVenda) {
 
         Produto produto = new Produto();
 
@@ -27,43 +25,22 @@ public class ProdutoController
         return ProdutoDAO.cadastrar(produto);
     }
 
-    public static boolean excluir(int idProduto)
-    {
-
+    public static boolean excluir(int idProduto) {
         return ProdutoDAO.excluir(idProduto);
     }
 
-    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados)
-    {
-        switch (tipo)
-        {
-            case "Código":
-                tipo = "codigo";
-                break;
-            case "Nome":
-                tipo = "nome";
-                break;
-            default:
-                tipo = "fornecedor";
-                break;
-        }
-
+    public static ArrayList<Produto> pesquisar(String tipo, String dadosPesquisados) {
         return ProdutoDAO.pesquisar(tipo, dadosPesquisados);
     }
 
-    public static ArrayList<Produto> pesquisar_all()
-    {
-
+    public static ArrayList<Produto> pesquisar_all() {
         return ProdutoDAO.pesquisar_all();
     }
 
-    public static boolean atualizar(ArrayList<Produto> listaAtualizada)
-    {
-        if (listaAtualizada != null)
-        {
+    public static boolean atualizar(ArrayList<Produto> listaAtualizada) {
+        if (listaAtualizada != null) {
             return ProdutoDAO.atualizar(listaAtualizada);
-        } else
-        {
+        } else {
             return false;
         }
     }

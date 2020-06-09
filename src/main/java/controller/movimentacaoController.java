@@ -1,54 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.util.ArrayList;
-import DAO.movimentacaoDAO;
-import javax.swing.JOptionPane;
+import DAO.MovimentacaoDAO;
 import model.Movimentacao;
 
 /**
  *
  * @author caiomoreno
  */
-public class movimentacaoController {
+public class MovimentacaoController {
 
-    public static ArrayList<String> pesquisaPlantas() {
-        return movimentacaoDAO.pesquisaPlanta();
+    public static ArrayList<String> pesquisarProdutos() {
+        return MovimentacaoDAO.pesquisaProduto();
     }
 
     public static String buscarClientePeloCPF(String cpf) {
-        return movimentacaoDAO.buscaCpf(cpf);
+        return MovimentacaoDAO.buscaCpf(cpf);
     }
-    
-    public static int ConsultaEstoque(String nome)
-    {
-        return movimentacaoDAO.ConsultaEstoque(nome);
+
+    public static int consultaEstoque(String nome) {
+        return MovimentacaoDAO.consultaEstoque(nome);
     }
-    
-    public static boolean verificaSeEMaiorQueOEstoque(int qtd, int qtdEstoque)
-    {
-        
-        if(qtd > qtdEstoque)
-        {
-        
-            return false;
-        }else
-        {
-            return true;
-        }
+
+    public static Movimentacao adicionaProduto(String nome) {
+        return MovimentacaoDAO.adicionaProduto(nome);
     }
-    
-    public static Movimentacao adicionaProduto(String nome)
-    {
-        return movimentacaoDAO.adicionaProduto(nome);
-    }
-    
-    public static int ConsultCodigoProduto(String nome)
-    {
-        return movimentacaoDAO.ConsultaCodigoProduto(nome);
+
+    public static int consultarCodigoProduto(String nome) {
+        return MovimentacaoDAO.consultaCodigoProduto(nome);
     }
 }
