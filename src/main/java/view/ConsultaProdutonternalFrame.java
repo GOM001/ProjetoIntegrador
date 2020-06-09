@@ -329,6 +329,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
                 passouDados = false;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+                passouDados = false;
             };
 
             if (passouDados) {

@@ -60,5 +60,31 @@ public class movimentacaoDAO {
         return "";
     }
     
+    public static int ConsultaEstoque(String nome)
+    {
+        int qtd = 0; 
+        String query = "SELECT quantidade FROM produto p INNER JOIN estoque e ON p.id_produto = e.id_produto_fk where nome= ?;";
+        
+        try(Connection conexao = ConexaoDB.getConnection();
+                PreparedStatement SQL = conexao.prepareStatement(query))
+        {
+            SQL.setString(1, nome);
+            
+            ResultSet resultado = SQL.executeQuery();
+            if(resultado.next()){
+            qtd = resultado.getInt("quantidade");
+            }
+            
+            
+            
+            
+        } catch (Exception e)
+        {
+            System.out.println("ERRO PARA CONSULTAR ESTOQUE --->" + e.getMessage());
+        }
+        
+        return qtd;
+    }
+    
     
 }
