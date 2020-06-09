@@ -415,6 +415,13 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
         jButton3.setText("Finalizar Transacao");
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icone-excluir.png"))); // NOI18N
@@ -552,7 +559,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
        boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
        int qtdLinhas = tabela.getRowCount(); int linhaParada = 0;
-       double valorDesconto= 0.0,valorLiquido;
+       double valorDesconto= 0.0,valorLiquido,novoBruto=0.0;
        
        if(!temDesconto)
        {
@@ -594,12 +601,26 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             int novaQuantidade = atualizarQtd(qtdInt, qtd);
             double bruto = valorUnitario * qtd;
             
-            double novoBruto = atualizaValorBruto(bruto, totalBrutoD);
             
+            
+            
+            
+            
+            if(temDesconto)
+       {
+            novoBruto = atualizaValorBruto(bruto, totalBrutoD);
+           
             valorDesconto = calcularDesconto(novoBruto);
-            valorLiquido = calcularLiquido(valorDesconto, novoBruto);
             
             
+           
+           valorLiquido = calcularLiquido(valorDesconto, novoBruto);
+         
+       }else
+       {
+            novoBruto = atualizaValorBruto(bruto, totalBrutoD);
+            valorLiquido = novoBruto;
+       }
            
             boolean temMais = movimentacaoController.verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
             if(temMais == false)
@@ -657,6 +678,12 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        
        
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
+    {//GEN-HEADEREND:event_jButton3ActionPerformed
+        Object[] options = { "Confirmar", "Cancelar" };
+        JOptionPane.showOptionDialog(null, "Clique Confirmar para continuar", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pesquisaPlanta() {
         try {
