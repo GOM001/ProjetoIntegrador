@@ -40,4 +40,9 @@ public class movimentacaoController {
             return true;
         }
     }
+    
+    public static Movimentacao adicionaProduto(String nome)
+    {
+        return movimentacaoDAO.adicionaProduto(nome);
+    }
 }
