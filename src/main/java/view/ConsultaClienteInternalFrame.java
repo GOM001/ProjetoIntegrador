@@ -130,11 +130,6 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         txtFiltro.setMinimumSize(new java.awt.Dimension(23, 24));
         txtFiltro.setOpaque(false);
         txtFiltro.setPreferredSize(new java.awt.Dimension(100, 24));
-        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFiltroActionPerformed(evt);
-            }
-        });
         txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtFiltroKeyTyped(evt);
@@ -146,11 +141,6 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
 
         cbFiltroConsulta.setForeground(new java.awt.Color(0, 0, 0));
         cbFiltroConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF" }));
-        cbFiltroConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbFiltroConsultaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout PainelAudaPesquisaLayout = new javax.swing.GroupLayout(PainelAudaPesquisa);
         PainelAudaPesquisa.setLayout(PainelAudaPesquisaLayout);
@@ -259,10 +249,6 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
-
-    }//GEN-LAST:event_txtFiltroActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // Ainda necessário implementar abstração de TableModel p/ atualizar automaticamente
         String mensagem;
@@ -293,10 +279,6 @@ public class ConsultaClienteInternalFrame extends javax.swing.JInternalFrame {
 
         tblClientes.setRowSorter(selecao);
     }//GEN-LAST:event_txtFiltroKeyTyped
-
-    private void cbFiltroConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFiltroConsultaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbFiltroConsultaActionPerformed
 
     private void btnAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjudaActionPerformed
         JOptionPane.showMessageDialog(null, "Os dados dos clientes cadastrados aparecem aqui!\n"

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.ProdutoController;
@@ -17,15 +12,11 @@ import model.Produto;
  */
 public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form MovimentacoesInternalFrame
-     */
     public ConsultaProdutonternalFrame() {
         initComponents();
 
         consultaTodos();
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -126,11 +117,6 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         txtPesquisaPlanta.setMinimumSize(new java.awt.Dimension(23, 24));
         txtPesquisaPlanta.setOpaque(false);
         txtPesquisaPlanta.setPreferredSize(new java.awt.Dimension(100, 24));
-        txtPesquisaPlanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaPlantaActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Consultar por:");
@@ -273,13 +259,6 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void txtPesquisaPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPlantaActionPerformed
-        // TODO add your handling code here:
-
-        String a = evt.toString();
-        System.out.println(a);
-    }//GEN-LAST:event_txtPesquisaPlantaActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         DefaultTableModel tblModelo = (DefaultTableModel) tblProduto.getModel();
         String mensagem;
@@ -392,7 +371,7 @@ public class ConsultaProdutonternalFrame extends javax.swing.JInternalFrame {
 
         if (listaProdutos != null) {
             listaProdutos.forEach((p) -> {
-                //_loggerProduto(p);
+                _loggerProduto(p);
                 tmProdutos.addRow(new Object[]{p.getId_produto(), p.getNome(), p.getTipo(), p.getCodigo(), p.getPrecoCompra(), p.getPrecoVenda(), p.getQuantidade(), p.getFornecedor()});
             });
         }

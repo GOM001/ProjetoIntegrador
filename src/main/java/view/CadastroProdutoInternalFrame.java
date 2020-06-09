@@ -8,43 +8,35 @@ import javax.swing.JTextField;
  *
  * @author pedrogomes
  */
-public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
-{
+public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     String intCaracteres = "0987654321";
 
-    public CadastroProdutoInternalFrame()
-    {
+    public CadastroProdutoInternalFrame() {
         initComponents();
     }
 
-    private boolean validarCampos()
-    {
+    private boolean validarCampos() {
         boolean valido = true;
         String mensagem = "";
 
-        JTextField[] vetorCampos =
-        {
+        JTextField[] vetorCampos = {
             txtNomeProduto, txtQuantidade, txtFornecedor, txtPrecoCompra, txtPrecoVenda, txtCodProduto
         };
 
-        for (JTextField campoTexto : vetorCampos)
-        {
-            if (campoTexto.getText().trim().equals("0"))
-            {
+        for (JTextField campoTexto : vetorCampos) {
+            if (campoTexto.getText().trim().equals("0")) {
                 mensagem = "Um dos campos não pode ser zero.\n";
                 valido = false;
             }
 
-            if (campoTexto.getText().trim().isEmpty())
-            {
+            if (campoTexto.getText().trim().isEmpty()) {
                 mensagem = "Há campos vazios.";
                 valido = false;
             }
         }
 
-        if (!valido)
-        {
+        if (!valido) {
             JOptionPane.showMessageDialog(null, mensagem, "Aviso!", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -53,8 +45,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -71,7 +62,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
         lblPrecoVenda = new javax.swing.JLabel();
         txtCodProduto = new javax.swing.JTextField();
         txtFornecedor = new javax.swing.JTextField();
-        cbTipoPlanta = new javax.swing.JComboBox<String>();
+        cbTipoPlanta = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         imgCadastroProduto = new javax.swing.JLabel();
         lblQuantidade = new javax.swing.JLabel();
@@ -102,31 +93,14 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
         btnCancelar.setText("Cancelar");
         btnCancelar.setMaximumSize(new java.awt.Dimension(129, 33));
         btnCancelar.setMinimumSize(new java.awt.Dimension(129, 33));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
         lblNome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNome.setText("Nome:");
-
-        txtNomeProduto.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txtNomeProdutoActionPerformed(evt);
-            }
-        });
-        txtNomeProduto.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                txtNomeProdutoKeyPressed(evt);
-            }
-        });
 
         lblTipoProduto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTipoProduto.setText("Tipo:");
@@ -143,29 +117,13 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
         lblPrecoVenda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPrecoVenda.setText("Preço/Venda:");
 
-        txtCodProduto.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txtCodProdutoActionPerformed(evt);
-            }
-        });
-        txtCodProduto.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
+        txtCodProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodProdutoKeyTyped(evt);
             }
         });
 
-        cbTipoPlanta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Flor", "Cacto", "Suculenta" }));
-        cbTipoPlanta.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cbTipoPlantaActionPerformed(evt);
-            }
-        });
+        cbTipoPlanta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flor", "Cacto", "Suculenta" }));
 
         jPanel3.setLayout(null);
 
@@ -177,28 +135,22 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
         lblQuantidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblQuantidade.setText("Quantidade:");
 
-        txtQuantidade.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
+        txtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtQuantidadeKeyTyped(evt);
             }
         });
 
         txtPrecoCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txtPrecoCompra.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
+        txtPrecoCompra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecoCompraKeyTyped(evt);
             }
         });
 
         txtPrecoVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txtPrecoVenda.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtPrecoVenda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrecoVendaKeyPressed(evt);
             }
         });
@@ -210,10 +162,8 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
         btnCadastrar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/petals.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
             }
         });
@@ -391,30 +341,16 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeProdutoActionPerformed
-
-    private void txtCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodProdutoActionPerformed
-
-    private void cbTipoPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoPlantaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbTipoPlantaActionPerformed
-
     private void txtQuantidadeKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtQuantidadeKeyTyped
     {//GEN-HEADEREND:event_txtQuantidadeKeyTyped
-        if (txtQuantidade.getText().length() > 4 || !intCaracteres.contains(evt.getKeyChar() + ""))
-        {
+        if (txtQuantidade.getText().length() > 4 || !intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtQuantidadeKeyTyped
 
     private void txtCodProdutoKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtCodProdutoKeyTyped
     {//GEN-HEADEREND:event_txtCodProdutoKeyTyped
-        if (txtCodProduto.getText().length() > 4 || !intCaracteres.contains(evt.getKeyChar() + ""))
-        {
+        if (txtCodProduto.getText().length() > 4 || !intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
 
@@ -425,8 +361,7 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
 
         dadosValidos = validarCampos();
 
-        if (dadosValidos)
-        {
+        if (dadosValidos) {
 
             String nomeProduto = txtNomeProduto.getText().trim();
             String tipo = cbTipoPlanta.getSelectedItem().toString();
@@ -438,30 +373,22 @@ public class CadastroProdutoInternalFrame extends javax.swing.JInternalFrame
 
             cadastrou = ProdutoController.cadastrar(nomeProduto, tipo, quantidade, fornecedor, codProduto, precoCompra, precoVenda);
 
-            if (cadastrou)
-            {
+            if (cadastrou) {
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Registro realizado", JOptionPane.INFORMATION_MESSAGE);
-            } else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "Falha", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtNomeProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeProdutoKeyPressed
-
     private void txtPrecoCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoCompraKeyTyped
-        if (!intCaracteres.contains(evt.getKeyChar() + ""))
-        {
+        if (!intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtPrecoCompraKeyTyped
 
     private void txtPrecoVendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoVendaKeyPressed
-        if (!intCaracteres.contains(evt.getKeyChar() + ""))
-        {
+        if (!intCaracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtPrecoVendaKeyPressed
