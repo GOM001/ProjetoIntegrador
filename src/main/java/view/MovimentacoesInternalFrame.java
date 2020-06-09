@@ -1,6 +1,5 @@
 package view;
 
-import DAO.vendaDAO;
 import controller.movimentacaoController;
 import controller.vendaController;
 import java.time.LocalDateTime;
@@ -16,17 +15,16 @@ import model.Venda;
  * @author caiomoreno
  */
 public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
-    
+
     boolean temDesconto = false;
     int id_produto_fk = 0;
     int id_cliente_fk = 0;
- 
- 
+
     public MovimentacoesInternalFrame() {
         initComponents();
         pesquisaPlanta();
         dataAtual();
-        
+
     }
 
     private static String buscarCliente(Movimentacao movimentacao) {
@@ -40,8 +38,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,8 +49,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         txtTotalBruto = new javax.swing.JTextField();
         txtTotalDesconto = new javax.swing.JTextField();
         txtLiquido = new javax.swing.JTextField();
+        txtTroco = new javax.swing.JTextField();
         txtTotalPago = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
@@ -115,7 +112,20 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         txtLiquido.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtLiquido.setForeground(new java.awt.Color(51, 255, 51));
 
+        txtTroco.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        txtTroco.setForeground(new java.awt.Color(255, 0, 0));
+        txtTroco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTrocoActionPerformed(evt);
+            }
+        });
+
         txtTotalPago.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        txtTotalPago.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTotalPagoFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -138,18 +148,18 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTotalPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel6)
+                    .addComponent(txtTotalPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField2, txtLiquido, txtTotalBruto, txtTotalDesconto, txtTotalPago});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtLiquido, txtTotalBruto, txtTotalDesconto, txtTotalPago, txtTroco});
 
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,16 +172,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtTotalBruto)
-                    .addComponent(txtTotalDesconto)
-                    .addComponent(txtLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotalPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(txtTotalBruto)
+                        .addComponent(txtTotalDesconto)
+                        .addComponent(txtLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotalPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField2, txtLiquido, txtTotalBruto, txtTotalDesconto, txtTotalPago});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtLiquido, txtTotalBruto, txtTotalDesconto, txtTotalPago, txtTroco});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -205,20 +216,16 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-planejador-30.png"))); // NOI18N
         jLabel1.setText("Data da venda");
 
-        try
-        {
+        try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex)
-        {
+        } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
@@ -274,29 +281,23 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblVenda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
 
             },
-            new String []
-            {
+            new String [] {
                 "Cod. Prod", "Nome do produto", "Qtde.", "Desc. %", "Desc. R$", "Total Bruto", "Total Líquido", "id_produto_fk", "id_cliente_fk"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblVenda);
-        if (tblVenda.getColumnModel().getColumnCount() > 0)
-        {
+        if (tblVenda.getColumnModel().getColumnCount() > 0) {
             tblVenda.getColumnModel().getColumn(7).setMinWidth(0);
             tblVenda.getColumnModel().getColumn(7).setMaxWidth(0);
             tblVenda.getColumnModel().getColumn(8).setMinWidth(0);
@@ -307,10 +308,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionarCesta.png"))); // NOI18N
         btnAdicionarProduto.setText("Adicionar");
         btnAdicionarProduto.setBorderPainted(false);
-        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarProdutoActionPerformed(evt);
             }
         });
@@ -319,10 +318,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluirCesta.png"))); // NOI18N
         btnExcluirProduto.setText("Excluir");
         btnExcluirProduto.setBorderPainted(false);
-        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirProdutoActionPerformed(evt);
             }
         });
@@ -392,10 +389,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnFinalizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
         btnFinalizar.setText("Finalizar Transacao");
-        btnFinalizar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
             }
         });
@@ -403,10 +398,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icone-excluir.png"))); // NOI18N
         jButton4.setText("Cancelar Compra");
-        jButton4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
@@ -505,14 +498,14 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdutoActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tblModelo = (DefaultTableModel)tblVenda.getModel();
-        if (tblVenda.getSelectedRow() >= 0){
+        DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
+        if (tblVenda.getSelectedRow() >= 0) {
             tblModelo.removeRow(tblVenda.getSelectedRow());
             txtTotalBruto.setText(TotalBruto());
             txtTotalDesconto.setText(TotalDesconto());
             txtLiquido.setText(TotalLiquido());
             tblVenda.setModel(tblModelo);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
         }
     }//GEN-LAST:event_btnExcluirProdutoActionPerformed
@@ -526,15 +519,14 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         movimentacao.SetCpf(cpf);
         nome = buscarCliente(movimentacao);
         String splitNome[] = nome.split(",");
-        
+
         String nomeCliente = splitNome[0];
         JOptionPane.showMessageDialog(this, nome);
-        
 
         if (nomeCliente.trim().equals("")) {
             temDesconto = false;
             txtNomeCliente.setText(nome);
-            
+
         } else {
             temDesconto = true;
             id_cliente_fk = Integer.parseInt(splitNome[1]);
@@ -543,142 +535,109 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
-      
+
         DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
-       Movimentacao movimentacao;
-       
-       boolean jaTem = false;
-       String nomeProduto, Desconto= "10%";
-       String nome = cboPlanta.getSelectedItem().toString();
-       int qtd =Integer.parseInt(cboQtd.getSelectedItem().toString());
-       int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
-       id_produto_fk = movimentacaoController.ConsultCodigoProduto(nome);
-       boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
-       int qtdLinhas = tabela.getRowCount(); int linhaParada = 0;
-       double valorDesconto= 0.0,valorLiquido,novoBruto=0.0;
-      
-      
-       if(!temDesconto)
-       {
-           Desconto = "Sem desconto";
-           valorDesconto = 0.0;
-       }
-       
-       String mensagem = temEstoque ? "Produto adicionado" : "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")";
-       
-       
-       for(int i = 0; i < qtdLinhas; i++)
-       {
-          nomeProduto = String.valueOf(tabela.getValueAt(i, 1));
-          
-          
-           
-          if(nomeProduto.equals(nome))
-          {
-              jaTem = true;
-              linhaParada = i;
-              break;
-          }
-       }
-       
-       movimentacao = movimentacaoController.adicionaProduto(nome);
-       
-        if(jaTem)
-        {
-           
+        Movimentacao movimentacao;
+
+        boolean jaTem = false;
+        String nomeProduto, Desconto = "10%";
+        String nome = cboPlanta.getSelectedItem().toString();
+        int qtd = Integer.parseInt(cboQtd.getSelectedItem().toString());
+        int qtdEstoque = movimentacaoController.ConsultaEstoque(nome);
+        id_produto_fk = movimentacaoController.ConsultCodigoProduto(nome);
+        boolean temEstoque = movimentacaoController.verificaSeEMaiorQueOEstoque(qtd, qtdEstoque);
+        int qtdLinhas = tabela.getRowCount();
+        int linhaParada = 0;
+        double valorDesconto = 0.0, valorLiquido, novoBruto = 0.0;
+
+        if (!temDesconto) {
+            Desconto = "Sem desconto";
+            valorDesconto = 0.0;
+        }
+
+        String mensagem = temEstoque ? "Produto adicionado" : "Quantidade informada e maior do que contem em estoque(" + qtdEstoque + ")";
+
+        for (int i = 0; i < qtdLinhas; i++) {
+            nomeProduto = String.valueOf(tabela.getValueAt(i, 1));
+
+            if (nomeProduto.equals(nome)) {
+                jaTem = true;
+                linhaParada = i;
+                break;
+            }
+        }
+
+        movimentacao = movimentacaoController.adicionaProduto(nome);
+
+        if (jaTem) {
+
             String quantidade = String.valueOf(tabela.getValueAt(linhaParada, 2));
             String totalBruto = String.valueOf(tabela.getValueAt(linhaParada, 5));
-            
+
             double totalBrutoD = Double.parseDouble(totalBruto);
             int qtdInt = Integer.parseInt(quantidade);
-            
+
             double valorUnitario = valorUnitario(totalBrutoD, qtdInt);
             int novaQuantidade = atualizarQtd(qtdInt, qtd);
             double bruto = valorUnitario * qtd;
-            
-            
-            
-            
-            
-            
-            if(temDesconto)
-       {
-            novoBruto = atualizaValorBruto(bruto, totalBrutoD);
-           
-            valorDesconto = calcularDesconto(novoBruto);
-            
-            
-           
-           valorLiquido = calcularLiquido(valorDesconto, novoBruto);
-         
-       }else
-       {
-            novoBruto = atualizaValorBruto(bruto, totalBrutoD);
-            valorLiquido = novoBruto;
-       }
-           
-            boolean temMais = movimentacaoController.verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
-            if(temMais == false)
-            {
-                 JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")");
-                
-                             
-            }else
-            {
-               tabela.removeRow(linhaParada);
-               
-            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido,id_produto_fk,id_cliente_fk});
-   
-            txtTotalBruto.setText(TotalBruto());
-            txtTotalDesconto.setText(TotalDesconto());
-            txtLiquido.setText(TotalLiquido());
+
+            if (temDesconto) {
+                novoBruto = atualizaValorBruto(bruto, totalBrutoD);
+
+                valorDesconto = calcularDesconto(novoBruto);
+
+                valorLiquido = calcularLiquido(valorDesconto, novoBruto);
+
+            } else {
+                novoBruto = atualizaValorBruto(bruto, totalBrutoD);
+                valorLiquido = novoBruto;
             }
-            
-            
-            
-        }else{
-       
-       
-       if(temDesconto)
-       {
-           double valorProduto = movimentacao.getValor();
-           
-            valorDesconto =  calcularDesconto(valorProduto);
-            
-            
-           
-           valorLiquido = valorProduto - valorDesconto;
-         
-       }else
-       {
-          
-           
-           valorLiquido = movimentacao.getValor();
-       }
-       
-       
-          
-            
-        if(temEstoque == false){
-        
-        JOptionPane.showMessageDialog(this, mensagem);
-            
-        }else{
-           
-            tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido,id_produto_fk,id_cliente_fk});
-        
-            txtTotalBruto.setText(TotalBruto());
-            txtTotalDesconto.setText(TotalDesconto());
-            txtLiquido.setText(TotalLiquido());
-            JOptionPane.showMessageDialog(this, mensagem);
+
+            boolean temMais = movimentacaoController.verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
+            if (temMais == false) {
+                JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque(" + qtdEstoque + ")");
+
+            } else {
+                tabela.removeRow(linhaParada);
+
+                tabela.addRow(new Object[]{movimentacao.getCodProd(), movimentacao.getNomeItem(), novaQuantidade, Desconto, valorDesconto, novoBruto, valorLiquido, id_produto_fk, id_cliente_fk});
+
+                txtTotalBruto.setText(TotalBruto());
+                txtTotalDesconto.setText(TotalDesconto());
+                txtLiquido.setText(TotalLiquido());
+               
+            }
+
+        } else {
+
+            if (temDesconto) {
+                double valorProduto = movimentacao.getValor();
+
+                valorDesconto = calcularDesconto(valorProduto);
+
+                valorLiquido = valorProduto - valorDesconto;
+
+            } else {
+
+                valorLiquido = movimentacao.getValor();
+            }
+
+            if (temEstoque == false) {
+
+                JOptionPane.showMessageDialog(this, mensagem);
+
+            } else {
+
+                tabela.addRow(new Object[]{movimentacao.getCodProd(), movimentacao.getNomeItem(), qtd, Desconto, valorDesconto, movimentacao.getValor(), valorLiquido, id_produto_fk, id_cliente_fk});
+
+                txtTotalBruto.setText(TotalBruto());
+                txtTotalDesconto.setText(TotalDesconto());
+                txtLiquido.setText(TotalLiquido());
+                JOptionPane.showMessageDialog(this, mensagem);
+            }
         }
-    }
-       
-       
-       
-       
-       
-       
+
+
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
 
@@ -686,69 +645,65 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
         boolean vendeu = false;
         boolean retirouDoEstoque = false;
-        try
-        {
+        try {
             ArrayList<Venda> listaVenda = new ArrayList<Venda>();
-        
-        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
-        int qtdLinhas = tblVenda.getRowCount();
 
-        Object[] options = { "Confirmar", "Cancelar" };
-        int dadosClicados = JOptionPane.showOptionDialog(null, "Clique Confirmar para confirmar a venda", "Confirmação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        
-        if(dadosClicados == 0)
-        {
-        
-            
-        for(int i = 0; i < qtdLinhas;i++)
-        {
-            Venda venda = new Venda();
-            String qtdVendido = String.valueOf(tabela.getValueAt(i, 2));
-            String valorDesc = String.valueOf(tabela.getValueAt(i, 4));
-            String valor = String.valueOf(tabela.getValueAt(i, 6));
-            String id_produto_fk = String.valueOf(tabela.getValueAt(i, 7));
-            String id_cliente_fk = String.valueOf(tabela.getValueAt(i, 8));
-            
-            double valorDescD = Double.parseDouble(valorDesc);
-            double valorD = Double.parseDouble(valor);
-            int id_produto_fkI = Integer.parseInt(id_produto_fk);
-            int id_cliente_fkI = Integer.parseInt(id_cliente_fk);
-            int qtdVendidoI = Integer.parseInt(qtdVendido);
+            DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+            int qtdLinhas = tblVenda.getRowCount();
 
-            
-            venda.setQtd_vendido(qtdVendidoI);
-            venda.setValor_desc(valorDescD);
-            venda.setValor_total(valorD);
-            venda.setDataVenda(txtDataVenda.getText());
-            venda.setId_produto_fk(id_produto_fkI);
-            venda.setId_cliente_fk(id_cliente_fkI);
-            
-            listaVenda.add(venda);
-            
-        }
-       
-       // retirouDoEstoque = vendaController.retirarEstoque(listaVenda);
-        vendeu =   vendaController.inserirVenda(listaVenda);
-      // if(retirouDoEstoque){
-        
-       //}
-       
-            
-            if(vendeu){
-            
-            JOptionPane.showMessageDialog(null, "Compra efetuada");
-            tabela.setRowCount(0);
-            txtLiquido.setText("R$ 0.00");
-            txtTotalBruto.setText("R$ 0.00");
-            txtTotalDesconto.setText("R$ 0.00");}
-            else {
-                JOptionPane.showMessageDialog(null, "ERRO");
+            Object[] options = {"Confirmar", "Cancelar"};
+            int dadosClicados = JOptionPane.showOptionDialog(null, "Clique Confirmar para confirmar a venda", "Confirmação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            if (dadosClicados == 0) {
+
+                for (int i = 0; i < qtdLinhas; i++) {
+                    Venda venda = new Venda();
+                    String qtdVendido = String.valueOf(tabela.getValueAt(i, 2));
+                    String valorDesc = String.valueOf(tabela.getValueAt(i, 4));
+                    String valor = String.valueOf(tabela.getValueAt(i, 6));
+                    String id_produto_fk = String.valueOf(tabela.getValueAt(i, 7));
+                    String id_cliente_fk = String.valueOf(tabela.getValueAt(i, 8));
+
+                    double valorDescD = Double.parseDouble(valorDesc);
+                    double valorD = Double.parseDouble(valor);
+                    int id_produto_fkI = Integer.parseInt(id_produto_fk);
+                    int id_cliente_fkI = Integer.parseInt(id_cliente_fk);
+                    int qtdVendidoI = Integer.parseInt(qtdVendido);
+
+                    venda.setQtd_vendido(qtdVendidoI);
+                    venda.setValor_desc(valorDescD);
+                    venda.setValor_total(valorD);
+                    venda.setDataVenda(txtDataVenda.getText());
+                    venda.setId_produto_fk(id_produto_fkI);
+                    venda.setId_cliente_fk(id_cliente_fkI);
+
+                    listaVenda.add(venda);
+
+                }
+
+                // retirouDoEstoque = vendaController.retirarEstoque(listaVenda);
+                vendeu = vendaController.inserirVenda(listaVenda);
+                // if(retirouDoEstoque){
+
+                //}
+                if (vendeu) {
+
+                    JOptionPane.showMessageDialog(null, "Compra efetuada");
+                    tabela.setRowCount(0);
+                    txtLiquido.setText("R$ 0.00");
+                    txtTotalBruto.setText("R$ 0.00");
+                    txtTotalDesconto.setText("R$ 0.00");
+                    txtNomeCliente.setText("");
+                    txtCpf.setText("");
+                    id_produto_fk = 0;
+                    id_cliente_fk = 0;
+                } else {
+                    JOptionPane.showMessageDialog(null, "ERRO");
+                }
             }
+        } catch (Exception e) {
         }
-        } catch (Exception e)
-        {
-        }
-        
+
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -756,13 +711,44 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void txtTrocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrocoActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtTrocoActionPerformed
+
+    private void txtTotalPagoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTotalPagoFocusLost
+           try {
+            // obtêm a entrada de usuário a partir da JTextField
+            String TotalPago = txtTotalPago.getText();
+            String TotalLiquido = txtLiquido.getText();
+
+            String replaceTotalPago = TotalPago.replace("R$ ", "");
+            String replaceTotalLiquido = TotalLiquido.replace("R$ ", "");
+
+            // converte os valores recebido em string para double
+            double num1 = (double) Double.parseDouble(replaceTotalPago);
+            double num2 = (double) Double.parseDouble(replaceTotalLiquido);
+            //fas um cast para para um tipo primitivo
+
+            double sum = num1 - num2;
+
+            //setar o resultado na JLabel
+            //Concatenar com uma String, pois não pode-se colocar diretamente o valor int
+            txtTroco.setText("R$ " + String.format("%.2f", sum));
+            txtTroco.setEditable(false);
+            String a = String.format("%.2f", num1);
+            txtTotalPago.setText("R$ " +  a );
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Caracteres Inválidos no Campo JTextField");
+            //Caso não for possivel converter o valor digirto, ele envia esta mensagem na tela
+        }
+    }//GEN-LAST:event_txtTotalPagoFocusLost
 
     private void pesquisaPlanta() {
         try {
             ArrayList<String> listaPlanta = movimentacaoController.pesquisaPlantas();
 
-            for(String planta : listaPlanta)
-            {
+            for (String planta : listaPlanta) {
                 cboPlanta.addItem(planta);
             }
 
@@ -781,100 +767,89 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         txtDataVenda.setEditable(false);
 
     }
-    
-    private double calcularDesconto(double valorProduto)
-    {
+
+    private double calcularDesconto(double valorProduto) {
         return valorProduto * 0.1;
     }
-    
-    private double calcularLiquido(double valorDesconto,double valorBruto)
-    {
+
+    private double calcularLiquido(double valorDesconto, double valorBruto) {
         return valorBruto - valorDesconto;
     }
-    
-    private int atualizarQtd(int a, int b)
-    {
+
+    private int atualizarQtd(int a, int b) {
         return a + b;
     }
-    
-    private double valorUnitario(double valor, int qtd)
-    {
+
+    private double valorUnitario(double valor, int qtd) {
         return ((double) valor / qtd);
     }
-    
-    private double atualizaValorBruto(Double a, Double b)
-    {
+
+    private double atualizaValorBruto(Double a, Double b) {
         return (double) a + b;
     }
-    
-    private String TotalBruto(){
-    DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
-    double soma = 0 ;    
-    int qtdLinha = tblModelo.getRowCount();
-    if(!(qtdLinha == 0))
-    {
-        for (int i = 0; i < qtdLinha; i++) {
-            String valorBruto = String.valueOf(tblModelo.getValueAt(i, 5));
-            double valorBrutoD = Double.parseDouble(valorBruto);
-            soma += valorBrutoD;
+
+    private String TotalBruto() {
+        DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
+        double soma = 0;
+        int qtdLinha = tblModelo.getRowCount();
+        if (!(qtdLinha == 0)) {
+            for (int i = 0; i < qtdLinha; i++) {
+                String valorBruto = String.valueOf(tblModelo.getValueAt(i, 5));
+                double valorBrutoD = Double.parseDouble(valorBruto);
+                soma += valorBrutoD;
+            }
+
+            return "R$ " + String.format("%.2f", soma);
+        } else {
+            return "R$ " + String.format("%.2f", soma);
         }
-        
-        return "R$ " + String.format("%.2f", soma);
-    }else
-    {
-        return "R$ " + String.format("%.2f", soma);
     }
-    }
-     private String TotalDesconto(){
-    DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
-    double soma = 0 ;    
-    int qtdLinha = tblModelo.getRowCount();
-    
-    if(!(qtdLinha == 0)){
-        for (int i = 0; i < qtdLinha; i++) {
-            String valorDesc = String.valueOf(tblModelo.getValueAt(i, 4));
-            double valorDescD = Double.parseDouble(valorDesc);
-            soma += valorDescD;
+
+    private String TotalDesconto() {
+        DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
+        double soma = 0;
+        int qtdLinha = tblModelo.getRowCount();
+
+        if (!(qtdLinha == 0)) {
+            for (int i = 0; i < qtdLinha; i++) {
+                String valorDesc = String.valueOf(tblModelo.getValueAt(i, 4));
+                double valorDescD = Double.parseDouble(valorDesc);
+                soma += valorDescD;
+            }
+            return "R$ " + String.format("%.2f", soma);
+        } else {
+
+            return "R$ " + String.format("%.2f", soma);
         }
-        return "R$ " + String.format("%.2f", soma);
-    }else
-    {
-        
-        return "R$ " + String.format("%.2f", soma);
     }
-    }
-     
-    private String TotalLiquido(){
-    DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
-    double soma = 0 ;    
-    int qtdLinha = tblModelo.getRowCount();
-    if(!(qtdLinha == 0))
-    {
-        for (int i = 0; i < qtdLinha; i++) {
-            String valorDesc = String.valueOf(tblModelo.getValueAt(i, 6));
-            double valorDescD = Double.parseDouble(valorDesc);
-            soma += valorDescD;
+
+    private String TotalLiquido() {
+        DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
+        double soma = 0;
+        int qtdLinha = tblModelo.getRowCount();
+        if (!(qtdLinha == 0)) {
+            for (int i = 0; i < qtdLinha; i++) {
+                String valorDesc = String.valueOf(tblModelo.getValueAt(i, 6));
+                double valorDescD = Double.parseDouble(valorDesc);
+                soma += valorDescD;
+            }
+            return "R$ " + String.format("%.2f", soma);
+        } else {
+
+            return "R$ " + String.format("%.2f", soma);
         }
-        return "R$ " + String.format("%.2f", soma);
-    }else{
-        
-        return "R$ " + String.format("%.2f", soma);
     }
-    }
-    
-    private int id_produto_fk(String nomePlanta)
-    {
-        
+
+    private int id_produto_fk(String nomePlanta) {
+
         return 1;
     }
-    
-    private int id_cliente_fk(String cpf)
-    {
-        
+
+    private int id_cliente_fk(String cpf) {
+
         return 1;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelGerarRelatoriodeVendas10;
@@ -901,7 +876,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JTable tblVenda;
@@ -912,5 +886,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTotalBruto;
     private javax.swing.JTextField txtTotalDesconto;
     private javax.swing.JTextField txtTotalPago;
+    private javax.swing.JTextField txtTroco;
     // End of variables declaration//GEN-END:variables
 }
