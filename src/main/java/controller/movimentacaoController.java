@@ -33,7 +33,7 @@ public class movimentacaoController {
     {
         if(qtd > qtdEstoque)
         {
-            
+            JOptionPane.showMessageDialog(null, "Sou maior que o estoque");
             return false;
         }else
         {

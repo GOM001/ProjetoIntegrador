@@ -566,7 +566,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        for(int i = 0; i < qtdLinhas; i++)
        {
           nomeProduto = String.valueOf(tabela.getValueAt(i, 1));
-          linhaParada = i;
+          
            System.out.println("nome do produto ---> " + nomeProduto);
            
            System.out.println("comparacao = "+ nomeProduto+ "=="+ nome);
@@ -574,6 +574,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
           if(nomeProduto.equals(nome))
           {
               jaTem = true;
+              linhaParada = i;
+              break;
           }
        }
        
@@ -582,7 +584,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         if(jaTem)
         {
             JOptionPane.showMessageDialog(this, "Produto já existe na tabela!");
-            JOptionPane.showMessageDialog(this,"Removendo linha: " +linhaParada);
+           // JOptionPane.showMessageDialog(this,"Removendo linha: " +linhaParada);
             String quantidade = String.valueOf(tabela.getValueAt(linhaParada, 2));
             String totalBruto = String.valueOf(tabela.getValueAt(linhaParada, 5));
             
@@ -597,11 +599,20 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             
             valorDesconto = calcularDesconto(novoBruto);
             valorLiquido = calcularLiquido(valorDesconto, novoBruto);
-             //tblModelo.removeRow(tblVenda.getSelectedRow());
             
-            tabela.removeRow(linhaParada - 1);
+            
+            JOptionPane.showMessageDialog(this, "Nova quantidade: "+ novaQuantidade+ " comparacao: \n"+novaQuantidade+" > "+qtdEstoque);
+            boolean temMais = movimentacaoController.verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
+            if(temMais == false)
+            {
+                 JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")");
+                             
+            }else
+            {
+               tabela.removeRow(linhaParada);
             tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido});
-            
+   
+            }
         }else{
        
        
@@ -687,6 +698,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     {
         return (double) a + b;
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelGerarRelatoriodeVendas10;
