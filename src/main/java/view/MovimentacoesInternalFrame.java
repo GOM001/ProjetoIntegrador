@@ -1,5 +1,6 @@
 package view;
 
+import DAO.vendaDAO;
 import controller.movimentacaoController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Movimentacao;
+import model.Venda;
 
 /**
  *
@@ -644,21 +646,44 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFinalizarActionPerformed
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
+        ArrayList<Venda> listaVenda = new ArrayList<Venda>();
         
-
+        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+        int qtdLinhas = tblVenda.getRowCount();
 
         Object[] options = { "Confirmar", "Cancelar" };
         int dadosClicados = JOptionPane.showOptionDialog(null, "Clique Confirmar para confirmar a venda", "Confirmação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         
         if(dadosClicados == 0)
         {
-            DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+        
+            
+        for(int i = 0; i < qtdLinhas;i++)
+        {
+            Venda venda = new Venda();
+            venda.setQtd_vendido(2);
+            venda.setValor_desc(22.00);
+            venda.setValor_total(50.00);
+            venda.setDataVenda(txtDataVenda.getText());
+            venda.setId_produto_fk(2);
+            venda.setId_cliente_fk(3);
+            
+            listaVenda.add(venda);
+            
+        }
+            
+       boolean foi =   vendaDAO.inserirVenda(listaVenda);
+            
+            if(foi){
+            
             JOptionPane.showMessageDialog(null, "Compra efetuada");
             tabela.setRowCount(0);
-            
             txtLiquido.setText("R$ 0.00");
             txtTotalBruto.setText("R$ 0.00");
-            txtTotalDesconto.setText("R$ 0.00");
+            txtTotalDesconto.setText("R$ 0.00");}
+            else {
+                JOptionPane.showMessageDialog(null, "ERRO");
+            }
         }
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
