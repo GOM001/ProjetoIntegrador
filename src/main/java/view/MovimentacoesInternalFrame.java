@@ -660,7 +660,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFinalizarActionPerformed
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
-        DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
+        
 
 
         Object[] options = { "Confirmar", "Cancelar" };
@@ -668,8 +668,13 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         
         if(dadosClicados == 0)
         {
+            DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
             JOptionPane.showMessageDialog(null, "Compra efetuada");
             tabela.setRowCount(0);
+            
+            txtLiquido.setText("R$ 0.00");
+            txtTotalBruto.setText("R$ 0.00");
+            txtTotalDesconto.setText("R$ 0.00");
         }
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
@@ -728,6 +733,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
     double soma = 0 ;    
     int qtdLinha = tblModelo.getRowCount();
+    if(!(qtdLinha == 0))
+    {
         for (int i = 0; i < qtdLinha; i++) {
             String valorBruto = String.valueOf(tblModelo.getValueAt(i, 5));
             double valorBrutoD = Double.parseDouble(valorBruto);
@@ -735,31 +742,46 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         }
         
         return "R$ " + String.format("%.2f", soma);
+    }else
+    {
+        return "R$ " + String.format("%.2f", soma);
+    }
     }
      private String TotalDesconto(){
     DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
     double soma = 0 ;    
     int qtdLinha = tblModelo.getRowCount();
+    
+    if(!(qtdLinha == 0)){
         for (int i = 0; i < qtdLinha; i++) {
             String valorDesc = String.valueOf(tblModelo.getValueAt(i, 4));
             double valorDescD = Double.parseDouble(valorDesc);
             soma += valorDescD;
         }
+        return "R$ " + String.format("%.2f", soma);
+    }else
+    {
         
         return "R$ " + String.format("%.2f", soma);
     }
+    }
      
-       private String TotalLiquido(){
+    private String TotalLiquido(){
     DefaultTableModel tblModelo = (DefaultTableModel) tblVenda.getModel();
     double soma = 0 ;    
     int qtdLinha = tblModelo.getRowCount();
+    if(!(qtdLinha == 0))
+    {
         for (int i = 0; i < qtdLinha; i++) {
             String valorDesc = String.valueOf(tblModelo.getValueAt(i, 6));
             double valorDescD = Double.parseDouble(valorDesc);
             soma += valorDescD;
         }
+        return "R$ " + String.format("%.2f", soma);
+    }else{
         
         return "R$ " + String.format("%.2f", soma);
+    }
     }
     
 
