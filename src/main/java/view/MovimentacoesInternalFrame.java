@@ -513,10 +513,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdutoActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tblModelo = (DefaultTableModel)jTable1.getModel();
-        if (jTable1.getSelectedRow() >= 0){
-            tblModelo.removeRow(jTable1.getSelectedRow());
-            jTable1.setModel(tblModelo);
+        DefaultTableModel tblModelo = (DefaultTableModel)tblVenda.getModel();
+        if (tblVenda.getSelectedRow() >= 0){
+            tblModelo.removeRow(tblVenda.getSelectedRow());
+            tblVenda.setModel(tblModelo);
         }else{
             JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
         }
