@@ -583,8 +583,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        
         if(jaTem)
         {
-            JOptionPane.showMessageDialog(this, "Produto já existe na tabela!");
-           // JOptionPane.showMessageDialog(this,"Removendo linha: " +linhaParada);
+           
             String quantidade = String.valueOf(tabela.getValueAt(linhaParada, 2));
             String totalBruto = String.valueOf(tabela.getValueAt(linhaParada, 5));
             
@@ -601,17 +600,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             valorLiquido = calcularLiquido(valorDesconto, novoBruto);
             
             
-            JOptionPane.showMessageDialog(this, "Nova quantidade: "+ novaQuantidade+ " comparacao: \n"+novaQuantidade+" > "+qtdEstoque);
+           
             boolean temMais = movimentacaoController.verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
             if(temMais == false)
             {
                  JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque("+qtdEstoque+")");
-                 JOptionPane.showMessageDialog(this, "To aqui no if");
+                
                              
             }else
             {
                tabela.removeRow(linhaParada);
-               JOptionPane.showMessageDialog(this, "To aqui");
+               
             tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),novaQuantidade,Desconto,valorDesconto,novoBruto,valorLiquido});
    
             }
@@ -639,14 +638,14 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
        }
        
        
-            JOptionPane.showMessageDialog(this, "Valor do tem estoque"+temEstoque);
+          
             
         if(temEstoque == false){
         
         JOptionPane.showMessageDialog(this, mensagem);
-            System.out.println("to aquiii");
+            
         }else{
-            System.out.println("to aqui no else");
+           
             tabela.addRow(new Object[]{movimentacao.getCodProd(),movimentacao.getNomeItem(),qtd,Desconto,valorDesconto,movimentacao.getValor(),valorLiquido});
         JOptionPane.showMessageDialog(this, mensagem);
         }

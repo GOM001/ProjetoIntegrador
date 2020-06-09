@@ -31,11 +31,10 @@ public class movimentacaoController {
     
     public static boolean verificaSeEMaiorQueOEstoque(int qtd, int qtdEstoque)
     {
-        JOptionPane.showMessageDialog(null, "Comparacao: "+qtd+" > "+qtdEstoque);
+        
         if(qtd > qtdEstoque)
         {
-            JOptionPane.showMessageDialog(null, "Sou maior que o estoque");
-            JOptionPane.showMessageDialog(null, "retornando false");
+        
             return false;
         }else
         {
