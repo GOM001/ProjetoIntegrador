@@ -11,7 +11,6 @@ public class CEP {
     public String Ibge;
     public String Gia;
 
-    
     public CEP() {
         this.Logradouro = null;
         this.Complemento = null;
@@ -22,7 +21,6 @@ public class CEP {
         this.Gia = null;
     }
 
-    
     public CEP(String CEP, String Logradouro, String Complemento, String Bairro, String Localidade, String Uf, String Ibge, String Gia) {
         this.CEP = CEP;
         this.Logradouro = Logradouro;
@@ -34,7 +32,6 @@ public class CEP {
         this.Gia = Gia;
     }
 
-    
     public CEP(String Logradouro, String Localidade, String Uf) {
         this.Logradouro = Logradouro;
         this.Localidade = Localidade;

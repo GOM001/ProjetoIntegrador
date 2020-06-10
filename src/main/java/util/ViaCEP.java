@@ -21,7 +21,7 @@ public class ViaCEP extends ViaCEPBase {
     /**
      * Constrói uma nova classe
      *
-     * 
+     *
      */
     public ViaCEP(ViaCEPEvents events) {
         super();
@@ -51,7 +51,6 @@ public class ViaCEP extends ViaCEPBase {
      * Busca um CEP no ViaCEP
      *
      */
-    
     public final void buscar(String cep) throws ViaCEPException {
         try {
             // define o cep atual
@@ -88,7 +87,6 @@ public class ViaCEP extends ViaCEPBase {
                 if (Events instanceof ViaCEPEvents) {
                     Events.onCEPError(currentCEP);
                 }
-
                 throw new ViaCEPException("Não foi possível encontrar o CEP", cep, ViaCEPException.class.getName());
             }
         } catch (JSONException ex) {
