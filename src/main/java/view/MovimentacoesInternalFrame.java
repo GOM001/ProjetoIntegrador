@@ -23,7 +23,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         initComponents();
         pesquisaPlanta();
         dataAtual();
-
     }
 
     private static String buscarCliente(Movimentacao movimentacao) {
@@ -391,7 +390,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         btnFinalizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
-        btnFinalizar.setText("Finalizar Transacao");
+        btnFinalizar.setText("Finalizar Transação");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
@@ -593,10 +592,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 valorLiquido = novoBruto;
             }
 
-            boolean temMais = verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
-            if (temMais == false) {
+            boolean possuiProdutoEstoque = verificaSeEMaiorQueOEstoque(novaQuantidade, qtdEstoque);
+            if (possuiProdutoEstoque == false) {
                 JOptionPane.showMessageDialog(this, "Quantidade informada e maior do que contem em estoque(" + qtdEstoque + ")");
-
             } else {
                 tabela.removeRow(linhaParada);
                 tabela.addRow(new Object[]{movimentacao.getCodProd(), movimentacao.getNomeItem(), novaQuantidade, Desconto, valorDesconto, novoBruto, valorLiquido, id_produto_fk, id_cliente_fk});
@@ -604,17 +602,14 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 txtTotalBruto.setText(TotalBruto());
                 txtTotalDesconto.setText(TotalDesconto());
                 txtLiquido.setText(TotalLiquido());
-
             }
 
         } else {
-
             if (possuiDesconto) {
                 double valorProduto = movimentacao.getValor();
 
                 valorDesconto = calcularDesconto(valorProduto);
                 valorLiquido = valorProduto - valorDesconto;
-
             } else {
                 valorLiquido = movimentacao.getValor();
             }
@@ -622,7 +617,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             if (temEstoque == false) {
                 JOptionPane.showMessageDialog(this, mensagem);
             } else {
-
                 tabela.addRow(new Object[]{movimentacao.getCodProd(), movimentacao.getNomeItem(), qtd, Desconto, valorDesconto, movimentacao.getValor(), valorLiquido, id_produto_fk, id_cliente_fk});
 
                 txtTotalBruto.setText(TotalBruto());
@@ -631,8 +625,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, mensagem);
             }
         }
-
-
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
 
@@ -640,7 +632,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
         boolean vendeu = false;
         try {
-            ArrayList<Venda> listaVenda = new ArrayList<Venda>();
+            ArrayList<Venda> listaVenda = new ArrayList<>();
 
             DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
             int qtdLinhas = tblVenda.getRowCount();
@@ -672,7 +664,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                     venda.setId_cliente_fk(id_cliente_fkI);
 
                     listaVenda.add(venda);
-
                 }
 
                 vendeu = VendaController.inserirVenda(listaVenda);
@@ -685,9 +676,9 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                     txtTotalDesconto.setText("R$ 0.00");
                     txtNomeCliente.setText("");
                     txtCpf.setText("");
-                    
+
                 } else {
-                    JOptionPane.showMessageDialog(null, "ERRO");
+                    JOptionPane.showMessageDialog(null, "Erro ao comprar");
                 }
             }
         } catch (Exception e) {
@@ -696,13 +687,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtTrocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrocoActionPerformed
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_txtTrocoActionPerformed
 
     private void txtTotalPagoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTotalPagoFocusLost
@@ -751,7 +739,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         txtDataVenda.setText(dataFormatada);
         txtDataVenda.setEditable(false);
-
     }
 
     private double calcularDesconto(double valorProduto) {
@@ -784,7 +771,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
                 double valorBrutoD = Double.parseDouble(valorBruto);
                 soma += valorBrutoD;
             }
-
             return "R$ " + String.format("%.2f", soma);
         } else {
             return "R$ " + String.format("%.2f", soma);
@@ -804,7 +790,6 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             }
             return "R$ " + String.format("%.2f", soma);
         } else {
-
             return "R$ " + String.format("%.2f", soma);
         }
     }
@@ -821,21 +806,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             }
             return "R$ " + String.format("%.2f", soma);
         } else {
-
             return "R$ " + String.format("%.2f", soma);
         }
     }
 
     private int id_produto_fk(String nomePlanta) {
-
         return 1;
     }
 
     private int id_cliente_fk(String cpf) {
-
         return 1;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelGerarRelatoriodeVendas10;
