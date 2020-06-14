@@ -41,7 +41,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -117,15 +118,19 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
         txtTroco.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTroco.setForeground(new java.awt.Color(255, 0, 0));
-        txtTroco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtTroco.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtTrocoActionPerformed(evt);
             }
         });
 
         txtTotalPago.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        txtTotalPago.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txtTotalPago.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txtTotalPagoFocusLost(evt);
             }
         });
@@ -219,16 +224,20 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-planejador-30.png"))); // NOI18N
         jLabel1.setText("Data da venda");
 
-        try {
+        try
+        {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/procurar-usuário-masculino-24.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBuscar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBuscarActionPerformed(evt);
             }
         });
@@ -284,23 +293,29 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblVenda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Cod. Prod", "Nome do produto", "Qtde.", "Desc. %", "Desc. R$", "Total Bruto", "Total Líquido", "id_produto_fk", "id_cliente_fk"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false, false, false, false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblVenda);
-        if (tblVenda.getColumnModel().getColumnCount() > 0) {
+        if (tblVenda.getColumnModel().getColumnCount() > 0)
+        {
             tblVenda.getColumnModel().getColumn(7).setMinWidth(0);
             tblVenda.getColumnModel().getColumn(7).setMaxWidth(0);
             tblVenda.getColumnModel().getColumn(8).setMinWidth(0);
@@ -311,8 +326,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionarCesta.png"))); // NOI18N
         btnAdicionarProduto.setText("Adicionar");
         btnAdicionarProduto.setBorderPainted(false);
-        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAdicionarProdutoActionPerformed(evt);
             }
         });
@@ -321,8 +338,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluirCesta.png"))); // NOI18N
         btnExcluirProduto.setText("Excluir");
         btnExcluirProduto.setBorderPainted(false);
-        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExcluirProdutoActionPerformed(evt);
             }
         });
@@ -392,8 +411,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         btnFinalizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-40.png"))); // NOI18N
         btnFinalizar.setText("Finalizar Transacao");
-        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnFinalizarActionPerformed(evt);
             }
         });
@@ -401,8 +422,10 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icone-excluir.png"))); // NOI18N
         jButton4.setText("Cancelar Compra");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton4ActionPerformed(evt);
             }
         });
@@ -515,6 +538,8 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBuscarActionPerformed
     {//GEN-HEADEREND:event_btnBuscarActionPerformed
+        
+        
         String nome, cpf;
         Movimentacao movimentacao = new Movimentacao();
         cpf = txtCpf.getText();
@@ -524,7 +549,7 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
         String splitNome[] = nome.split(",");
 
         String nomeCliente = splitNome[0];
-        JOptionPane.showMessageDialog(this, nome);
+       
 
         if (nomeCliente.trim().equals("")) {
             possuiDesconto = false;
@@ -534,14 +559,17 @@ public class MovimentacoesInternalFrame extends javax.swing.JInternalFrame {
             possuiDesconto = true;
             id_cliente_fk = Integer.parseInt(splitNome[1]);
             txtNomeCliente.setText(nomeCliente);
+            
+        
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
         DefaultTableModel tabela = (DefaultTableModel) tblVenda.getModel();
         Movimentacao movimentacao;
-
+        
         boolean possuiProduto = false;
         String nomeProduto, Desconto = "10%";
         String nome = cboPlanta.getSelectedItem().toString();
