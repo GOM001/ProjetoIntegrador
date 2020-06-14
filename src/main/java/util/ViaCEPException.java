@@ -8,8 +8,6 @@ public class ViaCEPException extends Exception {
     /**
      * Gera uma nova exceção
      *
-     * @param message descrição do erro
-     * @param classe classe da excessão original
      */
     public ViaCEPException(String message, String classe) {
         super(message);
@@ -21,9 +19,6 @@ public class ViaCEPException extends Exception {
     /**
      * Gera uma nova exceção e define o CEP que foi solicitado
      *
-     * @param message descrição do erro
-     * @param cep CEP que foi usado durante o processo
-     * @param classe classe da excessão original
      */
     public ViaCEPException(String message, String cep, String classe) {
         super(message);
@@ -35,7 +30,6 @@ public class ViaCEPException extends Exception {
     /**
      * Define o CEP da exceção
      *
-     * @param cep
      */
     public void setCEP(String cep) {
         this.CEP = cep;
@@ -44,7 +38,6 @@ public class ViaCEPException extends Exception {
     /**
      * Retorna o CEP da exceção
      *
-     * @return String CEP
      */
     public String getCEP() {
         return this.CEP;
@@ -53,7 +46,6 @@ public class ViaCEPException extends Exception {
     /**
      * Retorna se tem algum CEP
      *
-     * @return boolean
      */
     public boolean hasCEP() {
         return !this.CEP.isEmpty();
@@ -62,7 +54,6 @@ public class ViaCEPException extends Exception {
     /**
      * Retorna a classe da excessão original
      *
-     * @return
      */
     public String getClasse() {
         return Classe;
